@@ -162,6 +162,16 @@ class BoundingBox:
         return BoundingBox(self._lat1 + dlat, self._long1 - dlong,
                            self._lat2 - dlat, self._long2 + dlong)
 
+    def create_grown(self, factor):
+      """Return a new bbox with size grown by factor (1.0 for same size)"""
+      wlat = abs(self._lat2 - self._lat1)
+      wlon = abs(self._long2 - self._long1)
+
+      dlat = ((wlat * factor) - wlat) / 2
+      dlon = ((wlon * factor) - wlon) / 2
+
+      return self.create_expanded(dlat, dlon)
+      
     def merge(self, bbox):
         self._lat1 = max(self._lat1, bbox._lat1)
         self._lat2 = min(self._lat2, bbox._lat2)

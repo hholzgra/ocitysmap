@@ -440,6 +440,8 @@ SELECT ST_AsText(ST_LongestLine(
                 config.bounding_box \
                     = coords.BoundingBox.parse_wkt(osmid_bbox)
 
+                config.bounding_box = config.bounding_box.create_grown(1.02)
+
             # Update the polygon WKT of interest
             config.polygon_wkt = osmid_area
         else:

@@ -154,6 +154,7 @@ def main():
         try:
             bbox  = BoundingBox.parse_wkt(
                 mapper.get_geographic_info(options.osmid)[0])
+            bbox = bbox.create_grown(1.05)
         except LookupError:
             parser.error('No such OSM id: %d' % options.osmid)
 
