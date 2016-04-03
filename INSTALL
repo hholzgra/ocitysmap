@@ -259,7 +259,7 @@ are using. They have been tested on several x86_64 hosts.
 
     sudo aptitude install python-psycopg2 python-gdal \
                           python-gtk2 python-cairo \
-			  python-shapely
+			  python-shapely python-rsvg
 
     Note that python-gtk2 is not needed for any graphical interface,
     but because it contains Pango and PangoCairo that we use to render
