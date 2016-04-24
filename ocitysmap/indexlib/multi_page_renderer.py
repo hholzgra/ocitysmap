@@ -228,8 +228,8 @@ if __name__ == '__main__':
     import commons
     import coords
 
-    width = 72*21./2.54
-    height = 72*29.7/2.54
+    width = UTILS.convert_mm_to_pt(210)
+    height = UTILS.convert_mm_to_pt(297)
 
     surface = cairo.PDFSurface('/tmp/myindex_render.pdf', width, height)
 
