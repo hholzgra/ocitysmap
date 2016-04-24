@@ -35,7 +35,7 @@ if __name__ == '__main__':
     from indexer  import StreetIndex
     from renderer import StreetIndexRenderer
     from commons  import IndexCategory, IndexItem
-
+    import ocitysmap.layoutlib.commons as UTILS
 
     logging.basicConfig(level=logging.DEBUG)
     random.seed(42)
