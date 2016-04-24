@@ -24,7 +24,7 @@
 
 # PT/metrics conversion routines
 PT_PER_INCH = 72.0
-MM_per_INCH = 25.4
+MM_PER_INCH = 25.4
 
 def convert_pt_to_dots(pt, dpi = PT_PER_INCH):
     return float(pt * dpi) / PT_PER_INCH
