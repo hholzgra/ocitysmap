@@ -67,8 +67,8 @@ if __name__ == '__main__':
         def isrtl(self):
             return self.rtl
 
-    width  = 2.5*(20 / 2.54) * 72
-    height = 2.5*(29 / 2.54) * 72
+    width  = 2.5 * contert_mm_to_pt(210)
+    height = 2.5 * contert_mm_to_pt(297)
 
     surface = cairo.PDFSurface('/tmp/myindex.pdf', width, height)
 
