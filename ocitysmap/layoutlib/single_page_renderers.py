@@ -142,7 +142,7 @@ class SinglePageRenderer(Renderer):
             float(self._map_coords[2]),  # W
             float(self._map_coords[3]),  # H
             dpi,
-            rc.osmid != 0 # only if we have a real contour polygon
+            rc.osmid != None 
 	    )
 
         # Prepare the grid
