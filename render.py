@@ -76,9 +76,9 @@ def main():
     parser.add_option('-L', '--language', dest='language',
                       metavar='LANGUAGE_CODE',
                       help='language to use when generating the index '
-                           '(default=fr_FR.UTF-8). The map language is '
+                           '(default=en_US.UTF-8). The map language is '
                            'driven by the system\' locale setting.',
-                      default='fr_FR.UTF-8')
+                      default='en_US.UTF-8')
     parser.add_option('-s', '--stylesheet', dest='stylesheet',
                       metavar='NAME',
                       help='specify which stylesheet to use. Defaults to the '
