@@ -168,6 +168,11 @@ class SinglePageRenderer(Renderer):
         # Commit the internal rendering stack of the map
         self._map_canvas.render()
 
+        if self.rc.overlay:
+           self._overlay_canvas.render()
+
+
+
 
     def _create_index_rendering(self, on_the_side):
         """
