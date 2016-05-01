@@ -142,7 +142,7 @@ class SinglePageRenderer(Renderer):
             float(self._map_coords[2]),  # W
             float(self._map_coords[3]),  # H
             dpi,
-            rc.osmid != None 
+            rc.osmid is not None 
 	    )
 
         # Prepare the grid
