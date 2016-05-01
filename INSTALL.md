@@ -1,33 +1,31 @@
-OCitySMap installation instructions
-===================================
+# OCitySMap installation instructions
 
 These instructions refer to software dependencies by using Ubuntu
 Lucid (14.04) package names. Minor adaptations might be needed for
 other distributions or for the precise Debian or Ubuntu release you
 are using. They have been tested on several x86_64 hosts.
 
- 1. Installation of PostgreSQL and PostGIS
+* Installation of PostgreSQL and PostGIS
 
     sudo aptitude install postgresql postgresql-contrib
 
- 2. Creation of a new PostgreSQL user
+* Creation of a new PostgreSQL user
 
-    sudo -u postgres createuser -P -S -D -R maposmatic
+     sudo -u postgres createuser -P -S -D -R maposmatic
 
-    Enter the password twice (we use later 'ereiamjh' as example
-    password).
+Enter the password twice (we use later 'ereiamjh' as example password).
 
- 3. Creation of the database
+* Creation of the database
 
     sudo -u postgres createdb -E UTF8 -O maposmatic maposmatic
 
-    (see http://wiki.openstreetmap.org/wiki/Mapnik/PostGIS)
+(see http://wiki.openstreetmap.org/wiki/Mapnik/PostGIS)
 
-    You can now try to connect to the database, using:
+You can now try to connect to the database, using:
 
     psql -h localhost -U maposmatic maposmatic
 
-    If it doesn't work, fix your configuration.
+If it doesn't work, fix your configuration.
 
  4. Enable PostGIS on the database
 
