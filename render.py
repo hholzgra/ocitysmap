@@ -83,6 +83,10 @@ def main():
                       metavar='NAME',
                       help='specify which stylesheet to use. Defaults to the '
                       'first specified in the configuration file.')
+    parser.add_option('--overlay', dest='overlay',
+                      metavar='NAME',
+                      help='specify which overlay stylesheet to use. '
+                      'Defaults to none')
     parser.add_option('-l', '--layout', dest='layout',
                       metavar='NAME',
                       default=KNOWN_RENDERERS_NAMES[0].split()[0],
@@ -151,6 +155,17 @@ def main():
     else:
         try:
             stylesheet = mapper.get_stylesheet_by_name(options.stylesheet)
+        except LookupError, ex:
+            parser.error("%s. Available stylesheets: %s."
+                 % (ex, ', '.join(map(lambda s: s.name,
+                      mapper.STYLESHEET_REGISTRY))))
+
+    # Parse overlay stylesheet (defaults to none)
+    if options.overlay is None:
+        overlay = None
+    else:
+        try:
+            overlay = mapper.get_stylesheet_by_name(options.overlay)
         except LookupError, ex:
             parser.error("%s. Available stylesheets: %s."
                  % (ex, ', '.join(map(lambda s: s.name,
@@ -226,6 +241,7 @@ def main():
     rc.bounding_box = bbox
     rc.language     = options.language
     rc.stylesheet   = stylesheet
+    rc.overlay      = overlay
     if options.orientation == 'portrait':
         rc.paper_width_mm  = paper_descr[1]
         rc.paper_height_mm = paper_descr[2]
