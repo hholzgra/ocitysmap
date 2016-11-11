@@ -117,6 +117,7 @@ class RenderingConfiguration:
         self.language        = None # str (locale)
 
         self.stylesheet      = None # Obj Stylesheet
+        self.overlay         = None # Obj Stylesheet
 
         self.paper_width_mm  = None
         self.paper_height_mm = None
@@ -187,11 +188,11 @@ class Stylesheet:
         return s
 
     @staticmethod
-    def create_all_from_config(parser):
-        styles = parser.get('rendering', 'available_stylesheets')
-        if not styles:
-            raise ValueError, \
-                    'OCitySMap configuration does not contain any stylesheet!'
+    def create_all_from_config(parser, type='stylesheets'):
+        try:
+            styles = parser.get('rendering', 'available_'+type)
+        except (ConfigParser.NoOptionError, ValueError):
+            return []
 
         return [Stylesheet.create_from_config_section(parser, name.strip())
                 for name in styles.split(',')]
@@ -207,6 +208,8 @@ class OCitySMap:
     DEFAULT_RENDERING_PNG_DPI = 72
 
     STYLESHEET_REGISTRY = []
+
+    OVERLAY_REGISTRY = []
 
     def __init__(self, config_files=None):
         """Instanciate a new configured OCitySMap instance.
@@ -235,7 +238,13 @@ class OCitySMap:
 
         # Read stylesheet configuration
         self.STYLESHEET_REGISTRY = Stylesheet.create_all_from_config(self._parser)
+        if not self.STYLESHEET_REGISTRY:
+            raise ValueError, \
+                    'OCitySMap configuration does not contain any stylesheet!'
         LOG.debug('Found %d Mapnik stylesheets.' % len(self.STYLESHEET_REGISTRY))
+
+        self.OVERLAY_REGISTRY = Stylesheet.create_all_from_config(self._parser, "overlays")
+        LOG.debug('Found %d Mapnik overlay styles.' % len(self.OVERLAY_REGISTRY))
 
     @property
     def _db(self):
@@ -397,6 +406,18 @@ SELECT ST_AsText(ST_LongestLine(
                 return style
         raise LookupError, 'The requested stylesheet %s was not found!' % name
 
+    def get_all_overlay_configurations(self):
+        """Returns the list of all available overlay stylesheet configurations 
+           (list of overlay Stylesheet objects)."""
+        return self.OVERLAY_REGISTRY
+
+    def get_overlay_by_name(self, name):
+        """Returns a overlay stylesheet by its key name."""
+        for style in self.OVERLAY_REGISTRY:
+            if style.name == name:
+                return style
+        raise LookupError, 'The requested overlay stylesheet %s was not found!' % name
+
     def get_all_renderers(self):
         """Returns the list of all available layout renderers (list of
         Renderer classes)."""
@@ -496,8 +517,8 @@ SELECT ST_AsText(ST_LongestLine(
             def factory(w,h):
                 w_px = int(layoutlib.commons.convert_pt_to_dots(w, dpi))
                 h_px = int(layoutlib.commons.convert_pt_to_dots(h, dpi))
-                LOG.debug("Rendering PNG into %dpx x %dpx area..."
-                          % (w_px, h_px))
+                LOG.debug("Rendering PNG into %dpx x %dpx area at %ddpi ..."
+                          % (w_px, h_px, dpi))
                 return cairo.PDFSurface(None, w_px, h_px)
 
         elif output_format == 'svg':

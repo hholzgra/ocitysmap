@@ -499,8 +499,8 @@ if __name__ == '__main__':
 
     logging.basicConfig(level=logging.DEBUG)
 
-    width = 72*21./2.54
-    height = .75 * 72*29.7/2.54
+    width = UTILS.convert_mm_to_pt(210)
+    height = UTILS.convert_mm_to_pt(294)
 
     random.seed(42)
 

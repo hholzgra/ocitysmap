@@ -24,6 +24,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import cairo
+import rsvg
 import logging
 import mapnik
 assert mapnik.mapnik_version >= 200100, \
@@ -98,15 +99,15 @@ class Renderer:
         """
         # TODO: read vector logo
         logo_path = os.path.abspath(os.path.join(
-            os.path.dirname(__file__), '..', '..', 'images', 'osm-logo.png'))
+            os.path.dirname(__file__), '..', '..', 'images', 'osm-logo.svg'))
         if not os.path.exists(logo_path):
             logo_path = os.path.join(
                 sys.exec_prefix, 'share', 'images', 'ocitysmap',
-                'osm-logo.png')
+                'osm-logo.svg')
 
         try:
             with open(logo_path, 'rb') as f:
-                png = cairo.ImageSurface.create_from_png(f)
+                svg = rsvg.Handle(logo_path);
                 LOG.debug('Using copyright logo: %s.' % logo_path)
         except IOError:
             LOG.warning('Cannot open logo from %s.' % logo_path)
@@ -115,12 +116,11 @@ class Renderer:
         ctx.push_group()
         ctx.save()
         ctx.move_to(0, 0)
-        factor = height / png.get_height()
+        factor = height / svg.props.height
         ctx.scale(factor, factor)
-        ctx.set_source_surface(png)
-        ctx.paint()
+        svg.render_cairo(ctx)
         ctx.restore()
-        return ctx.pop_group(), png.get_width()*factor
+        return ctx.pop_group(), svg.props.width * factor
 
     @staticmethod
     def _draw_labels(ctx, map_grid,
@@ -238,7 +238,7 @@ class Renderer:
 
         return canvas
 
-    def _create_grid(self, canvas):
+    def _create_grid(self, canvas, dpi = 72):
         """
         Create a new Grid object for the given MapCanvas.
 
@@ -248,7 +248,7 @@ class Renderer:
         Return a new Grid object.
         """
         # Prepare the grid SHP
-        map_grid = Grid(canvas.get_actual_bounding_box(), canvas.get_actual_scale(), self.rc.i18n.isrtl())
+        map_grid = Grid(canvas.get_actual_bounding_box(), canvas.get_actual_scale() * dpi / 72, self.rc.i18n.isrtl())
         grid_shape = map_grid.generate_shape_file(
             os.path.join(self.tmpdir, 'grid.shp'))
 

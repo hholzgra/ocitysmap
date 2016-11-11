@@ -76,13 +76,17 @@ def main():
     parser.add_option('-L', '--language', dest='language',
                       metavar='LANGUAGE_CODE',
                       help='language to use when generating the index '
-                           '(default=fr_FR.UTF-8). The map language is '
+                           '(default=en_US.UTF-8). The map language is '
                            'driven by the system\' locale setting.',
-                      default='fr_FR.UTF-8')
+                      default='en_US.UTF-8')
     parser.add_option('-s', '--stylesheet', dest='stylesheet',
                       metavar='NAME',
                       help='specify which stylesheet to use. Defaults to the '
                       'first specified in the configuration file.')
+    parser.add_option('--overlay', dest='overlay',
+                      metavar='NAME',
+                      help='specify which overlay stylesheet to use. '
+                      'Defaults to none')
     parser.add_option('-l', '--layout', dest='layout',
                       metavar='NAME',
                       default=KNOWN_RENDERERS_NAMES[0].split()[0],
@@ -156,6 +160,17 @@ def main():
                  % (ex, ', '.join(map(lambda s: s.name,
                       mapper.STYLESHEET_REGISTRY))))
 
+    # Parse overlay stylesheet (defaults to none)
+    if options.overlay is None:
+        overlay = None
+    else:
+        try:
+            overlay = mapper.get_overlay_by_name(options.overlay)
+        except LookupError, ex:
+            parser.error("%s. Available overlay stylesheets: %s."
+                 % (ex, ', '.join(map(lambda s: s.name,
+                      mapper.OVERLAY_REGISTRY))))
+
     # Parse rendering layout
     if options.layout is None:
         cls_renderer = ocitysmap.layoutlib.renderers.get_renderers()[0]
@@ -226,6 +241,7 @@ def main():
     rc.bounding_box = bbox
     rc.language     = options.language
     rc.stylesheet   = stylesheet
+    rc.overlay      = overlay
     if options.orientation == 'portrait':
         rc.paper_width_mm  = paper_descr[1]
         rc.paper_height_mm = paper_descr[2]

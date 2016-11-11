@@ -22,7 +22,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
 import cairo
+import rsvg
 import datetime
 import locale
 import logging
@@ -41,6 +43,7 @@ from ocitysmap.indexlib.renderer import StreetIndexRenderer
 from indexlib.indexer import StreetIndex
 from indexlib.commons import IndexDoesNotFitError, IndexEmptyError
 import draw_utils
+from ocitysmap.maplib.map_canvas import MapCanvas
 
 LOG = logging.getLogger('ocitysmap')
 
@@ -141,10 +144,35 @@ class SinglePageRenderer(Renderer):
         self._map_canvas = self._create_map_canvas(
             float(self._map_coords[2]),  # W
             float(self._map_coords[3]),  # H
-            dpi )
+            dpi,
+            rc.osmid is not None )
+
+        # Prepare map overlay
+        if self.rc.overlay:
+            self._overlay_canvas = MapCanvas(self.rc.overlay,
+                                             self.rc.bounding_box,
+                                             float(self._map_coords[2]),  # W
+                                             float(self._map_coords[3]),  # H
+                                             dpi)
+
+        # Prepare map overlay
+        if self.rc.overlay:
+            self._overlay_canvas = MapCanvas(self.rc.overlay,
+                                             self.rc.bounding_box,
+                                             float(self._map_coords[2]),  # W
+                                             float(self._map_coords[3]),  # H
+                                             dpi)
+
+        # Prepare map overlay
+        if self.rc.overlay:
+            self._overlay_canvas = MapCanvas(self.rc.overlay,
+                                             self.rc.bounding_box,
+                                             float(self._map_coords[2]),  # W
+                                             float(self._map_coords[3]),  # H
+                                             dpi)
 
         # Prepare the grid
-        self.grid = self._create_grid(self._map_canvas)
+        self.grid = self._create_grid(self._map_canvas, dpi)
 
         # Update the street_index to reflect the grid's actual position
         if self.grid and self.street_index:
@@ -156,7 +184,8 @@ class SinglePageRenderer(Renderer):
 
         # Commit the internal rendering stack of the map
         self._map_canvas.render()
-
+        if self.rc.overlay:
+           self._overlay_canvas.render()
 
     def _create_index_rendering(self, on_the_side):
         """
@@ -365,16 +394,31 @@ class SinglePageRenderer(Renderer):
         ##
         ctx.save()
 
+        # prevent map background from filling the full canvas
+        ctx.rectangle(map_coords_dots[0], map_coords_dots[1], map_coords_dots[2], map_coords_dots[3])
+        ctx.clip()
+
         # Prepare to draw the map at the right location
         ctx.translate(map_coords_dots[0], map_coords_dots[1])
 
         # Draw the rescaled Map
         ctx.save()
+        scale_factor = dpi / 72
         rendered_map = self._map_canvas.get_rendered_map()
+        LOG.debug('Map:')
         LOG.debug('Mapnik scale: 1/%f' % rendered_map.scale_denominator())
         LOG.debug('Actual scale: 1/%f' % self._map_canvas.get_actual_scale())
-        mapnik.render(rendered_map, ctx)
+        mapnik.render(rendered_map, ctx, scale_factor, 0, 0)
         ctx.restore()
+
+        # Draw the rescaled Overlay
+        if self.rc.overlay:
+            LOG.debug('Overlay:')
+            ctx.save()
+            scale_factor = dpi / 72
+            rendered_overlay = self._overlay_canvas.get_rendered_map()
+            mapnik.render(rendered_overlay, ctx, scale_factor, 0, 0)
+            ctx.restore()
 
         # Draw a rectangle around the map
         ctx.rectangle(0, 0, map_coords_dots[2], map_coords_dots[3])
@@ -386,6 +430,15 @@ class SinglePageRenderer(Renderer):
                           map_coords_dots[3],
                           commons.convert_pt_to_dots(self._grid_legend_margin_pt,
                                                    dpi))
+        ctx.restore()
+
+        ##
+        ## Draw the title
+        ##
+        ctx.save()
+        ctx.translate(safe_margin_dots, safe_margin_dots)
+        self._draw_title(ctx, usable_area_width_dots,
+                         title_margin_dots, 'Georgia Bold')
         ctx.restore()
 
         ##
@@ -419,15 +472,6 @@ class SinglePageRenderer(Renderer):
             ctx.restore()
 
         ##
-        ## Draw the title
-        ##
-        ctx.save()
-        ctx.translate(safe_margin_dots, safe_margin_dots)
-        self._draw_title(ctx, usable_area_width_dots,
-                         title_margin_dots, 'Georgia Bold')
-        ctx.restore()
-
-        ##
         ## Draw the copyright notice
         ##
         ctx.save()
@@ -444,8 +488,18 @@ class SinglePageRenderer(Renderer):
                                     osm_date=osm_date)
         ctx.restore()
 
+        # Draw compass rose
+        # TODO: proper positioning/scaling, move to abstract renderer
+        ctx.save();
+        ctx.translate(50, title_margin_dots + 50);
+        ctx.scale(0.33, 0.33)
+        compass_path = os.path.abspath(os.path.join(
+            os.path.dirname(__file__), '..', '..', 'images', 'compass-rose.svg'))
+        svg = rsvg.Handle(compass_path)
+        svg.render_cairo(ctx)
+        ctx.restore();
+
         # TODO: map scale
-        # TODO: compass rose
 
         cairo_surface.flush()
 
