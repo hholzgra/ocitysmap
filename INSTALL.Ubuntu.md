@@ -64,6 +64,7 @@ ocitysmap installation
 ```bash
 cd /srv
 git clone https://gitlab.com/iggdrasil/ocitysmap.git
+git checkout mapnik3
 
 adduser gis
 chown -R gis ocitysmap
