@@ -1,84 +1,83 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# imni <iriman@chmail.ir>, 2018
 # Seyed Mohammad Hosseini <PersianPolaris@Gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-05 03:44+0200\n"
-"PO-Revision-Date: 2013-11-20 09:54+0000\n"
-"Last-Translator: Seyed Mohammad Hosseini <PersianPolaris@Gmail.com>\n"
-"Language-Team: Persian (http://www.transifex.com/dittaeva/maposmatic/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2018-03-07 14:51+0000\n"
+"Last-Translator: imni <iriman@chmail.ir>\n"
+"Language-Team: Persian (http://www.transifex.com/dittaeva/maposmatic/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ocitysmap/indexlib/indexer.py:260
+#: ocitysmap/indexlib/indexer.py:163
 msgid "Places of worship"
-msgstr ""
+msgstr "پرستشگاه‌ها"
 
-#: ocitysmap/indexlib/indexer.py:261
+#: ocitysmap/indexlib/indexer.py:164
 msgid "Place of worship"
-msgstr ""
+msgstr "پرستشگاه"
 
-#: ocitysmap/indexlib/indexer.py:262 ocitysmap/indexlib/indexer.py:263
-#: ocitysmap/indexlib/indexer.py:264 ocitysmap/indexlib/indexer.py:265
-#: ocitysmap/indexlib/indexer.py:266
+#: ocitysmap/indexlib/indexer.py:165 ocitysmap/indexlib/indexer.py:166
+#: ocitysmap/indexlib/indexer.py:167 ocitysmap/indexlib/indexer.py:168
+#: ocitysmap/indexlib/indexer.py:169
 msgid "Education"
-msgstr "تحصيلات"
+msgstr "آموزش"
 
-#: ocitysmap/indexlib/indexer.py:262
+#: ocitysmap/indexlib/indexer.py:165
 msgid "Kindergarten"
-msgstr ""
+msgstr "مهدکودک"
 
-#: ocitysmap/indexlib/indexer.py:263
+#: ocitysmap/indexlib/indexer.py:166
 msgid "School"
 msgstr "مدرسه"
 
-#: ocitysmap/indexlib/indexer.py:264
+#: ocitysmap/indexlib/indexer.py:167
 msgid "College"
-msgstr "کالج"
+msgstr "دانشکده"
 
-#: ocitysmap/indexlib/indexer.py:265
+#: ocitysmap/indexlib/indexer.py:168
 msgid "University"
 msgstr "دانشگاه"
 
-#: ocitysmap/indexlib/indexer.py:266
+#: ocitysmap/indexlib/indexer.py:169
 msgid "Library"
 msgstr "کتابخانه"
 
-#: ocitysmap/indexlib/indexer.py:267 ocitysmap/indexlib/indexer.py:268
-#: ocitysmap/indexlib/indexer.py:269 ocitysmap/indexlib/indexer.py:271
+#: ocitysmap/indexlib/indexer.py:170 ocitysmap/indexlib/indexer.py:171
+#: ocitysmap/indexlib/indexer.py:172 ocitysmap/indexlib/indexer.py:174
 msgid "Public buildings"
-msgstr ""
+msgstr "اماکن عمومی"
 
-#: ocitysmap/indexlib/indexer.py:267
+#: ocitysmap/indexlib/indexer.py:170
 msgid "Town hall"
-msgstr ""
+msgstr "شهرداری"
 
-#: ocitysmap/indexlib/indexer.py:268
+#: ocitysmap/indexlib/indexer.py:171
 msgid "Post office"
-msgstr ""
+msgstr "ادارهٔ پست"
 
-#: ocitysmap/indexlib/indexer.py:270
+#: ocitysmap/indexlib/indexer.py:173
 msgid "Public building"
-msgstr ""
+msgstr "مکان عمومی"
 
-#: ocitysmap/indexlib/indexer.py:271
+#: ocitysmap/indexlib/indexer.py:174
 msgid "Police"
 msgstr "پليس"
 
-#: ocitysmap/indexlib/indexer.py:500
+#: ocitysmap/indexlib/indexer.py:399
 msgid "Villages"
-msgstr "روستا"
+msgstr "روستاها"
 
-#: ocitysmap/layoutlib/multi_page_renderer.py:502
+#: ocitysmap/layoutlib/multi_page_renderer.py:470
 #, python-format
 msgid ""
 "Copyright © %(year)d MapOSMatic/OCitySMap developers.\n"
@@ -88,53 +87,26 @@ msgid ""
 "http://www.openstreetmap.org\n"
 "\n"
 "Map rendered on: %(date)s. OSM data updated on: %(osmdate)s.\n"
-"The map may be incomplete or inaccurate. You can contribute to improve this "
-"map.\n"
+"The map may be incomplete or inaccurate. You can contribute to improve this map.\n"
 "See http://wiki.openstreetmap.org"
-msgstr ""
-"کپي رايت © %(year)d MapOSMatic/OCitySMap توسعه دهندگان.⏎\n"
-"http://www.maposmatic.org⏎\n"
-"⏎\n"
-"اطلاعات نقشه© %(year)d OpenStreetMap.org و contributors (cc-by-sa).⏎\n"
-"http://www.openstreetmap.org⏎\n"
-"⏎\n"
-"نقشه ي رندر شده در: %(date)s. به روز رساني OSM در: %(osmdate)s.⏎\n"
-"The map may be incomplete or inaccurate. You can contribute to improve this "
-"map.⏎\n"
-"See http://wiki.openstreetmap.org"
+msgstr "حق نشر © %(year)d توسعه‌دهندگان MapOSMatic/OCitySMap.\nhttp://www.maposmatic.org\n\n داده‌های نقشه © %(year)d OpenStreetMap.org و مشارکت‌کنندگان تحت مجوز (cc-by-sa).\nhttp://www.openstreetmap.org\n\nزمان تولید نقشه: %(date)s. زمان به‌روزرسانی داده‌های OSM: %(osmdate)s.\nنقشه شاید دقیق و کامل نباشد. شما هم می‌توانید در تکمیل این نقشه مشارکت کنید.\nاینجا را ببینید: http://wiki.openstreetmap.org"
 
-#: ocitysmap/layoutlib/multi_page_renderer.py:517
-#: ocitysmap/layoutlib/single_page_renderers.py:360
+#: ocitysmap/layoutlib/multi_page_renderer.py:485
+#: ocitysmap/layoutlib/single_page_renderers.py:303
 msgid "unknown"
-msgstr "نا مشخص"
+msgstr "نامشخص"
 
-#: ocitysmap/layoutlib/multi_page_renderer.py:572
+#: ocitysmap/layoutlib/multi_page_renderer.py:540
 msgid "This page is intentionally left blank."
-msgstr ""
+msgstr "این صفحه مخصوصاً خالی گذاشته شده است."
 
-#: ocitysmap/layoutlib/single_page_renderers.py:345
-#, fuzzy, python-format
+#: ocitysmap/layoutlib/single_page_renderers.py:290
+#, python-format
 msgid ""
-"Copyright © %(year)d MapOSMatic/OCitySMap developers. Map data © %(year)d "
-"OpenStreetMap.org and contributors. http://osm.org/copyright\n"
-"Map rendered on: %(date)s. OSM data updated on: %(osmdate)s. The map may be "
-"incomplete or inaccurate."
-msgstr ""
-"کپي رايت © %(year)d MapOSMatic/OCitySMap توسعه دهندگان.⏎\n"
-"http://www.maposmatic.org⏎\n"
-"⏎\n"
-"اطلاعات نقشه© %(year)d OpenStreetMap.org و contributors.⏎\n"
-"http://osmap.org/copyright⏎\n"
-"⏎\n"
-"نقشه ي رندر شده در: %(date)s. به روز رساني OSM در: %(osmdate)s.⏎\n"
-"The map may be incomplete or inaccurate.⏎\n"
+"Copyright © %(year)d MapOSMatic/OCitySMap developers. Map data © %(year)d OpenStreetMap.org and contributors (cc-by-sa).\n"
+"Map rendered on: %(date)s. OSM data updated on: %(osmdate)s. The map may be incomplete or inaccurate. You can contribute to improve this map. See http://wiki.openstreetmap.org"
+msgstr "حق نشر © %(year)d توسعه‌دهندگان MapOSMatic/OCitySMap. داده‌های نقشه © %(year)d OpenStreetMap.org و مشارکت‌کنندگان، تحت مجوز (cc-by-sa).\nزمان تولید نقشه: %(date)s. زمان به‌روزرسانی داده‌های OSM: %(osmdate)s.\nنقشه شاید دقیق و کامل نباشد. شما هم می‌توانید در تکمیل این نقشه مشارکت کنید. اینجا را ببینید: http://wiki.openstreetmap.org"
 
-#: ocitysmap/layoutlib/single_page_renderers.py:393
-msgid ""
-"Erstellt mit http://umgebungsplaene.osm-baustelle.de/  -  Kontakt: Hartmut "
-"Holzgraefe (hartmut@php.net)"
-msgstr ""
-
-#: ocitysmap/layoutlib/single_page_renderers.py:853
+#: ocitysmap/layoutlib/single_page_renderers.py:643
 msgid "Test gettext"
-msgstr ""
+msgstr "Test gettext fa"
