@@ -9,11 +9,7 @@ LOG = logging.getLogger('ocitysmap')
 
 def render(renderer, ctx):
     svg_path = os.path.abspath(os.path.join(
-        os.path.dirname(__file__), '..', '..', '..', '..', 'images', 'compass-rose.svg'))
-
-    if not os.path.exists(svg_path):
-        logo_path = os.path.join(
-            sys.exec_prefix, 'share', 'images', 'ocitysmap', 'compass-rose.svg')
+        os.path.dirname(__file__), 'svg', 'default.svg'))
 
     if not os.path.exists(svg_path):
         LOG.warning("No compass rose image found")
