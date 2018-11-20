@@ -9,13 +9,13 @@ LOG = logging.getLogger('ocitysmap')
 
 def render(renderer, ctx):
     svg_path = os.path.abspath(os.path.join(
-        os.path.dirname(__file__), 'svg', 'default.svg'))
+        os.path.dirname(__file__), 'svg', 'Compass-wheel-black-white-red-yellow-background-64.svg'))
 
     if not os.path.exists(svg_path):
         LOG.warning("No compass rose image found")
         return
         
-    h = convert_pt_to_dots(0.05 * renderer.paper_height_pt, renderer.dpi)
+    h = convert_pt_to_dots(0.10 * renderer.paper_height_pt, renderer.dpi)
 
     if type(renderer).__name__ == "MultiPageRenderer":
         x = 0
