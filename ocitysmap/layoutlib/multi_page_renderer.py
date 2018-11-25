@@ -35,7 +35,10 @@ gi.require_version('Rsvg', '2.0')
 gi.require_version('Pango', '1.0')
 gi.require_version('PangoCairo', '1.0')
 from gi.repository import Rsvg, Pango, PangoCairo
+import fiona
 import shapely.wkt
+from shapely.geometry import shape, Point, LineString, Polygon
+
 import sys
 from string import Template
 from functools import cmp_to_key
@@ -180,6 +183,12 @@ class MultiPageRenderer(Renderer):
         envelope = mapnik.Box2d(off_x, off_y, off_x + width, off_y + height)
         self._geo_bbox = self._inverse_envelope(envelope)
 
+        # create shapely shape for gpx track
+        if self.rc.gpx_file:
+            self._gpx_shape = self.get_gpx_shape(self.rc.gpx_file)
+        else:
+            self._gpx_shape = None
+
         # Debug: show transformed bounding box as JS code
         # print self._geo_bbox.as_javascript("extended", "#0f0f0f")
 
@@ -211,14 +220,23 @@ class MultiPageRenderer(Renderer):
                                               cur_x + usable_area_merc_m_width  - grayed_margin_merc_m,
                                               cur_y + usable_area_merc_m_height - grayed_margin_merc_m)
                 inner_bb = self._inverse_envelope(envelope_inner)
-                if not area_polygon.disjoint(shapely.wkt.loads(
-                                                inner_bb.as_wkt())):
+
+                do_append = not area_polygon.disjoint(shapely.wkt.loads(
+                                                inner_bb.as_wkt()))
+
+                if do_append and self._gpx_shape:
+                    do_append = self._gpx_shape.intersects(inner_bb.as_shp())
+
+                if do_append:
                     self.page_disposition[col].append(map_number)
                     map_number += 1
                     bboxes.append((self._inverse_envelope(envelope),
                                    inner_bb))
                 else:
                     self.page_disposition[col].append(None)
+
+        LOG.info("page_disposition: %s" % self.page_disposition)
+
         # Debug: show per-page bounding boxes as JS code
         # for i, (bb, bb_inner) in enumerate(bboxes):
         #    print bb.as_javascript(name="p%d" % i)
@@ -269,6 +287,7 @@ class MultiPageRenderer(Renderer):
         if self.rc.umap_file:
             self._overlays.append(UmapStylesheet(self.rc.umap_file, self.tmpdir))
 
+        # create mapnik overlay canvases and effect overlay entries
         self.overview_overlay_canvases = []
         self.overview_overlay_effects = []
         
@@ -814,6 +833,7 @@ class MultiPageRenderer(Renderer):
 
         for map_number, (canvas, grid, overlay_canvases, overlay_effects) in enumerate(self.pages):
             LOG.info('Map page %d of %d' % (map_number, len(self.pages)))
+
             rendered_map = canvas.get_rendered_map()
             LOG.debug('Mapnik scale: 1/%f' % rendered_map.scale_denominator())
             LOG.debug('Actual scale: 1/%f' % canvas.get_actual_scale())
@@ -938,3 +958,13 @@ class MultiPageRenderer(Renderer):
 
         ctx.restore()
 
+    @staticmethod
+    def get_gpx_shape(gpx_file):
+        layer = fiona.open(gpx_file, layer='tracks')
+
+        data = {'type': 'MultiLineString',
+                'coordinates': layer[0]['geometry']['coordinates']}
+
+        shp = shape(data)
+
+        return shp;

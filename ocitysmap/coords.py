@@ -27,6 +27,7 @@ from __future__ import print_function
 import math
 
 import shapely.wkt
+from shapely.geometry import Polygon
 
 import xml.sax
 
@@ -186,6 +187,12 @@ class BoundingBox:
         if with_polygon_statement:
             return "POLYGON((%s))" % s_coords
         return s_coords
+
+    def as_shp(self):
+        t, l = self.get_top_left()
+        b, r = self.get_bottom_right()
+
+        return Polygon([[l,t],[l,b],[r,b],[r,t],[l,t]])
 
     def spheric_sizes(self):
         """Metric distances at the bounding box top latitude.
