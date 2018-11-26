@@ -204,7 +204,9 @@ class MultiPageRenderer(Renderer):
         # paper.
         area_polygon = shapely.wkt.loads(self.rc.polygon_wkt)
         bboxes = []
-        self.page_disposition, map_number = {}, 0
+        self.page_disposition = {}
+        self.page_position = {}
+        map_number =  0
         for j in reversed(range(0, self.nb_pages_height)):
             col = self.nb_pages_height - j - 1
             self.page_disposition[col] = []
@@ -229,23 +231,18 @@ class MultiPageRenderer(Renderer):
 
                 if do_append:
                     self.page_disposition[col].append(map_number)
+                    self.page_position[map_number] = [col, i]
                     map_number += 1
                     bboxes.append((self._inverse_envelope(envelope),
                                    inner_bb))
                 else:
                     self.page_disposition[col].append(None)
 
-        LOG.info("page_disposition: %s" % self.page_disposition)
-
-        # Debug: show per-page bounding boxes as JS code
-        # for i, (bb, bb_inner) in enumerate(bboxes):
-        #    print bb.as_javascript(name="p%d" % i)
-
         self.pages = []
 
         # Create an overview map
-
         overview_bb = self._geo_bbox.create_expanded(0.001, 0.001)
+
         # Create the overview grid
         self.overview_grid = OverviewGrid(overview_bb,
                      [bb_inner for bb, bb_inner in bboxes], self.rc.i18n.isrtl())
@@ -747,46 +744,47 @@ class MultiPageRenderer(Renderer):
     def _render_neighbour_arrows(self, ctx, cairo_surface, map_number,
                                  max_digit_number):
         nb_previous_pages = 4
-        current_line, current_col = None, None
-        for line_nb in range(self.nb_pages_height):
-            if map_number in self.page_disposition[line_nb]:
-                current_line = line_nb
-                current_col = self.page_disposition[line_nb].index(
-                                                             map_number)
-                break
-        if current_line == None:
+
+        if map_number in self.page_position:
+            current_line, current_col = self.page_position[map_number]
+        else:
             # page not referenced
             return
 
         # north arrow
-        for line_nb in reversed(range(current_line)):
+        line_nb = current_line - 1
+        try:
             if self.page_disposition[line_nb][current_col] != None:
                 north_arrow = self.page_disposition[line_nb][current_col]
                 ctx.save()
                 ctx.translate(self._usable_area_width_pt/2,
-                    commons.convert_pt_to_dots(self.grayed_margin_pt)/2)
+                              commons.convert_pt_to_dots(self.grayed_margin_pt)/2)
                 self._draw_arrow(ctx, cairo_surface,
-                              north_arrow + nb_previous_pages, max_digit_number)
+                                 north_arrow + nb_previous_pages, max_digit_number)
                 ctx.restore()
-                break
+        except Exception as e:
+            pass
 
         # south arrow
-        for line_nb in range(current_line + 1, self.nb_pages_height):
+        line_nb = current_line + 1
+        try:
             if self.page_disposition[line_nb][current_col] != None:
                 south_arrow = self.page_disposition[line_nb][current_col]
                 ctx.save()
                 ctx.translate(self._usable_area_width_pt/2,
-                     self._usable_area_height_pt \
-                      - commons.convert_pt_to_dots(self.grayed_margin_pt)/2)
+                              self._usable_area_height_pt \
+                              - commons.convert_pt_to_dots(self.grayed_margin_pt)/2)
                 ctx.rotate(math.pi)
                 self._draw_arrow(ctx, cairo_surface,
-                      south_arrow + nb_previous_pages, max_digit_number,
-                      reverse_text=True)
+                                 south_arrow + nb_previous_pages, max_digit_number,
+                                 reverse_text=True)
                 ctx.restore()
-                break
+        except Exception as e:
+            pass
 
         # west arrow
-        for col_nb in reversed(range(0, current_col)):
+        col_nb = current_col - 1
+        try:
             if self.page_disposition[current_line][col_nb] != None:
                 west_arrow = self.page_disposition[current_line][col_nb]
                 ctx.save()
@@ -795,24 +793,27 @@ class MultiPageRenderer(Renderer):
                     self._usable_area_height_pt/2)
                 ctx.rotate(-math.pi/2)
                 self._draw_arrow(ctx, cairo_surface,
-                               west_arrow + nb_previous_pages, max_digit_number)
+                                 west_arrow + nb_previous_pages, max_digit_number)
                 ctx.restore()
-                break
+        except Exception as e:
+            pass
 
         # east arrow
-        for col_nb in range(current_col + 1, self.nb_pages_width):
+        col_nb = current_col + 1
+        try:
             if self.page_disposition[current_line][col_nb] != None:
                 east_arrow = self.page_disposition[current_line][col_nb]
                 ctx.save()
                 ctx.translate(
                     self._usable_area_width_pt \
-                     - commons.convert_pt_to_dots(self.grayed_margin_pt)/2,
+                    - commons.convert_pt_to_dots(self.grayed_margin_pt)/2,
                     self._usable_area_height_pt/2)
                 ctx.rotate(math.pi/2)
                 self._draw_arrow(ctx, cairo_surface,
-                               east_arrow + nb_previous_pages, max_digit_number)
+                                 east_arrow + nb_previous_pages, max_digit_number)
                 ctx.restore()
-                break
+        except Exception as e:
+            pass
 
     def render(self, cairo_surface, dpi, osm_date):
         ctx = cairo.Context(cairo_surface)
@@ -835,8 +836,11 @@ class MultiPageRenderer(Renderer):
             LOG.info('Map page %d of %d' % (map_number, len(self.pages)))
 
             rendered_map = canvas.get_rendered_map()
-            LOG.debug('Mapnik scale: 1/%f' % rendered_map.scale_denominator())
-            LOG.debug('Actual scale: 1/%f' % canvas.get_actual_scale())
+
+            if map_number == 0:
+                LOG.debug('Mapnik scale: 1/%f' % rendered_map.scale_denominator())
+                LOG.debug('Actual scale: 1/%f' % canvas.get_actual_scale())
+
             mapnik.render(rendered_map, ctx)
 
             for overlay_canvas in overlay_canvases:
