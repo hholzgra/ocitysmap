@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Map xmlns:xi='http://www.w3.org/2001/XInclude' background-color='transparent'>
+  <FileSource name="svg">${svgdir}</FileSource>
+
+  <Style name="you_are_here">
+    <Rule>
+      <MarkersSymbolizer fill="red" opacity=".5" width="50" height="50" stroke="red" stroke-width="15" stroke-opacity=".8" placement="point" marker-type="ellipse"/>
+    </Rule>
+  </Style>
+  
+  <Layer name="you_are_here" status="on" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>you_are_here</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline"><![CDATA[
+${position_data}
+      ]]></Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="markers">
+    <Rule>
+      <!-- <MarkersSymbolizer fill="red" opacity=".5" width="50" height="50" stroke="red" stroke-width="15" stroke-opacity=".8" placement="point" marker-type="ellipse" allow-overlap="true"/> -->
+      <MarkersSymbolizer base="svg" file="marker.svg" placement="point" allow-overlap="true" fill="[color]"/>
+    </Rule>
+  </Style>
+
+  <Layer name="markers" status="on" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>markers</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline"><![CDATA[
+${marker_data}
+      ]]></Parameter>
+    </Datasource>
+  </Layer>
+</Map>
+

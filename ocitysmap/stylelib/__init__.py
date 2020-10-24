@@ -141,4 +141,5 @@ class Stylesheet:
 
 from .Gpx import GpxStylesheet
 from .Umap import UmapStylesheet
+from .Poi import PoiStylesheet
 

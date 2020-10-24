@@ -24,14 +24,49 @@
 
 from . import Stylesheet
 
+import os
+import shutil
+import tempfile
+from string import Template
+
 import logging
 
 LOG = logging.getLogger('ocitysmap')
 
-
 class PoiStylesheet(Stylesheet):
-    def __init__(self, poi_file, tmpdir):
+    def __init__(self, poi_file, tmpdir, poi_index):
         super().__init__()
 
+        template_dir = os.path.realpath(
+            os.path.join(
+                os.path.dirname(__file__),
+                '../../templates/poi_markers'))
+        
+        template_file = os.path.join(template_dir, 'template.xml')
+        style_filename = tempfile.mktemp(suffix='.xml', dir=tmpdir)
+        tmpfile = open(style_filename, 'w')        
+
+        position_data = "lat,lon\n%f,%f\n" % (poi_index.lat, poi_index.lon)
+
+        n = 0
+        marker_data = "number,lat,lon,color\n"
+        for category in poi_index.categories:
+            for poi in category.items:
+                n = n + 1
+                lat, lon = poi.endpoint1.get_latlong()
+                marker_data += "%d,%f,%f,%s\n" % (n, lat, lon, category.color)
+                
+        with open(template_file, 'r') as style_template:
+            tmpstyle = Template(style_template.read())
+            tmpfile.write(
+                tmpstyle.substitute(
+                    svgdir = template_dir,
+                    position_data = position_data,
+                    marker_data = marker_data
+                ))
+        tmpfile.close()
+
+        shutil.copyfile(style_filename, "/tmp/poi_style")
+
         self.name = "POI overlay"
-        self.path = "internal:poi_markers"
+        self.path = style_filename

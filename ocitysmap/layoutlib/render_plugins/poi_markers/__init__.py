@@ -9,6 +9,8 @@ gi.require_version('Rsvg', '2.0')
 from gi.repository import Rsvg
 
 from io import BytesIO
+import tempfile
+from string import Template
 
 from ocitysmap.layoutlib.commons import convert_pt_to_dots
 from ocitysmap.layoutlib.abstract_renderer import Renderer
@@ -26,6 +28,7 @@ def render(renderer, ctx):
                 n = n + 1
                 lat, lon = poi.endpoint1.get_latlong()
                 renderer._marker(category.color, str(n), lat, lon, ctx, renderer.dpi)
+
 
         # place "you are here" circle if coordinates are given
         if renderer.street_index.lat != False:

@@ -48,7 +48,7 @@ from ocitysmap.indexlib.PoiIndex import PoiIndexRenderer, PoiIndex
 from indexlib.commons import IndexDoesNotFitError, IndexEmptyError
 import draw_utils
 from ocitysmap.maplib.map_canvas import MapCanvas
-from ocitysmap.stylelib import GpxStylesheet, UmapStylesheet
+from ocitysmap.stylelib import GpxStylesheet, UmapStylesheet, PoiStylesheet
 
 
 import time
@@ -173,9 +173,12 @@ class SinglePageRenderer(Renderer):
                     else:
                         self._overlays.append(umap_style)
                 elif file_type == 'poi':
-                    # TODO: refactor this special case
-                    self._overlay_effects['poi_markers'] = self.get_plugin('poi_markers')
-                    self.rc.poi_file = import_file
+                    try:
+                        poi_style = PoiStylesheet(import_file, self.tmpdir, self.street_index)
+                    except Exception as e:
+                        LOG.warning("Poi stylesheet error: %s" % e)
+                    else:
+                        self._overlays.append(poi_style)
                 else:
                     LOG.warning("Unsupported file type '%s' for file '%s" % (file_type, import_file))
 
