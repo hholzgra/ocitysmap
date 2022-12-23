@@ -101,7 +101,7 @@ https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md
 
 ## Installation of OCitySMap
 
-### Download the source dode
+### Download the source code
 
 If you have `git` installed, you can clone the project repository directly:
 
