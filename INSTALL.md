@@ -3,7 +3,7 @@ OCitySMap installation instructions
 
 These instructions refer to software dependencies by using Ubuntu Bionic (18.04LTS)
 package names. Minor adaptations might be needed for other distributions or for the
-precise Debian or Ubuntu release you are using. They have been tested on several
+exact Debian or Ubuntu release you are using. They have been tested on several
 x86_64 hosts.
 
 If you are fine with running OCitySMap and MapOSMatic in a Vagrant virtual machine,
@@ -11,9 +11,9 @@ plese have a look at the MapOSMatic Vagrant repository:
 
 https://github.com/hholzgra/maposmatic-vagrant
 
-Note that this is mostly usefuly for personal development and small local test setups
-only. For hosting a public service a Vagrant/Virtualbox virtualization setup may not
-be stable and performant enough though.
+Note that this is mostly only useful for personal development and small local test setups.
+For hosting a public service, a Vagrant/Virtualbox virtualization setup may not
+be stable and performant enough, though.
 
 ITs provisioning shell scripts may also help as a guide to install things on a
 non-virtual machine though.
@@ -64,7 +64,7 @@ echo "CREATE EXTENSION hstore;" | sudo --user=postgres psql --dbname=maposmatic
  
  ## Download OSM data
 
-We use the Luxembourg country extract here, using the country extrat server provided by GeoFabrik, Germany:
+We use the Luxembourg country extract here, using the country extract server provided by GeoFabrik, Germany:
 
 ```bash
 wget http://download.geofabrik.de/europe/luxembourg-latest.osm.pbf
@@ -78,11 +78,11 @@ wget http://download.geofabrik.de/europe/luxembourg-latest.osm.pbf
 ```
     
 If you have a lot of RAM, remove ``--slim``, it will make the import faster. If you
-miss RAM (and have a lot of time available) you can also use the ``--cache`` option
+don't have much RAM (and have a lot of time available) you can also use the ``--cache`` option
 together with ``-s``. (See also ``osm2pgsql -h``).
 
 If you want to add other OSM DB files, replace the ``--create`` option with the
-``--append`` option for the subsequent files you are adding: if you keep the
+``--append`` option for the subsequent files you add: if you keep the
 ``--create`` option, it will erase and overwrite any previous GIS data you may
 have. For example:
 
@@ -93,7 +93,7 @@ osm2pgsql --append --slim --database=maposmatic --merc --username=maposmatic \
           --password --host=localhost --hstore-all ile-de-france-latest.osm.pbf
 ```
 
-## Install Openstreetmap Carto style
+## Install the Openstreetmap Carto style
 
 TODO, for now please refer to the original OSM Carto install file:
 
@@ -101,7 +101,7 @@ https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md
 
 ## Installation of OCitySMap
 
-### Download the source dode
+### Download the source code
 
 If you have `git` installed, you can clone the project repository directly:
 
@@ -137,19 +137,19 @@ E.g. for the example data imports above:
 ./render.py --title "Ceci n'est pas Paris" --osmid=-943886  # Chevreuse, FR
 ```
 
-The osmid is given as a negative number here as we are referring
+The `osmid` is given as a negative number here, as we are referring
 to adminstrative boundary relations that have been converted to
 single object polygon ways during the import.
 
 
 
 
-Appendix A:  Installation of maposmatic-printable stylesheet
+Appendix A:  Installation of `maposmatic-printable` stylesheet
 ------------------------------------------------------------
 
-a. Copy stylesheet/maposmatic-printable/symbols/* (i.e. all files in symbols/ directory) into mapnik2-osm/symbols/ directory.
+a. Copy `stylesheet/maposmatic-printable/symbols/*` (i.e. all files in `symbols/` directory) into `mapnik2-osm/symbols/` directory.
 
-b. Add absolute path to file stylesheet/maposmatic-printable/osm.xml into ~/.ocitysmap.conf.
+b. Add absolute path to file `stylesheet/maposmatic-printable/osm.xml` into `~/.ocitysmap.conf`.
 
 c. Configure the stylesheet with database parameters and relevant  directories:
 
