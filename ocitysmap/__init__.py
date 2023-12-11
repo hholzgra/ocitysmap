@@ -759,6 +759,11 @@ class OCitySMap:
         assert config.polygon_wkt is not None
 
         # Make sure bounding box has non-zero width / height
+        LOG.warning("checking bounds")
+        if config.bounding_box.get_left() ==  config.bounding_box.get_right():
+            config.bounding_box = config.bounding_box.create_expanded(1.0 / 3600, 1.0 / 3600)
+        if config.bounding_box.get_top() ==  config.bounding_box.get_bottom():
+            config.bounding_box = config.bounding_box.create_expanded(1.0 / 3600, 1.0 / 3600)
         assert config.bounding_box.get_left() !=  config.bounding_box.get_right(), \
                 "Bounding box has zero width"
         assert config.bounding_box.get_top()  !=  config.bounding_box.get_bottom(), \
