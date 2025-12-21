@@ -73,7 +73,7 @@ wget https://download.geofabrik.de/europe/luxembourg-latest.osm.pbf
  ## Import the OSM data with ``osm2pgsql``
 
 ``` bash
-    osm2pgsql --create --slim --database=maposmatic --merc --username=maposmatic \
+    osm2pgsql --create --slim --database=maposmatic --merc --user=maposmatic \
              --password --host=localhost --hstore-all luxembourg-latest.osm.pbf
 ```
     
