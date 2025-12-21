@@ -52,7 +52,7 @@ def main():
     Parameters
     ----------
     none
-        The actual input is in the cmldine parameters.
+        The actual input is in the cmdline parameters.
 
     Returns
     -------
@@ -106,8 +106,8 @@ def main():
     parser.add_option('-s', '--stylesheet', dest='stylesheet',
                       metavar='NAME',
                       help="specify which stylesheet to use. "
-                           "Defaults to the first onespecified in the configuration file. "
-                           "Use '--list=stylesheets' to show avaiable choices"
+                           "Defaults to the first one specified in the configuration file. "
+                           "Use '--list=stylesheets' to show available choices"
                      )
     parser.add_option('--overlay', dest='overlays',
                       metavar='NAME',
@@ -139,7 +139,7 @@ def main():
                       default='portrait')
     parser.add_option('--import-file', metavar='FILE', action='append',
                       help='import file, any of GPX, Umap, GeoJson or POI file, can be used multiple times')
-    parser.add_option('--list', metavar='NAME', help="List avaibable choices for 'stylesheets', 'overlays', 'layouts', 'indexers' or 'paper-formats' option.")
+    parser.add_option('--list', metavar='NAME', help="List available choices for 'stylesheets', 'overlays', 'layouts', 'indexers' or 'paper-formats' option.")
     parser.add_option('--logo', metavar='NAME', help="SVG logo image URL, defaults to 'builtin:osm-logo.svg'")
     parser.add_option('--extra-logo', metavar='NAME', help="SVG logo image URL, defaults to None")
     parser.add_option('--extra-text', metavar='NAME', help="Extra annotation text")
@@ -160,7 +160,7 @@ def main():
         parser.print_help()
         return 1
 
-    # Parse config file and instanciate main object
+    # Parse config file and instantiate main object
     mapper = ocitysmap.OCitySMap(
         [options.config_file or os.path.join(os.environ["HOME"], '.ocitysmap.conf')],
         options.language)
@@ -318,7 +318,7 @@ def main():
             bbox = BoundingBox.parse_latlon_strtuple(options.bbox)
         except ValueError:
             parser.error('Invalid bounding box!')
-        # Check that latitude and langitude are different
+        # Check that latitude and longitude are different
         lat1, lon1 = bbox.get_top_left()
         lat2, lon2 = bbox.get_bottom_right()
         if lat1 == lat2:
@@ -413,11 +413,11 @@ def main():
         rc.paper_width_mm  = paper_width
         rc.paper_height_mm = paper_height
     elif options.orientation == 'portrait':
-        # take dimension from choosen predefind paper
+        # take dimension from chosen predefined paper
         rc.paper_width_mm  = paper_descr['width']
         rc.paper_height_mm = paper_descr['height']
     else:
-        # take dimension from choosen predefind paper
+        # take dimension from chosen predefined paper
         # swapping width and height to go landscape
         rc.paper_width_mm  = paper_descr['height']
         rc.paper_height_mm = paper_descr['width']
