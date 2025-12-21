@@ -67,7 +67,7 @@ echo "CREATE EXTENSION hstore;" | sudo --user=postgres psql --dbname=maposmatic
 We use the Luxembourg country extract here, using the country extract server provided by GeoFabrik, Germany:
 
 ```bash
-wget http://download.geofabrik.de/europe/luxembourg-latest.osm.pbf
+wget https://download.geofabrik.de/europe/luxembourg-latest.osm.pbf
 ```
 
  ## Import the OSM data with ``osm2pgsql``
@@ -87,7 +87,7 @@ If you want to add other OSM DB files, replace the ``--create`` option with the
 have. For example:
 
 ```bash
-wget http://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf
+wget https://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf
 
 osm2pgsql --append --slim --database=maposmatic --merc --username=maposmatic \
           --password --host=localhost --hstore-all ile-de-france-latest.osm.pbf
