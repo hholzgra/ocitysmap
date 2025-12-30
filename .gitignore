@@ -21,3 +21,8 @@
 # files generated from templates
 /support/shoreline-update.sh
 
+# default output files
+citymap.*
+
+# IDE files
+.idea
