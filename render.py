@@ -113,7 +113,7 @@ def main():
                       metavar='NAME',
                       help="comma separated list of overlay stylesheets to use. "
                            "Defaults to none. "
-                           "Use '--list-overlays' to show available choices."
+                           "Use '--list=overlays' to show available choices."
                       )
     parser.add_option('-l', '--layout', dest='layout',
                       metavar='NAME',
