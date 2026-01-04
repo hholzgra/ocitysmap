@@ -95,9 +95,27 @@ osm2pgsql --append --slim --database=maposmatic --merc --username=maposmatic \
 
 ## Install the OpenStreetMap Carto style
 
-TODO, for now please refer to the original OSM Carto install file:
+Install OpenStreetMap Carto install according to its installation guide:
 
 https://github.com/openstreetmap-carto/openstreetmap-carto/blob/master/INSTALL.md
+
+In project.mml, configure the database
+
+```yaml
+   osm2pgsql: &osm2pgsql
+     type: "postgis"
+     dbname: "maposmatic"
+     user: "maposmatic"
+     host: "localhost"
+     password: "secret"
+     ...
+```
+
+and then generate ``osm.xml``:
+
+```
+carto project.mml > osm.xml
+```
 
 ## Installation of OCitySMap
 
@@ -126,6 +144,15 @@ Create a ``~/.ocitysmap.conf`` configuration file, modeled after the provided
 
 ```bash
 cp ocitysmap.conf.dist ~/.ocitysmap.conf
+```
+Then in that file, adapt the path to find the osm.xml file generated above.
+
+```properties
+# The default Mapnik stylesheet.
+[stylesheet_osm1]
+name: Default
+description: The default OSM style
+path: /path/to/openstreetmap-carto/osm.xml
 ```
 
 ### Run the OCitySMap renderer on the command line
