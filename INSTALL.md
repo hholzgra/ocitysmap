@@ -97,7 +97,7 @@ osm2pgsql --append --slim --database=maposmatic --merc --username=maposmatic \
 
 TODO, for now please refer to the original OSM Carto install file:
 
-https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md
+https://github.com/openstreetmap-carto/openstreetmap-carto/blob/master/INSTALL.md
 
 ## Installation of OCitySMap
 
