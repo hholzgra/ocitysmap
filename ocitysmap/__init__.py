@@ -133,8 +133,8 @@ def guess_filetype(import_file):
                 import_file.seek(0)
                 gpxpy.parse(import_file)
                 result = "gpx"
-            except:
-                pass
+            except Exception as ex:
+                raise RuntimeError("XML file %s does not conain valid GPX data: %s" % (file_name, str(ex))
         elif first_line.startswith('{'):
             second_line = import_file.readline(100).decode('utf-8-sig')
             if second_line.strip().startswith('"title":'):
@@ -238,7 +238,7 @@ class OCitySMap:
                     languages=[language])
                 self._translator.install()
             except Exception:
-                pass
+                LOG.warning("Can't create translator for languge '%s', sticking to English" % language)
 
         config_files = set(map(os.path.expanduser, config_files))
         LOG.debug('Reading OCitySMap configuration from %s...' %
@@ -267,9 +267,12 @@ class OCitySMap:
         try:
             font_path = self._parser.get('rendering', 'font_path')
             for font_dir in font_path.split(os.pathsep):
-                mapnik.register_fonts(font_dir)
+                try:
+                    mapnik.register_fonts(font_dir)
+                except Exception as ex:
+                    LOG.warning("Could not register fonts from '%s': %s" % (font_dir, str(ex)))
         except configparser.NoOptionError:
-            pass
+            LOG.warning("could not find 'font_path' in 'rendering' settings")
 
         r_paper = re.compile('^\s*(\d+)\s*x\s*(\d+)\s*$')
 
@@ -930,8 +933,13 @@ class OCitySMap:
             surface.finish()
         except Exception as e:
             if output_format == 'png':
+                // with PNGs the output is already fully written at this point, finish() is only doing cleanup.
+                // there were some occasional exceptions thrown at this point, but as we already have the PNG
+                // output we want we can safely ignore these
                 pass
             else:
+                // for all other file formats finish() creates the actual output, so we need to take 
+                // any exceptions thrown serious and pass them on
                 raise e
 
         os.rename(tmp_output_filename, output_filename)
