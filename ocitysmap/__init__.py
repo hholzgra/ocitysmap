@@ -764,10 +764,11 @@ class OCitySMap:
 
         # Make sure bounding box has non-zero width / height
         LOG.warning("checking bounds")
+        ARC_SECOND = 1.0 / 3600
         if config.bounding_box.get_left() ==  config.bounding_box.get_right():
-            config.bounding_box = config.bounding_box.create_expanded(1.0 / 3600, 1.0 / 3600)
+            config.bounding_box = config.bounding_box.create_expanded(ARC_SECOND, ARC_SECOND)
         if config.bounding_box.get_top() ==  config.bounding_box.get_bottom():
-            config.bounding_box = config.bounding_box.create_expanded(1.0 / 3600, 1.0 / 3600)
+            config.bounding_box = config.bounding_box.create_expanded(ARC_SECOND, ARC_SECOND)
         assert config.bounding_box.get_left() !=  config.bounding_box.get_right(), \
                 "Bounding box has zero width"
         assert config.bounding_box.get_top()  !=  config.bounding_box.get_bottom(), \
@@ -846,6 +847,7 @@ class OCitySMap:
         renderer = renderer_cls(self._db, config, tmpdir, dpi, file_prefix)
 
         if output_format == 'png':
+            CAIRO_MAX_PIXELS = 25000
             try:
                 dpi = int(self._parser.get('rendering', 'png_dpi'))
             except configparser.NoOptionError:
@@ -854,11 +856,11 @@ class OCitySMap:
             w_px = int(layoutlib.commons.convert_mm_to_dots(config.paper_width_mm, dpi))
             h_px = int(layoutlib.commons.convert_mm_to_dots(config.paper_height_mm, dpi))
 
-            if w_px > 25000 or h_px > 25000:
+            if w_px > CAIRO_MAX_PIXELS or h_px > CAIRO_MAX_PIXELS:
                 dpi = layoutlib.commons.PT_PER_INCH
                 w_px = int(layoutlib.commons.convert_pt_to_dots(renderer.paper_width_pt, dpi))
                 h_px = int(layoutlib.commons.convert_pt_to_dots(renderer.paper_height_pt, dpi))
-                if w_px > 25000 or h_px > 25000:
+                if w_px > CAIRO_MAX_PIXELS or h_px > CAIRO_MAX_PIXELS:
                     LOG.warning("Paper size too large for PNG output, skipping")
                     return
                 LOG.warning("%d DPI to high for this paper size, using 72dpi instead" % dpi)
@@ -934,13 +936,13 @@ class OCitySMap:
             surface.finish()
         except Exception as e:
             if output_format == 'png':
-                // with PNGs the output is already fully written at this point, finish() is only doing cleanup.
-                // there were some occasional exceptions thrown at this point, but as we already have the PNG
-                // output we want we can safely ignore these
+                # with PNGs the output is already fully written at this point, finish() is only doing cleanup.
+                # there were some occasional exceptions thrown at this point, but as we already have the PNG
+                # output we want we can safely ignore these
                 pass
             else:
-                // for all other file formats finish() creates the actual output, so we need to take 
-                // any exceptions thrown serious and pass them on
+                # for all other file formats finish() creates the actual output, so we need to take
+                # any exceptions thrown serious and pass them on
                 raise e
 
         os.rename(tmp_output_filename, output_filename)

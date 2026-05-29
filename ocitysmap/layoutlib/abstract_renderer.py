@@ -369,6 +369,7 @@ class Renderer:
 
     @staticmethod
     def scaleDenominator2zoom(scale_denom):
+        """Convert scale denominator into standard OSM zoom levels
         if scale_denom < 500:
             return 20
         if scale_denom < 1250:
