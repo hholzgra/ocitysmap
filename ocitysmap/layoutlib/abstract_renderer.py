@@ -121,7 +121,7 @@ class Renderer:
         Return a tuple (cairo group object for the SVG, SVG width in
                         cairo units).
         """
-        handle = Rsvg.Handle();
+        handle = Rsvg.Handle()
         try:
             svg   = handle.new_from_file(path)
         except Exception:
@@ -193,7 +193,7 @@ class Renderer:
         """
         ctx.save()
 
-        ctx.set_source_rgba(0, 0, 0, 0.7);
+        ctx.set_source_rgba(0, 0, 0, 0.7)
 
         step_horiz = map_area_width_dots / map_grid.horiz_count
         last_horiz_portion = math.modf(map_grid.horiz_count)[0]
@@ -440,7 +440,7 @@ class Renderer:
         fp.close()
 
         if color[0] != '#':
-            c = Color(color);
+            c = Color(color)
             color = c.hex_l
 
         data = data.replace('#000000', color)

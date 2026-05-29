@@ -115,7 +115,7 @@ def _show_symbol(renderer, ctx, lat, lon, surveillance, symbol):
     svg  = rsvg.new_from_data(data)
     x,y = renderer._latlon2xy(lat, lon, renderer.dpi)
 
-    svg_scale = renderer.dpi / (4 * svg.props.height);
+    svg_scale = renderer.dpi / (4 * svg.props.height)
     sx = x - svg.props.width  * svg_scale/2
     sy = y - svg.props.height * svg_scale/2
 

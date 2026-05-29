@@ -146,7 +146,7 @@ class TK25Renderer(Renderer):
         # Frame around the actual map area
         ctx.save()
         ctx.set_source_rgb(0,0,0)
-        ctx.set_line_width(1);
+        ctx.set_line_width(1)
         self._mm_rect(ctx, 40, 40, 40 +  480, 40 + 450, dpi)
         ctx.stroke()
         ctx.restore()
@@ -154,10 +154,10 @@ class TK25Renderer(Renderer):
         # Wider outer frame 
         ctx.save()
         ctx.set_source_rgb(0,0,0)
-        ctx.set_line_width(5);
+        ctx.set_line_width(5)
         self._mm_rect(ctx, 30, 30, 60 +  480, 60 + 450, dpi)
         ctx.stroke()
-        ctx.set_line_width(1);
+        ctx.set_line_width(1)
         self._mm_rect(ctx, 28, 28, 64 +  480, 64 + 450, dpi)
         self._mm_rect(ctx, 32, 32, 56 +  480, 56 + 450, dpi)
         ctx.stroke()
@@ -166,13 +166,13 @@ class TK25Renderer(Renderer):
         # coordinates
         ctx.save()
         ctx.set_source_rgb(0,0,0)
-        ctx.select_font_face("Droid Sans", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL);
+        ctx.select_font_face("Droid Sans", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
 
         self._mm_mvto(ctx, 33, 42, dpi)
-        self._fs(ctx, 7, dpi);
-        ctx.show_text("52°");
-        self._fs(ctx, 4, dpi);
-        ctx.show_text("10'");
+        self._fs(ctx, 7, dpi)
+        ctx.show_text("52°")
+        self._fs(ctx, 4, dpi)
+        ctx.show_text("10'")
         
         self._mm_mvto(ctx, 40, 39, dpi)
         draw_utils.draw_text_left(ctx, normal_layout, normal_fascent,

@@ -262,8 +262,8 @@ def draw_halotext_center(ctx, text, x, y):
     # first draw the semi-transparent halo
     ctx.save()
     ctx.move_to(x - tw/2.0 - xb, y - yb/2.0)
-    ctx.set_line_width(10);
-    ctx.set_source_rgba(1, 1, 1, 0.5);
+    ctx.set_line_width(10)
+    ctx.set_source_rgba(1, 1, 1, 0.5)
     ctx.set_line_join(cairo.LINE_JOIN_ROUND)
     ctx.text_path(text)
     ctx.stroke()

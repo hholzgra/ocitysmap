@@ -131,7 +131,7 @@ class PoiIndex:
                         PoiIndexItem(node['text'],
                                      ocitysmap.coords.Point(float(node['lat']),
                                                             float(node['lon'])),
-                                     icon = node['icon']));
+                                     icon = node['icon']))
                 except:
                     pass
 
@@ -160,7 +160,7 @@ class PoiIndex:
 class PoiIndexRenderer:
 
     def __init__(self, i18n, index_categories):
-        self._index_categories = index_categories;
+        self._index_categories = index_categories
 
     def precompute_occupation_area(self, surface, x, y, w, h,
                                    freedom_direction, alignment):
@@ -180,7 +180,7 @@ class PoiIndexRenderer:
         """
         Render index category header bar
         """
-        f = dpi / UTILS.PT_PER_INCH;
+        f = dpi / UTILS.PT_PER_INCH
 
         ctx.save()
 
@@ -188,7 +188,7 @@ class PoiIndexRenderer:
         ctx.translate(10*f, 10*f)
 
         # draw colored background bar
-        c = Color(color);
+        c = Color(color)
         ctx.set_source_rgb(c.red, c.green, c.blue)
         ctx.rectangle( 0, 0, (area.w - 20)*f, dpi * 0.8)
         ctx.fill()
@@ -205,7 +205,7 @@ class PoiIndexRenderer:
                 rsvg = Rsvg.Handle()
                 svg = rsvg.new_from_file(logo_path)
 
-                scale = dpi * 0.6 / svg.props.height;
+                scale = dpi * 0.6 / svg.props.height
                 x += svg.props.width * scale + 10*f
 
                 ctx.save()
@@ -232,7 +232,7 @@ class PoiIndexRenderer:
         """
         Render a single item line
         """
-        f = dpi / UTILS.PT_PER_INCH;
+        f = dpi / UTILS.PT_PER_INCH
         x = 5*f
 
         # clip the index row area
@@ -249,7 +249,7 @@ class PoiIndexRenderer:
 
         # replace black with the actual marker color
         if color[0] != '#':
-            c = Color(color);
+            c = Color(color)
             color = c.hex_l
         data = data.replace('#000000', color)
 
@@ -258,7 +258,7 @@ class PoiIndexRenderer:
         svg = rsvg.new_from_data(data.encode())
 
         # scale the marker to correct size
-        scale = 50.0 * f/ svg.props.height;
+        scale = 50.0 * f/ svg.props.height
         x += 35*f
 
         # draw the marker
@@ -288,7 +288,7 @@ class PoiIndexRenderer:
                 rsvg = Rsvg.Handle()
                 svg = rsvg.new_from_file(logo_path)
 
-                scale = min(dpi * 0.6 / svg.props.height, dpi * 0.6 / svg.props.width);
+                scale = min(dpi * 0.6 / svg.props.height, dpi * 0.6 / svg.props.width)
 
                 ctx.save()
                 ctx.translate(x + 5, 5*f)
@@ -339,7 +339,7 @@ class PoiIndexRenderer:
         return dpi * 0.7
 
     def render(self, ctx, area, dpi = UTILS.PT_PER_INCH):
-        f = dpi / UTILS.PT_PER_INCH;
+        f = dpi / UTILS.PT_PER_INCH
 
         ctx.save()
         ctx.translate(area.x*f, area.y*f)

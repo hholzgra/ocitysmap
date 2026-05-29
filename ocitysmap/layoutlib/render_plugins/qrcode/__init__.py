@@ -45,13 +45,13 @@ def render(renderer, ctx):
         border=4,
     )
 
-    qr.add_data(qrcode_text);
+    qr.add_data(qrcode_text)
     qr.make(fit=True)
 
     img = qr.make_image(image_factory=qrcode.image.svg.SvgPathFillImage,
                         fill_color='lightblue')
     svgstr = BytesIO()
-    img.save(svgstr);
+    img.save(svgstr)
 
     svg_val = svgstr.getvalue()
 

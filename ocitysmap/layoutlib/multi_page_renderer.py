@@ -693,7 +693,7 @@ class MultiPageRenderer(Renderer):
         # ctx.save()
         # we have to undo border adjustments here
         # ctx.translate(0, -(0.3 * h + Renderer.PRINT_SAFE_MARGIN_PT))
-        # self._map_canvas = self._front_page_map;
+        # self._map_canvas = self._front_page_map
         # for plugin_name, effect in self._frontpage_overlay_effects.items():
         #    try:
         #        effect.render(self, ctx)
@@ -741,13 +741,13 @@ class MultiPageRenderer(Renderer):
                     border=4,
                 )
 
-                qr.add_data(self.rc.qrcode_text);
+                qr.add_data(self.rc.qrcode_text)
                 qr.make(fit=True)
 
                 img = qr.make_image(image_factory=qrcode.image.svg.SvgPathFillImage,
                                     fill_color='lightblue')
                 svgstr = BytesIO()
-                img.save(svgstr);
+                img.save(svgstr)
 
                 svg_val = svgstr.getvalue()
 
@@ -835,7 +835,7 @@ class MultiPageRenderer(Renderer):
             css = f.read()
 
         bbox_txt = self.rc.bounding_box.as_text()
-        bbox_txt+= "<br/>(";
+        bbox_txt+= "<br/>("
         (bbox_h, bbox_w) = self.rc.bounding_box.spheric_sizes()
         if bbox_w >= 1000 and bbox_h >= 1000:
             bbox_txt += "ca. %d x %d km²" % (bbox_w/1000, bbox_h/1000)
@@ -851,7 +851,7 @@ class MultiPageRenderer(Renderer):
         import_names = ""
         if self.rc.import_files:
             for (file_type, import_file) in self.rc.import_files:
-                import_names+= os.path.basename(import_file) + "<br/>";
+                import_names+= os.path.basename(import_file) + "<br/>"
 
         html = html_template.substitute(
             bbox       = bbox_txt,
@@ -906,7 +906,7 @@ class MultiPageRenderer(Renderer):
 
         # apply effect overlays
         ctx.save()
-        self._map_canvas = self.overview_canvas;
+        self._map_canvas = self.overview_canvas
         for plugin_name, effect in self.overview_overlay_effects.items():
             try:
                 effect.render(self, ctx)

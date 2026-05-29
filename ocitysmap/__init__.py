@@ -335,7 +335,7 @@ class OCitySMap:
             Database connection for the given name.
         """
 
-        # check db chache for already opened connection for this name
+        # check db cache for already opened connection for this name
         if name in self.__dbs:
             return self.__dbs[name]
 
@@ -415,7 +415,7 @@ class OCitySMap:
         shutil.rmtree(tmpdir)
 
     def _get_geographic_info(self, osmid, table):
-        """ Get geograpich info for an OSM object
+        """ Get geograpic info for an OSM object
 
         Return the area for the given osm id in the given table, or raise
         LookupError when not found
@@ -557,7 +557,7 @@ class OCitySMap:
         style_names = []
         for s in self.STYLESHEET_REGISTRY:
             style_names.append(s.name)
-        return style_names;
+        return style_name
 
     def get_stylesheet_by_name(self, name):
         """Returns a stylesheet by its key name.
@@ -618,7 +618,7 @@ class OCitySMap:
         overlay_names = []
         for o in self.OVERLAY_REGISTRY:
             overlay_names.append(o.name)
-        return overlay_names;
+        return overlay_names
 
     def get_overlay_by_name(self, name):
         """Returns an overlay by its key name.
@@ -656,7 +656,7 @@ class OCitySMap:
         renderer_names = []
         for r in renderers.get_renderers():
             renderer_names.append(r.name)
-        return renderer_names;
+        return renderer_names
 
     def get_all_renderer_name_desc(self):
         result = []
@@ -674,7 +674,7 @@ class OCitySMap:
         indexer_names = []
         for r in indexers.get_indexers():
             indexer_names.append(r.name)
-        return indexer_names;
+        return indexer_names
 
     def get_all_indexers_name_desc(self):
         result = []
@@ -879,15 +879,15 @@ class OCitySMap:
         elif output_format == 'svg':
             surface = cairo.SVGSurface(tmp_output_filename,
                                        renderer.paper_width_pt, renderer.paper_height_pt)
-            surface.restrict_to_version(cairo.SVGVersion.VERSION_1_2);
+            surface.restrict_to_version(cairo.SVGVersion.VERSION_1_2)
         elif output_format == 'svgz':
             surface = cairo.SVGSurface(gzip.GzipFile(tmp_output_filename, 'wb'),
                                        renderer.paper_width_pt, renderer.paper_height_pt)
-            surface.restrict_to_version(cairo.SVGVersion.VERSION_1_2);
+            surface.restrict_to_version(cairo.SVGVersion.VERSION_1_2)
         elif output_format == 'pdf':
             surface = cairo.PDFSurface(tmp_output_filename,
                                        renderer.paper_width_pt, renderer.paper_height_pt)
-            surface.restrict_to_version(cairo.PDFVersion.VERSION_1_5);
+            surface.restrict_to_version(cairo.PDFVersion.VERSION_1_5)
 
             try:
                 surface.set_metadata(cairo.PDFMetadata.CREATOR,
