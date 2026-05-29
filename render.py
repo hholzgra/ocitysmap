@@ -32,13 +32,11 @@ import re
 
 import ocitysmap
 import ocitysmap.layoutlib.renderers
-from coords import BoundingBox
+from ocitysmap.coords import BoundingBox
 
-from stylelib.Gpx  import GpxProcessor
-from stylelib.Umap import UmapProcessor
-from stylelib.Poi  import PoiProcessor
-
-from pprint import pprint
+from ocitysmap.stylelib.Gpx  import GpxProcessor
+from ocitysmap.stylelib.Umap import UmapProcessor
+from ocitysmap.stylelib.Poi  import PoiProcessor
 
 LOG = logging.getLogger('ocitysmap')
 
