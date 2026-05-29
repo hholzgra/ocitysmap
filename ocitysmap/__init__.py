@@ -134,7 +134,7 @@ def guess_filetype(import_file):
                 gpxpy.parse(import_file)
                 result = "gpx"
             except Exception as ex:
-                raise RuntimeError("XML file %s does not conain valid GPX data: %s" % (file_name, str(ex))
+                raise RuntimeError("XML file %s does not contain valid GPX data: %s" % (file_name, str(ex)))
         elif first_line.startswith('{'):
             second_line = import_file.readline(100).decode('utf-8-sig')
             if second_line.strip().startswith('"title":'):
@@ -146,11 +146,12 @@ def guess_filetype(import_file):
             raise RuntimeError("Can't determine import file type for %s" % file_name)
     except Exception as e:
         raise RuntimeError("Error processing import file %s" % e)
+    finally:
+        if need_close:
+            import_file.close()
+        else:
+         import_file.seek(0) # rewind to start
 
-    if need_close:
-        import_file.close()
-    else:
-        import_file.seek(0) # rewind to start
     return result
 
 class RenderingConfiguration:
