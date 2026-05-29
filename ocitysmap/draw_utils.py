@@ -114,7 +114,7 @@ def draw_text(ctx, layout, fascent,
 
 def draw_text_left(ctx, layout, fascent,
                     baseline_x, baseline_y, text):
-    """ Draw center alinged text
+    """ Draw left alinged text
 
     Draws the given text left aligned into the provided Cairo
     context through the Pango layout (get_width() expected to be
@@ -145,9 +145,9 @@ def draw_text_left(ctx, layout, fascent,
 
 def draw_text_center(ctx, layout, fascent,
                      baseline_x, baseline_y, text):
-    """ Draw left alinged text
+    """ Draw center alinged text
 
-    Draws the given text left aligned into the provided Cairo
+    Draws the given text ceter aligned into the provided Cairo
     context through the Pango layout (get_width() expected to be
     correct in order to position the text correctly).
 
@@ -179,9 +179,9 @@ def draw_text_center(ctx, layout, fascent,
 
 def draw_text_right(ctx, layout, fascent,
                     baseline_x, baseline_y, text):
-    """ Draw left alinged text
+    """ Draw right alinged text
 
-    Draws the given text left aligned into the provided Cairo
+    Draws the given text right aligned into the provided Cairo
     context through the Pango layout (get_width() expected to be
     correct in order to position the text correctly).
 
