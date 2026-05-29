@@ -109,7 +109,7 @@ class BoundingBox:
         polygon given in WKT format."""
         try:
             geom_envelope = shapely.wkt.loads(wkt).bounds
-        except Exception as rx:
+        except Exception as ex:
             raise ValueError("Invalid input WKT: %s" % ex)
         return BoundingBox(geom_envelope[1], geom_envelope[0],
                            geom_envelope[3], geom_envelope[2])
