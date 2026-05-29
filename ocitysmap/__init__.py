@@ -392,12 +392,12 @@ class OCitySMap:
         -------
         void
         """
-        cursor = db.cursor()
-        cursor.execute('set session statement_timeout=%d;' %
-                       (timeout_minutes * 60 * 1000))
-        cursor.execute('show statement_timeout;')
-        LOG.debug('Configured statement timeout: %s.' %
-                  cursor.fetchall()[0][0])
+        with db.cursor() as cursor:
+            cursor.execute('set session statement_timeout=%d;' %
+                           (timeout_minutes * 60 * 1000))
+            cursor.execute('show statement_timeout;')
+            LOG.debug('Configured statement timeout: %s.' %
+                      cursor.fetchall()[0][0])
 
     def _cleanup_tempdir(self, tmpdir):
         """ Remove a temporary directory including all contents
