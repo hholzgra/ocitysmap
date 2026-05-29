@@ -128,15 +128,15 @@ class UmapProcessor:
             for feature in layer['features']:
                 geom = feature['geometry']
                 for coord in geom['coordinates']:
-                    if type(coord) == float:  # then its a point feature
+                    if isinstance(coord, float):  # then its a point feature
                         lon_vals.append(geom['coordinates'][0])
                         lat_vals.append(geom['coordinates'][1])
-                    elif type(coord) == list:
+                    elif isinstance(coord, list):
                         for c in coord:
-                            if type(c) == float:  # then its a linestring feature
+                            if isinstance(c, float):  # then its a linestring feature
                                 lon_vals.append(coord[0])
                                 lat_vals.append(coord[1])
-                            elif type(c) == list:  # then its a polygon feature
+                            elif isinstance(c, list):  # then its a polygon feature
                                 lon_vals.append(c[0])
                                 lat_vals.append(c[1])
 

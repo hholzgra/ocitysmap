@@ -16,7 +16,7 @@ import logging
 LOG = logging.getLogger('ocitysmap')
 
 def render(renderer, ctx):
-    if type(renderer).__name__ == "MultiPageRenderer":
+    if instance(renderer, MultiPageRenderer):
         # the multi page renderer has the QR code in the front page footer
         # no need to also have it repeated on all individual map pages
         return

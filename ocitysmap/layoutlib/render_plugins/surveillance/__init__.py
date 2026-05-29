@@ -52,7 +52,7 @@ def _camera_view(renderer, ctx, map_scale, surveillance, lat, lon, camera_type, 
 
     x,y = renderer._latlon2xy(lat, lon, renderer.dpi)
 
-    if type(direction) == float and surveillance != 'indoor':
+    if instanceof(direction, float) and surveillance != 'indoor':
         if height and height.isdigit():
            height = float(height)
         else:
@@ -63,15 +63,15 @@ def _camera_view(renderer, ctx, map_scale, surveillance, lat, lon, camera_type, 
         elif height > 12.0:
            height = 12.0
 
-        if type(angle) != float:
-            angle = 1
-        else:
+        if isinstance(angle, float):
             if angle < 0:
                angle = - angle
             if angle <= 15:
                angle = 1
             else:
                angle = math.cos((angle - 15) * math.pi / 180)
+        else:
+            angle = 1
 
         radius = 20000 * height * angle / map_scale
 

@@ -30,7 +30,7 @@ def render(renderer, ctx):
 
     dots = map_coords_dots[2]
 
-    if type(renderer).__name__ == "MultiPageRenderer":
+    if isinstance(renderer, MultiPageRenderer):
         dots = dots - 2 * renderer.grayed_margin_pt
 
     step_horiz = dots / renderer.grid.horiz_count
@@ -48,7 +48,7 @@ def render(renderer, ctx):
     tickHeight = pt2px(15)	# height of the tick marks
 
     x = barBuffer
-    if type(renderer).__name__ == "MultiPageRenderer":
+    if instanceof(renderer, MultiPageRenderer):
         # TODO more perfectly align actual scale bar with grid here?
         x += renderer.grayed_margin_pt
 

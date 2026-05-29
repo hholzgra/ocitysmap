@@ -119,7 +119,7 @@ def guess_filetype(import_file):
     need_close = False
     result = None
     try:
-        if type(import_file) == str:
+        if isinstance(import_file, str):
             file_name = import_file
             import_file = open(import_file, 'rb')
             need_close = True
