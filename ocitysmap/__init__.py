@@ -347,7 +347,7 @@ class OCitySMap:
 
         # The port is not a mandatory configuration option, so make
         # sure we define a default value.
-        if not 'port' in datasource:
+        if 'port' not in datasource:
             datasource['port'] = 5432
 
         LOG.debug('Connecting to database %s on %s:%s as %s...' %
@@ -728,7 +728,7 @@ class OCitySMap:
         assert config.osmid or config.bounding_box, \
                 'At least an OSM ID or a bounding box must be provided!'
 
-        output_formats = map(lambda x: x.lower(), output_formats)
+        output_formats = list(map(lambda x: x.lower(), output_formats))
         config.i18n = i18n.install_translation(config.language,
                                                self._locale_path)
 
