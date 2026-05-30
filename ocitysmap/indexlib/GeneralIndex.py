@@ -1007,7 +1007,7 @@ class MultiPageIndexRenderer:
         self.ctx.restore()
         try:
             self.surface.set_page_label(_(u'Index page %d') % (self.index_page_num + 1))
-        except:
+        except Exception:
             pass
 
     def _new_page(self):

@@ -284,7 +284,7 @@ class OCitySMap:
                 try:
                     (w,h) = r_paper.match(value).groups()
                     self.PAPER_SIZES.append((key, int(w), int(h)))
-                except:
+                except Exception:
                     LOG.warning("Ignoring invalid paper size '%s' for format '%s'" % (key, value))
         else:
             # minimal fallback configuration
@@ -907,7 +907,7 @@ class OCitySMap:
 
                 surface.set_metadata(cairo.PDFMetadata.KEYWORDS,
                                      "OpenStreetMap, MapOSMatic, OCitysMap")
-            except:
+            except Exception:
               LOG.warning("Installed Cairo version does not support PDF annotations yet")
 
         elif output_format == 'ps':

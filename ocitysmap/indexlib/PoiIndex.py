@@ -132,7 +132,8 @@ class PoiIndex:
                                      ocitysmap.coords.Point(float(node['lat']),
                                                             float(node['lon'])),
                                      icon = node['icon']))
-                except:
+                except Exception as ex:
+                    LOG.warning("Could not add POI index item: %s" % str(ex))
                     pass
 
             self._categories.append(c)

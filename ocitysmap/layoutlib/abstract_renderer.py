@@ -479,7 +479,8 @@ class Renderer:
     def _format_date(self, date):
         try:
             return format_date(date, format='long', locale=self.rc.language)
-        except:
+        except Exception:
+            // fall back to US English as default format
             return format_date(date, format='long', locale='en_US.UTF-8')
 
     def _annotations(self, osm_date = None):

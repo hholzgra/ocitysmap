@@ -172,7 +172,7 @@ class PolyShapeFile(_ShapeFile):
         # parsed by OGR.
         try:
             prev_locale = locale.getlocale(locale.LC_ALL)
-        except:
+        except Exception:
             prev_locale = ''
         locale.setlocale(locale.LC_ALL, "C")
 

@@ -110,7 +110,7 @@ class SinglePageRenderer(Renderer):
             try:
                 indexer_class = globals()[rc.indexer+"Index"]
                 # TODO: check that it actually implements a working indexer class
-            except:
+            except Exception:
                 LOG.warning("Indexer class '%s' not found" % rc.indexer)
                 self.street_index = None
                 self.index_position = None
@@ -120,7 +120,7 @@ class SinglePageRenderer(Renderer):
                     #indexer_class = globals()[rc.indexer]
                     indexer_class = globals()[rc.indexer+"Index"]
                     # TODO : check that it actually implements a working indexer class
-                except:
+                except Exception:
                     LOG.warning("Indexer class '%s' not found" % rc.indexer)
                     self.street_index = None
                     self.index_position = None

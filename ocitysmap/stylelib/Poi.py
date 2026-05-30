@@ -56,7 +56,7 @@ class PoiProcessor:
     def getTitle(self):
         try:
             return self.poi['title']
-        except:
+        except Exception:
             return None
 
 class PoiStylesheet(Stylesheet):

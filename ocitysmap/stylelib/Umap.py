@@ -46,7 +46,7 @@ def color2hex(name):
     try:
         c = Color(name)
         return c.hex_l
-    except:
+    except (AttributeError, ValueError):
         return name
 
 # get first match for a JSONpath search only
@@ -55,7 +55,7 @@ def first(json, path, default=None):
     expr = parse(path)
     list = expr.find(json)
     return list[0].value
-  except:
+  except Exception:
     return default
 
 # confinence wrapper for JSONpath parse->find
@@ -145,7 +145,7 @@ class UmapProcessor:
     def getTitle(self):
         try:
             return self.umap['properties']['name']
-        except:
+        except (KeyError, TypeError):
             return None
 
 class UmapStylesheet(Stylesheet):
@@ -306,10 +306,8 @@ class UmapStylesheet(Stylesheet):
                                 new_props['iconLabel'] = iconUrl
                                 new_props['iconUrl']   = ''
 
-                        try:
+                        if iconClass in marker_offsets:
                             new_props['offset'] = marker_offsets[iconClass]
-                        except:
-                            pass
 
                     new_props['weight'] = float(new_props['weight']) / 4
 

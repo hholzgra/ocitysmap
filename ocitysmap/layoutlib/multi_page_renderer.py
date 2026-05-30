@@ -468,7 +468,7 @@ class MultiPageRenderer(Renderer):
             try:
                 indexer_class = globals()[self.rc.indexer+"Index"]
                 # TODO: check that it actually implements a working indexer class
-            except:
+            except Exception:
                 LOG.warning("Indexer class '%s' not found" % self.rc.indexer)
             else:
                 index = indexer_class(self.db,
@@ -802,7 +802,7 @@ class MultiPageRenderer(Renderer):
 
         try: # set_page_label() does not exist in older pycairo versions
             cairo_surface.set_page_label(_(u'Front page'))
-        except:
+        except Exception:
             pass
 
         ctx.restore()
@@ -883,7 +883,7 @@ class MultiPageRenderer(Renderer):
         )
         try: # set_page_label() does not exist in older pycairo versions
             cairo_surface.set_page_label(_(u'Contents'))
-        except:
+        except Exception:
             pass
 
         ctx.restore()
@@ -932,7 +932,7 @@ class MultiPageRenderer(Renderer):
 
         try: # set_page_label() does not exist in older pycairo versions
             cairo_surface.set_page_label(_(u'Overview'))
-        except:
+        except AttributeError:
             pass
 
         ctx.restore()
@@ -1195,7 +1195,7 @@ class MultiPageRenderer(Renderer):
 
             try: # set_page_label() does not exist in older pycairo versions
                 cairo_surface.set_page_label(_(u'Map page %d') % (map_number + self._first_map_page_number))
-            except:
+            except AttributeError:
                 pass
             cairo_surface.show_page()
             ctx.restore()
