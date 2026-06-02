@@ -43,6 +43,7 @@ from colour import Color
 import datetime
 from urllib.parse import urlparse
 from babel.dates import format_date
+from abc import ABC, abstractmethod
 
 from . import commons
 from ocitysmap.maplib.map_canvas import MapCanvas
@@ -54,7 +55,7 @@ from pluginbase import PluginBase
 LOG = logging.getLogger('ocitysmap')
 
 
-class Renderer:
+class Renderer(ABC):
     """
     The job of an OCitySMap layout renderer is to lay out the resulting map and
     render it from a given rendering configuration.
@@ -323,6 +324,7 @@ class Renderer:
         return self.plugin_source.load_plugin(plugin_name)
 
     # The next two methods are to be overloaded by the actual renderer.
+    @abstractmethod
     def render(self, cairo_surface, dpi):
         """Renders the map, the index and all other visual map features on the
         given Cairo surface.
@@ -331,7 +333,6 @@ class Renderer:
             cairo_surface (Cairo.Surface): the destination Cairo device.
             dpi (int): dots per inch of the device.
         """
-        raise NotImplementedError
 
     @staticmethod
     def get_compatible_output_formats():
@@ -345,6 +346,7 @@ class Renderer:
         return False
 
     @staticmethod
+    @abstractmethod
     def get_compatible_paper_sizes(bounding_box, scale=None):
         """Returns a list of the compatible paper sizes for the given bounding
         box. The list is sorted, smaller papers first, and a "custom" paper
@@ -358,58 +360,46 @@ class Renderer:
         mm, portrait_ok, landscape_ok, is_default). Paper sizes are
         represented in portrait mode.
         """
-        raise NotImplementedError
 
     @staticmethod
+    @abstractmethod
     def get_minimal_paper_size(bounding_box, scale=None):
         """Retruns the minimal paper width and height needed to render the
         given map selection
         """
-        raise NotImplementedError
 
     @staticmethod
     def scaleDenominator2zoom(scale_denom):
-        """Convert scale denominator into standard OSM zoom levels
-        if scale_denom < 500:
-            return 20
-        if scale_denom < 1250:
-            return 19
-        if scale_denom < 2500:
-            return 18
-        if scale_denom < 5000:
-            return 17
-        if scale_denom < 12500:
-            return 16
-        if scale_denom < 25000:
-            return 15
-        if scale_denom < 50000:
-            return 14
-        if scale_denom < 100000:
-            return 13
-        if scale_denom < 200000:
-            return 12
-        if scale_denom < 400000:
-            return 11
-        if scale_denom < 750000:
-            return 10
-        if scale_denom < 1500000:
-            return 9
-        if scale_denom < 3000000:
-            return 8
-        if scale_denom < 6500000:
-            return 7
-        if scale_denom < 12500000:
-            return 6
-        if scale_denom < 25000000:
-            return 5
-        if scale_denom < 50000000:
-            return 4
-        if scale_denom < 100000000:
-            return 3
-        if scale_denom < 200000000:
-            return 2
-        if scale_denom < 500000000:
-            return 1
+        """
+        Convert scale denominator into standard OSM zoom levels
+        """
+
+        lookup_table = {
+            20:         500,
+            19:       1_250,
+            18:       2_500,
+            17:       5_000,
+            16:      12_500,
+            15:      25_000,
+            14:      50_000,
+            13:     100_000,
+            12:     200_000,
+            11:     400_000,
+            10:     750_000,
+             9:   1_500_000,
+             8:   3_000_000,
+             7:   6_500_000,
+             6:  12_500_000,
+             5:  25_000_000,
+             4:  50_000_000,
+             3: 100_000_000,
+             2: 200_000_000,
+             1: 500_000_000,
+        }
+
+        for zoom_factor, scale_denom_base in lookup_table.items():
+            if scale_denom < scale_denom_base:
+                return zoom_factor
         return 0
 
     # convert geo into pixel coordinates for direct rendering of geo features
@@ -480,7 +470,7 @@ class Renderer:
         try:
             return format_date(date, format='long', locale=self.rc.language)
         except Exception:
-            // fall back to US English as default format
+            # fall back to US English as default format
             return format_date(date, format='long', locale='en_US.UTF-8')
 
     def _annotations(self, osm_date = None):

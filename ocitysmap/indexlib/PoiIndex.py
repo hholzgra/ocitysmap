@@ -34,6 +34,7 @@ import codecs
 import json
 from colour import Color
 import re
+from gettext import gettext
 
 from . import commons
 import ocitysmap
@@ -41,7 +42,7 @@ import ocitysmap.layoutlib.commons as UTILS
 from ocitysmap.layoutlib.abstract_renderer import Renderer
 import draw_utils
 
-from .commons import IndexCategory, IndexItem, IndexDoesNotFitError 
+from .commons import Index, IndexCategory, IndexItem, IndexDoesNotFitError
 from .renderer import IndexRenderingArea
 
 import logging
@@ -87,7 +88,9 @@ class PoiIndexItem(IndexItem):
         self.icon = icon
 
 
-class PoiIndex:
+class PoiIndex(Index):
+    name = "POI"
+    description = gettext(u"POI marker index")
 
     def __init__(self, db, renderer, bbox, polygon_wkt, i18n, page_number=None):
         # import the first POI file only (there should never be more than one)
@@ -97,10 +100,6 @@ class PoiIndex:
                 self._read_json(f)
                 f.close()
                 break
-
-    @property
-    def categories(self):
-        return self._categories
 
     @property
     def lat(self):
@@ -142,21 +141,6 @@ class PoiIndex:
     def write_to_csv(self, title, output_filename):
         return
 
-    def apply_grid(self, grid):
-        """
-        Update the location_str field of the streets and amenities by
-        mapping them onto the given grid.
-
-        Args:
-           grid (ocitysmap.Grid): the Grid object from which we
-           compute the location strings
-
-        Returns:
-           Nothing, but self._categories has been modified!
-        """
-        for category in self._categories:
-            for item in category.items:
-                item.update_location_str(grid)
 
 class PoiIndexRenderer:
 

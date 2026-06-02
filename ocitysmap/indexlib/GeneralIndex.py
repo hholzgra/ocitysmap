@@ -36,7 +36,7 @@ from gi.repository import Rsvg, Pango, PangoCairo
 import draw_utils
 from ocitysmap.layoutlib.abstract_renderer import Renderer
 
-from .commons import IndexCategory, IndexItem, IndexDoesNotFitError
+from .commons import Index, IndexCategory, IndexItem, IndexDoesNotFitError
 import ocitysmap.layoutlib.commons as UTILS
 from ocitysmap.coords import Point
 from .renderer import IndexRenderingArea
@@ -46,7 +46,7 @@ LOG = logging.getLogger('ocitysmap')
 # TODO: define in single place, not in multiple files
 PAGE_NUMBER_MARGIN_PT  = UTILS.convert_mm_to_pt(10)
 
-class GeneralIndex:
+class GeneralIndex(Index):
     name = "Genaral"
     description = gettext(u"(* General Index *)")
 
@@ -75,14 +75,10 @@ class GeneralIndex:
         self._polygon_wkt = polygon_wkt
         self._i18n = i18n
         self._page_number = page_number
-        self._categories = []
 
     @property
     def categories(self):
         return self._categories
-
-    def clear_categories(self):
-        self._categories = []
 
     def add_category(self, name, items=None, is_street=False):
         """
@@ -288,9 +284,7 @@ SELECT %(columns)s,
             void
                 Nothing, but self._categories has been modified as side effect
         """
-        for category in self._categories:
-            for item in category.items:
-                item.update_location_str(grid)
+        Index.apply_grid(self, grid)
         self._group_identical_grid_locations()
 
     def _group_identical_grid_locations(self):

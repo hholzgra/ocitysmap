@@ -29,6 +29,9 @@ gi.require_version('Pango', '1.0')
 from gi.repository import GObject, Pango
 import sys
 
+from abc import ABC, abstractmethod
+from gettext import gettext
+
 import logging
 LOG = logging.getLogger('ocitysmap')
 
@@ -46,7 +49,37 @@ class IndexDoesNotFitError(Exception):
     graphical area, even after trying smaller font sizes."""
     pass
 
-class IndexCategory:
+class Index(ABC):
+    """
+    The Index represents an Index, with categories and actual index items
+    below it
+    """
+
+    name = "Index"
+    description = gettext(u"Abstract base class index")
+    _categories = []
+
+    @property
+    def categories(self):
+        return self._categories
+
+    def apply_grid(self, grid):
+        """
+        Update the location_str field of the streets and amenities by
+        mapping them onto the given grid.
+
+        Args:
+           grid (ocitysmap.Grid): the Grid object from which we
+           compute the location strings
+
+        Returns:
+           Nothing, but self._categories has been modified!
+        """
+        for category in self._categories:
+            for item in category.items:
+                item.update_location_str(grid)
+
+class IndexCategory(ABC):
     """
     The IndexCategory represents a set of index items that belong to the same
     category (their first letter is the same or they are of the same amenity
@@ -76,7 +109,7 @@ class IndexCategory:
         return [x.squares for x in self.items]
 
 
-class IndexItem:
+class IndexItem(ABC):
     """
     An IndexItem represents one item in the index (a street or a POI). It
     contains the item label (street name, POI name or description) and the
