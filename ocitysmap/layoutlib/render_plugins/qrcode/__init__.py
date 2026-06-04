@@ -34,7 +34,6 @@ def render(renderer, ctx):
     y  = 0
     w  = convert_pt_to_dots(renderer._map_coords[2], renderer.dpi)
     h  = convert_pt_to_dots(renderer._map_coords[3], renderer.dpi)
-    W  = convert_pt_to_dots(renderer.paper_width_pt)
 
     size = convert_pt_to_dots(max(renderer.paper_width_pt, renderer.paper_height_pt),
                               renderer.dpi) / 12

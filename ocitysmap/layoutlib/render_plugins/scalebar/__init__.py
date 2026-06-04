@@ -34,8 +34,6 @@ def render(renderer, ctx):
     if isinstance(renderer, MultiPageRenderer):
         dots = dots - 2 * renderer.grayed_margin_pt
 
-    step_horiz = dots / renderer.grid.horiz_count
-
     # make some text for the scalebar (sort units)
     if oom >= 1000:
         scaleText = str(int(meter/1000)) + "km"
