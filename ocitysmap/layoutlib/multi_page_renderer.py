@@ -545,7 +545,7 @@ class MultiPageRenderer(Renderer):
             try:
                 locale.setlocale(locale.LC_COLLATE, self.rc.i18n.language_code())
             except Exception:
-                l.warning('error while setting LC_COLLATE to "%s"' % self._i18n.language_code())
+                LOG.warning('error while setting LC_COLLATE to "%s"' % self._i18n.language_code())
 
             try:
                 grouped_items_sorted = \
