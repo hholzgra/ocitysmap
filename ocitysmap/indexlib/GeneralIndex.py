@@ -714,7 +714,7 @@ class GeneralIndexRenderer:
         rendering_area.h = rendering_area.h - 2
 
         if not self._index_categories:
-            raise commons.IndexEmptyError
+            raise IndexEmptyError
 
         LOG.debug("Rendering the street index within %s at %sdpi..."
                   % (rendering_area, dpi))
