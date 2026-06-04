@@ -221,7 +221,7 @@ class TK25Renderer(Renderer):
     def _sheet2name(sheetno):
         if sheetno in tk25_names:
             return tk25_names[sheetno]
-        return none
+        return None
 
     @staticmethod
     def get_compatible_paper_sizes(bounding_box,
