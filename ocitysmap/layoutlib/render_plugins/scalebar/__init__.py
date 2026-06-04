@@ -7,6 +7,7 @@ import mapnik
 from ocitysmap.draw_utils import draw_simpletext_center
 from ocitysmap.layoutlib.commons import convert_pt_to_dots
 from ocitysmap.layoutlib.abstract_renderer import Renderer
+from ocitysmap.layoutlib.multi_page_renderer import MultiPageRenderer
 from math import floor, log10
 
 LOG = logging.getLogger('ocitysmap')
@@ -48,7 +49,7 @@ def render(renderer, ctx):
     tickHeight = pt2px(15)	# height of the tick marks
 
     x = barBuffer
-    if instanceof(renderer, MultiPageRenderer):
+    if isinstance(renderer, MultiPageRenderer):
         # TODO more perfectly align actual scale bar with grid here?
         x += renderer.grayed_margin_pt
 

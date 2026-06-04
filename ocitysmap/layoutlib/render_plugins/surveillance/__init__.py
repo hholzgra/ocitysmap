@@ -52,7 +52,7 @@ def _camera_view(renderer, ctx, map_scale, surveillance, lat, lon, camera_type, 
 
     x,y = renderer._latlon2xy(lat, lon, renderer.dpi)
 
-    if instanceof(direction, float) and surveillance != 'indoor':
+    if isinstance(direction, float) and surveillance != 'indoor':
         if height and height.isdigit():
            height = float(height)
         else:

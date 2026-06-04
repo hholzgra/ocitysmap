@@ -11,12 +11,13 @@ from io import BytesIO
 
 from ocitysmap.layoutlib.commons import convert_pt_to_dots
 from ocitysmap.layoutlib.abstract_renderer import Renderer
+from ocitysmap.layoutlib.multi_page_renderer import MultiPageRenderer
 
 import logging
 LOG = logging.getLogger('ocitysmap')
 
 def render(renderer, ctx):
-    if instance(renderer, MultiPageRenderer):
+    if isinstance(renderer, MultiPageRenderer):
         # the multi page renderer has the QR code in the front page footer
         # no need to also have it repeated on all individual map pages
         return
