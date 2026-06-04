@@ -36,7 +36,7 @@ from gi.repository import Rsvg, Pango, PangoCairo
 import draw_utils
 from ocitysmap.layoutlib.abstract_renderer import Renderer
 
-from .commons import Index, IndexCategory, IndexItem, IndexDoesNotFitError
+from .commons import Index, IndexCategory, IndexItem, IndexDoesNotFitError, IndexEmptyError
 import ocitysmap.layoutlib.commons as UTILS
 from ocitysmap.coords import Point
 from .renderer import IndexRenderingArea
@@ -639,7 +639,7 @@ class GeneralIndexRenderer:
             raise ValueError('Incompatible freedom direction and alignment!')
 
         if not self._index_categories:
-            raise commons.IndexEmptyError
+            raise IndexEmptyError
 
         LOG.debug("Determining index area within %dx%d+%d+%d aligned %s/%s..."
                   % (w,h,x,y, alignment, freedom_direction))
