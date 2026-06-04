@@ -202,7 +202,7 @@ SELECT %(columns)s,
             # to be cleaned. Using a buffer of 0 generaly helps to clean
             # them. This operation is not applied by default for
             # performance reasons.
-            db.rollback()
+            cursor.connection.rollback()
             cursor.execute(query % {'way':'st_buffer(way, 0)'})
 
     def get_index_entries(self, db, tables, columns, where, group=False, category_mapping=None, max_category_items=maxsize, join=None, debug=False):
