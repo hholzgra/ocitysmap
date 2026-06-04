@@ -557,7 +557,7 @@ class OCitySMap:
         style_names = []
         for s in self.STYLESHEET_REGISTRY:
             style_names.append(s.name)
-        return style_name
+        return style_names
 
     def get_stylesheet_by_name(self, name):
         """Returns a stylesheet by its key name.
