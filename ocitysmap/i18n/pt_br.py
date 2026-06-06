@@ -2,15 +2,15 @@ import re, gettext
 from . import i18n, _install_language
 
 class i18n_pt_br_generic(i18n):
-    APPELLATIONS = [ u"Aeroporto", u"Aer.", u"Alameda", u"Al.", u"Apartamento", u"Ap.", 
-                     u"Área", u"Avenida", u"Av.", u"Beco", u"Bc.", u"Bloco", u"Bl.", 
+    APPELLATIONS = [ u"Aeroporto", u"Aer.", u"Alameda", u"Al.", u"Apartamento", u"Ap.",
+                     u"Área", u"Avenida", u"Av.", u"Beco", u"Bc.", u"Bloco", u"Bl.",
                      u"Caminho", u"Cam.", u"Campo", u"Chácara", u"Colônia",
-                     u"Condomínio", u"Conjunto", u"Cj.", u"Distrito", u"Esplanada", u"Espl.", 
+                     u"Condomínio", u"Conjunto", u"Cj.", u"Distrito", u"Esplanada", u"Espl.",
                      u"Estação", u"Est.", u"Estrada", u"Estr.", u"Favela", u"Fazenda",
                      u"Feira", u"Jardim", u"Jd.", u"Ladeira", u"Lago",
                      u"Lagoa", u"Largo", u"Loteamento", u"Morro", u"Núcleo",
                      u"Parque", u"Pq.", u"Passarela", u"Pátio", u"Praça", u"Pç.", u"Quadra",
-                     u"Recanto", u"Residencial", u"Resid.", u"Rua", u"R.", 
+                     u"Recanto", u"Residencial", u"Resid.", u"Rua", u"R.",
                      u"Setor", u"Sítio", u"Travessa", u"Tv.", u"Trecho", u"Trevo",
                      u"Vale", u"Vereda", u"Via", u"V.", u"Viaduto", u"Viela",
                      u"Vila", u"Vl." ]

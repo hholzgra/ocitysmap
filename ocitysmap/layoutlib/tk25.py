@@ -53,8 +53,8 @@ LOG = logging.getLogger('ocitysmap')
 
 class TK25Renderer(Renderer):
     """
-    This Renderer creates a single page map similar to German TK25 
-    "Messtischblatt" 
+    This Renderer creates a single page map similar to German TK25
+    "Messtischblatt"
     """
 
     name = 'tk25'
@@ -151,7 +151,7 @@ class TK25Renderer(Renderer):
         ctx.stroke()
         ctx.restore()
 
-        # Wider outer frame 
+        # Wider outer frame
         ctx.save()
         ctx.set_source_rgb(0,0,0)
         ctx.set_line_width(5)

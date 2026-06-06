@@ -53,7 +53,7 @@ try:
     # new Proj library versions (e.g. v9 on Debian 12)
     _proj_wgs84  = mapnik.Projection("epsg:4326")
     _proj_google = mapnik.Projection("epsg:3857")
-except Exception: 
+except Exception:
     # old Proj libraray versions (e.g. v7 on Debian 11)
     _proj_wgs84  = mapnik.Projection("+init=epsg:4326")
     _proj_google = mapnik.Projection( "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 " \

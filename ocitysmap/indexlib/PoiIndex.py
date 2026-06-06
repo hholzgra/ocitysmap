@@ -113,7 +113,7 @@ class PoiIndex(Index):
             LOG.warning('invalid json in POI file: %s' % e)
             return False
 
-        title = j['title']        
+        title = j['title']
         self._center_lat = float(j['center_lat'])
         self._center_lon = float(j['center_lon'])
 
@@ -131,7 +131,7 @@ class PoiIndex(Index):
                     pass
 
             self._categories.append(c)
-        return True        
+        return True
 
     def write_to_csv(self, title, output_filename):
         return

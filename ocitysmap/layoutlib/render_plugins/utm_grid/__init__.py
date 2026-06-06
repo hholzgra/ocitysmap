@@ -86,7 +86,7 @@ def render(renderer, ctx):
             return 'epsg:327%02d' % number
 
     def utm_zonefield2proj(number, letter):
-        # return proj4 / pyproj projection string for UTM zone 
+        # return proj4 / pyproj projection string for UTM zone
         if letter.upper() <= 'M':
             south = '+south '
         else:
@@ -199,7 +199,7 @@ def render(renderer, ctx):
             ctx.save()
             ctx.set_font_size(pt2px(8))
             ctx.set_source_rgba(0, 0, 0.5, 0.5)
-            draw_halotext_center(ctx, beautify_km(v*factor/1000), x1 + 18, pt2px(8 + renderer.PRINT_SAFE_MARGIN_PT)) 
+            draw_halotext_center(ctx, beautify_km(v*factor/1000), x1 + 18, pt2px(8 + renderer.PRINT_SAFE_MARGIN_PT))
             ctx.restore()
 
         # draw the horizontal grid lines

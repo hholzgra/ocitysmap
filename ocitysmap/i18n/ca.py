@@ -68,8 +68,8 @@ class i18n_ca_generic(i18n):
                      u"Venelle", u"Villa", u"Virage"
                    ]
 
-    DETERMINANTS = [ u" dels", u" de los", 
-                     u" de les", u" de ses", u" de las",    
+    DETERMINANTS = [ u" dels", u" de los",
+                     u" de les", u" de ses", u" de las",
                      u" de la", u" de sa", u" de na",
                      u" del", u" de lo", u" d'en",
                      u" d'", u" de l'", u" de s'", u" de n'",
