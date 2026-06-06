@@ -50,25 +50,25 @@ def color2hex(name):
 
 # get first match for a JSONpath search only
 def first(json, path, default=None):
-  try:
-    expr = parse(path)
-    list = expr.find(json)
-    return list[0].value
-  except Exception:
-    return default
+    try:
+        expr = parse(path)
+        list = expr.find(json)
+        return list[0].value
+    except Exception:
+        return default
 
 # confinence wrapper for JSONpath parse->find
 def find(json, path):
-  return parse(path).find(json)
+    return parse(path).find(json)
 
 # return JSONpath find() results as flattened array
 # where the dict key is converted to a plain string
 # for easy lookups by key
 def flattened(json, path):
-  result = {}
-  for match in find(json, path):
-    result[str(match.path)] = match.value
-  return result
+    result = {}
+    for match in find(json, path):
+        result[str(match.path)] = match.value
+    return result
 
 # UMAP files store style properties in different places
 # depending on where in the UMAP file we are, so we
@@ -222,7 +222,7 @@ class UmapStylesheet(Stylesheet):
         licence = first(umap, "$.properties.licence.name", "")
         credit  = first(umap, "$.properties.shortCredit" , "")
         if licence or credit:
-          self.annotation = "Umap overlay © %s %s" % (licence, credit)
+            self.annotation = "Umap overlay © %s %s" % (licence, credit)
 
         # override default properties with global defaults from the file
         get_default_properties(umap, umap_defaults, create_copy=False)

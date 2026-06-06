@@ -150,7 +150,7 @@ def guess_filetype(import_file):
         if need_close:
             import_file.close()
         else:
-         import_file.seek(0) # rewind to start
+            import_file.seek(0) # rewind to start
 
     return result
 
@@ -908,7 +908,7 @@ class OCitySMap:
                 surface.set_metadata(cairo.PDFMetadata.KEYWORDS,
                                      "OpenStreetMap, MapOSMatic, OCitysMap")
             except Exception:
-              LOG.warning("Installed Cairo version does not support PDF annotations yet")
+                LOG.warning("Installed Cairo version does not support PDF annotations yet")
 
         elif output_format == 'ps':
             surface = cairo.PSSurface(tmp_output_filename,

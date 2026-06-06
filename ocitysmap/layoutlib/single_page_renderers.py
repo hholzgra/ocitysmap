@@ -234,7 +234,7 @@ class SinglePageRenderer(Renderer):
         # Commit the internal rendering stack of the map
         self._map_canvas.render()
         for overlay_canvas in self._overlay_canvases:
-           overlay_canvas.render()
+            overlay_canvas.render()
 
     def _get_map_coords(self, index_position):
         """ Determine actual map output dimensions
