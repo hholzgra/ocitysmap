@@ -28,7 +28,7 @@ def render(renderer, ctx):
                 renderer._marker(category.color, str(n), lat, lon, ctx, renderer.dpi)
 
         # place "you are here" circle if coordinates are given
-        if renderer.street_index.lat != False:
+        if renderer.street_index.lat is not False:
             x,y = renderer._latlon2xy(renderer.street_index.lat, renderer.street_index.lon, renderer.dpi)
             ctx.save()
             ctx.translate(x, y)
