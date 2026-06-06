@@ -13,7 +13,7 @@ _RENDERERS = [
     SinglePageRendererIndexOnSide,
     SinglePageRendererIndexBottom,
     SinglePageRendererIndexExtraPage,
-#    TK25Renderer,
+    # TK25Renderer,
     MultiPageRenderer,
     ]
 

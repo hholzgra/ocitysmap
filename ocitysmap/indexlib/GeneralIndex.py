@@ -142,18 +142,17 @@ SELECT %(columns)s,
         subquery_parts = []
 
         for table in tables:
-                subquery_parts.append( subquery_template % {
-                    'table': table,
-                    'columns': ",".join(column_expressions),
-                    'where': where,
-                    'wkb_limits': ("ST_TRANSFORM(ST_GEOMFROMTEXT('%s' , 4326), 3857)"
-                                   % (self._polygon_wkt,)),
-                    'aggregate': "ST_LINEMERGE(ST_COLLECT(" if group else "",
-                    'aggreg_end': "))" if group else "",
-                    'order_group': ("GROUP BY %s" % (",".join(column_aliases))) if group else "",
-                    'join': join or '',
-                }
-                )
+            subquery_parts.append( subquery_template % {
+                'table': table,
+                'columns': ",".join(column_expressions),
+                'where': where,
+                'wkb_limits': ("ST_TRANSFORM(ST_GEOMFROMTEXT('%s' , 4326), 3857)"
+                               % (self._polygon_wkt,)),
+                'aggregate': "ST_LINEMERGE(ST_COLLECT(" if group else "",
+                'aggreg_end': "))" if group else "",
+                'order_group': ("GROUP BY %s" % (",".join(column_aliases))) if group else "",
+                'join': join or '',
+            })
 
         # finally we take all the subquery parts, join them with UNION,
         # and wrap them by the outer query returning the actual result

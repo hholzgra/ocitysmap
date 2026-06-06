@@ -37,20 +37,20 @@ from shapely.geometry import LineString
 LOG = logging.getLogger('ocitysmap')
 
 class GpxProcessor:
-        def __init__(self, gpx_file):
-                gpx_fp = codecs.open(gpx_file, 'r', 'utf-8-sig')
-                self.gpx = gpxpy.parse(gpx_fp)
-                gpx_fp.close()
+    def __init__(self, gpx_file):
+        gpx_fp = codecs.open(gpx_file, 'r', 'utf-8-sig')
+        self.gpx = gpxpy.parse(gpx_fp)
+        gpx_fp.close()
+            
+    def getBoundingBox(self):
+        b = self.gpx.get_bounds()
+        return BoundingBox(b.min_latitude, b.min_longitude, b.max_latitude, b.max_longitude)
 
-        def getBoundingBox(self):
-                b = self.gpx.get_bounds()
-                return BoundingBox(b.min_latitude, b.min_longitude, b.max_latitude, b.max_longitude)
+    def getTitle(self):
+        return self.gpx.name.strip()
 
-        def getTitle(self):
-                return self.gpx.name.strip()
-
-        def getAnnotation(self):
-                return None
+    def getAnnotation(self):
+        return None
 
 class GpxStylesheet(Stylesheet):
     def __init__(self, gpx_file, tmpdir, track_color = '#7f7f7f'):
