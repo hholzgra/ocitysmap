@@ -23,7 +23,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import cairo
+# import cairo
 import gi
 gi.require_version('Rsvg', '2.0')
 gi.require_version('Pango', '1.0')
@@ -36,7 +36,6 @@ assert mapnik.mapnik_version() >= 300000, \
     "for more details." % mapnik.mapnik_version_string()
 import math
 import os
-import re
 import shapely.wkt
 import sys
 from colour import Color

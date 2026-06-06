@@ -16,14 +16,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import psycopg2
 from gettext import gettext
 
-from . import commons
-import ocitysmap
 import ocitysmap.layoutlib.commons as UTILS
 
-from .GeneralIndex import GeneralIndex, GeneralIndexCategory, GeneralIndexItem
+from .GeneralIndex import GeneralIndex
 
 import logging
 LOG = logging.getLogger('ocitysmap')

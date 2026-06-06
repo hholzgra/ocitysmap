@@ -22,24 +22,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
 import cairo
-import gi
-gi.require_version('Rsvg', '2.0')
-gi.require_version('Pango', '1.0')
-gi.require_version('PangoCairo', '1.0')
-from gi.repository import Rsvg, Pango, PangoCairo
 import logging
-import math
-import re
-from functools import reduce
 
 from . import commons
 import ocitysmap.layoutlib.commons as UTILS
-
-from colour import Color
-
-import draw_utils
 
 
 LOG = logging.getLogger('ocitysmap')

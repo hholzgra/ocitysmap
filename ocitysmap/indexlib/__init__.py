@@ -28,15 +28,10 @@ if __name__ == '__main__':
     import os
     import psycopg2
     import random
-    import string
-
-    import ocitysmap.layoutlib.commons as UTILS
 
     from ocitysmap import i18n, coords
     from ocitysmap.maplib.grid import Grid
-    from StreetIndex import StreetIndex, StreetIndexRenderer, StreetIndexCategory
-    from HealthIndex import HealthIndex
-    from TreeIndex import TreeIndex
+    from StreetIndex import StreetIndex, StreetIndexRenderer
 
     logging.basicConfig(level=logging.DEBUG)
     random.seed(42)

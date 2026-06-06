@@ -27,22 +27,17 @@ import os
 import cairo
 import gi
 gi.require_version('Rsvg', '2.0')
-gi.require_version('Pango', '1.0')
-gi.require_version('PangoCairo', '1.0')
-from gi.repository import Rsvg, Pango, PangoCairo
+from gi.repository import Rsvg
 import codecs
 import json
 from colour import Color
 import re
 from gettext import gettext
 
-from . import commons
 import ocitysmap
 import ocitysmap.layoutlib.commons as UTILS
-from ocitysmap.layoutlib.abstract_renderer import Renderer
-import draw_utils
 
-from .commons import Index, IndexCategory, IndexItem, IndexDoesNotFitError
+from .commons import Index, IndexCategory, IndexItem # TODO:  IndexDoesNotFitError
 from .renderer import IndexRenderingArea
 
 import logging

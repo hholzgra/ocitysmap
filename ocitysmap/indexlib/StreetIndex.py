@@ -24,14 +24,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import csv
 import locale
-from natsort import natsorted, natsort_keygen, ns
-import psycopg2
-import datetime
+from natsort import natsort_keygen, ns
 from gettext import gettext
 
-from . import commons
 import ocitysmap
 import ocitysmap.layoutlib.commons as UTILS
 

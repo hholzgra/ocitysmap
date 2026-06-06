@@ -36,7 +36,6 @@ import codecs
 import copy
 from colour import Color
 from jsonpath_ng import parse
-from pprint import pformat
 import validators
 import glob
 

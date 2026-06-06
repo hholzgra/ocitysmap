@@ -19,7 +19,6 @@
 
 
 import logging
-import math
 
 from . import shapes
 

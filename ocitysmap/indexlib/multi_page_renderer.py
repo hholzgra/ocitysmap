@@ -18,16 +18,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import cairo
-import math
-import gi
-gi.require_version('Rsvg', '2.0')
-gi.require_version('Pango', '1.0')
-gi.require_version('PangoCairo', '1.0')
-from gi.repository import Rsvg, Pango, PangoCairo
 
-import draw_utils
 import ocitysmap.layoutlib.commons as UTILS
-from ocitysmap.layoutlib.abstract_renderer import Renderer
 
 import logging
 LOG = logging.getLogger('ocitysmap')
@@ -45,7 +37,6 @@ if __name__ == '__main__':
     import string
 
     import commons
-    import coords
 
     width = UTILS.convert_mm_to_pt(210)
     height = UTILS.convert_mm_to_pt(297)

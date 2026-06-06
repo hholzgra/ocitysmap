@@ -1,8 +1,8 @@
-import cairo
+# import cairo
 from gi.repository import Rsvg
 import math
 import os
-import psycopg2
+# import psycopg2
 import logging
 
 LOG = logging.getLogger('ocitysmap')

@@ -16,29 +16,21 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import cairo
 import math
-import os
 import logging
-import mapnik
 import utm
 
-from shapely.geometry import Point
-from shapely.ops import transform
-from functools import partial
-
-from ocitysmap.draw_utils import draw_simpletext_center, draw_halotext_center
+from ocitysmap.draw_utils import draw_halotext_center
 from ocitysmap.layoutlib.commons import convert_pt_to_dots
-from ocitysmap.layoutlib.abstract_renderer import Renderer
 
 LOG = logging.getLogger('ocitysmap')
 
 # draw a blue UTM grid with 1km grid size on top of the map
 
 def render(renderer, ctx):
-    def pt2px(dot):
+    def pt2px(pt):
         # convert dots into screen pixels
-        return dot * renderer.dpi / 72.0
+        return convert_pt_to_dots(pt, renderer.dpi)
 
     def superscript(i):
         # return the unicode superscript form of a single digit

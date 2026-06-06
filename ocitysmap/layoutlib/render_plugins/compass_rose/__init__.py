@@ -1,4 +1,3 @@
-import cairo
 import os
 import sys
 import logging

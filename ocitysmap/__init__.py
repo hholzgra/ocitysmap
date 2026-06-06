@@ -96,7 +96,7 @@ from . import coords
 from . import i18n
 from .indexlib.commons import IndexDoesNotFitError, IndexEmptyError
 from .layoutlib import renderers
-from .layoutlib import commons
+from .layoutlib.commons import convert_mm_to_dots, convert_pt_to_dots, PT_PER_INCH
 from .indexlib import indexers
 from .stylelib import Stylesheet
 
@@ -842,7 +842,7 @@ class OCitySMap:
         LOG.debug('Rendering to %s format...' % config.output_format)
         config.status_update(_("Rendering %s") % config.output_format)
 
-        dpi = layoutlib.commons.PT_PER_INCH
+        dpi = PT_PER_INCH
 
         renderer = renderer_cls(self._db, config, tmpdir, dpi, file_prefix)
 
@@ -853,13 +853,13 @@ class OCitySMap:
             except configparser.NoOptionError:
                 dpi = OCitySMap.DEFAULT_RENDERING_PNG_DPI
 
-            w_px = int(layoutlib.commons.convert_mm_to_dots(config.paper_width_mm, dpi))
-            h_px = int(layoutlib.commons.convert_mm_to_dots(config.paper_height_mm, dpi))
+            w_px = int(convert_mm_to_dots(config.paper_width_mm, dpi))
+            h_px = int(convert_mm_to_dots(config.paper_height_mm, dpi))
 
             if w_px > CAIRO_MAX_PIXELS or h_px > CAIRO_MAX_PIXELS:
-                dpi = layoutlib.commons.PT_PER_INCH
-                w_px = int(layoutlib.commons.convert_pt_to_dots(renderer.paper_width_pt, dpi))
-                h_px = int(layoutlib.commons.convert_pt_to_dots(renderer.paper_height_pt, dpi))
+                dpi = PT_PER_INCH
+                w_px = int(convert_pt_to_dots(renderer.paper_width_pt, dpi))
+                h_px = int(convert_pt_to_dots(renderer.paper_height_pt, dpi))
                 if w_px > CAIRO_MAX_PIXELS or h_px > CAIRO_MAX_PIXELS:
                     LOG.warning("Paper size too large for PNG output, skipping")
                     return

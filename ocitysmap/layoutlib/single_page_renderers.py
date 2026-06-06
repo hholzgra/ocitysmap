@@ -23,16 +23,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
-from string import Template
 import cairo
 import gi
-gi.require_version('Rsvg', '2.0')
 gi.require_version('Pango', '1.0')
 gi.require_version('PangoCairo', '1.0')
-from gi.repository import Rsvg, Pango, PangoCairo
-import datetime
-import locale
+from gi.repository import Pango, PangoCairo
 import logging
 import mapnik
 assert mapnik.mapnik_version() >= 300000, \
@@ -43,10 +38,9 @@ from copy import copy
 from gettext import gettext, ngettext
 
 from ocitysmap.layoutlib import commons
-import ocitysmap
 from ocitysmap.layoutlib.abstract_renderer import Renderer
 from ocitysmap.indexlib.GeneralIndex import GeneralIndexRenderer
-from ocitysmap.indexlib.StreetIndex import StreetIndex
+# from ocitysmap.indexlib.StreetIndex import StreetIndex
 from ocitysmap.indexlib.HealthIndex import HealthIndex
 from ocitysmap.indexlib.NotesIndex import NotesIndex
 from ocitysmap.indexlib.TreeIndex import TreeIndex
@@ -54,10 +48,8 @@ from ocitysmap.indexlib.PoiIndex import PoiIndexRenderer, PoiIndex
 from ocitysmap.indexlib.commons import IndexDoesNotFitError, IndexEmptyError
 import draw_utils
 from ocitysmap.maplib.map_canvas import MapCanvas
-from ocitysmap.stylelib import GpxStylesheet, UmapStylesheet
-
-
-import time
+from ocitysmap.stylelib.Gpx import GpxStylesheet
+from ocitysmap.stylelib.Umap import UmapStylesheet
 
 
 LOG = logging.getLogger('ocitysmap')

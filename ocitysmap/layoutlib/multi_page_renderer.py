@@ -33,10 +33,8 @@ import os
 import gi
 gi.require_version('Rsvg', '2.0')
 gi.require_version('Pango', '1.0')
-gi.require_version('PangoCairo', '1.0')
-from gi.repository import Rsvg, Pango, PangoCairo
+from gi.repository import Rsvg, Pango
 import shapely.wkt
-import sys
 from string import Template
 from functools import cmp_to_key
 from copy import copy
@@ -47,7 +45,6 @@ import html
 from submodules.robinson import robinson
 from gettext import gettext
 
-import ocitysmap
 import coords
 from . import commons
 from ocitysmap.layoutlib.abstract_renderer import Renderer
@@ -60,7 +57,8 @@ from ocitysmap import draw_utils, maplib
 from ocitysmap.maplib.map_canvas import MapCanvas
 from ocitysmap.maplib.grid import Grid
 from ocitysmap.maplib.overview_grid import OverviewGrid
-from ocitysmap.stylelib import GpxStylesheet, UmapStylesheet
+from ocitysmap.stylelib.Gpx import GpxStylesheet
+from ocitysmap.stylelib.Umap import UmapStylesheet
 
 LOG = logging.getLogger('ocitysmap')
 

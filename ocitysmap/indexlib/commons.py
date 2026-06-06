@@ -26,19 +26,16 @@
 import os
 import gi
 gi.require_version('Pango', '1.0')
-from gi.repository import GObject, Pango
+from gi.repository import Pango
 import sys
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from gettext import gettext
 
 import logging
 LOG = logging.getLogger('ocitysmap')
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-import draw_utils
-
-from colour import Color
 
 class IndexEmptyError(Exception):
     """This exception is raised when no data is to be rendered in the index."""

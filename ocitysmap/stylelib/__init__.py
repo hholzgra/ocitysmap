@@ -23,10 +23,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import sys
 import logging
 import configparser
-import traceback
 
 
 LOG = logging.getLogger('ocitysmap')
@@ -149,6 +147,4 @@ class Stylesheet:
 
         return results
 
-from .Gpx import GpxStylesheet
-from .Umap import UmapStylesheet
 

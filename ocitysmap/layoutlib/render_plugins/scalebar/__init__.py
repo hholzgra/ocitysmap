@@ -1,12 +1,5 @@
-import cairo
-import math
-import os
-import psycopg2
 import logging
-import mapnik
 from ocitysmap.draw_utils import draw_simpletext_center
-from ocitysmap.layoutlib.commons import convert_pt_to_dots
-from ocitysmap.layoutlib.abstract_renderer import Renderer
 from ocitysmap.layoutlib.multi_page_renderer import MultiPageRenderer
 from math import floor, log10
 

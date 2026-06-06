@@ -16,8 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import locale
-from natsort import natsorted, natsort_keygen, ns
+from natsort import natsorted
 from itertools import groupby
 from functools import reduce
 import csv
@@ -29,12 +28,10 @@ from gettext import gettext
 
 import cairo
 import gi
-gi.require_version('Rsvg', '2.0')
 gi.require_version('Pango', '1.0')
 gi.require_version('PangoCairo', '1.0')
-from gi.repository import Rsvg, Pango, PangoCairo
+from gi.repository import Pango, PangoCairo
 import draw_utils
-from ocitysmap.layoutlib.abstract_renderer import Renderer
 
 from .commons import Index, IndexCategory, IndexItem, IndexDoesNotFitError, IndexEmptyError
 import ocitysmap.layoutlib.commons as UTILS
@@ -47,7 +44,7 @@ LOG = logging.getLogger('ocitysmap')
 PAGE_NUMBER_MARGIN_PT  = UTILS.convert_mm_to_pt(10)
 
 class GeneralIndex(Index):
-    name = "Genaral"
+    name = "General"
     description = gettext(u"(* General Index *)")
 
     def __init__(self, db, renderer, bounding_box, polygon_wkt, i18n, page_number=None):
