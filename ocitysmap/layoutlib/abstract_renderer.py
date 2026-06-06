@@ -245,7 +245,7 @@ class Renderer(ABC):
                                          grid_legend_margin_dots/2.0, y)
 
             # On the right clear the bottom corner of the vertical label
-            if (i < map_grid.vert_count -1):
+            if (i < map_grid.vert_count - 1):
                 draw_utils.draw_halotext_center(ctx, label,
                                          map_area_width_dots -
                                          grid_legend_margin_dots/2.0, y)
@@ -413,10 +413,10 @@ class Renderer(ABC):
         horiz_angle_span = abs(bbox.get_top_left()[0] - bbox.get_bottom_right()[0])
 
         y = bbox.get_top_left()[0] - lat
-        y*= (dpi/72.0) * self._map_coords[3] / horiz_angle_span
+        y *= (dpi / 72.0) * self._map_coords[3] / horiz_angle_span
 
         x = lon - bbox.get_top_left()[1]
-        x*= (dpi/72.0) * self._map_coords[2] / vert_angle_span
+        x *= (dpi / 72.0) * self._map_coords[2] / vert_angle_span
 
         return x,y
 
@@ -442,8 +442,8 @@ class Renderer(ABC):
 
         scale = (50.0  / svg.props.height) * (dpi / 72.0)
 
-        x-= svg.props.width  * scale/2
-        y-= svg.props.height * scale
+        x -= svg.props.width  * scale / 2
+        y -= svg.props.height * scale
 
         ctx.save()
         ctx.translate(x, y)

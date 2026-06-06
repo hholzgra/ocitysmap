@@ -56,8 +56,8 @@ def compile_mo(languages):
     for l in languages:
         print(" * %s" % l)
         subprocess.check_call(['msgfmt', '-o',
-                               'locale/%s/LC_MESSAGES/ocitysmap.mo' %l,
-                               'locale/%s/LC_MESSAGES/ocitysmap.po' %l])
+                               'locale/%s/LC_MESSAGES/ocitysmap.mo' % l,
+                               'locale/%s/LC_MESSAGES/ocitysmap.po' % l])
     return
 
 def create_language(country_code):
@@ -69,7 +69,7 @@ def create_language(country_code):
 
 def get_languages():
     l = os.listdir('locale')
-    return filter(lambda s: s!='ocitysmap.pot', l)
+    return filter(lambda s: s != 'ocitysmap.pot', l)
 
 def main():
     usage = '%prog [options]\n WARNING: This program should be called from ocitysmap/ directory!'

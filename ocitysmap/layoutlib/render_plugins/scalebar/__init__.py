@@ -45,10 +45,10 @@ def render(renderer, ctx):
         x += renderer.grayed_margin_pt
 
     y = m.height
-    y-= barBuffer+lBuffer+lBuffer+tickHeight
+    y -= barBuffer+lBuffer + lBuffer + tickHeight
 
-    w = pxScaleBar + 2*lBuffer
-    h = lBuffer+lBuffer+tickHeight
+    w = pxScaleBar + 2 * lBuffer
+    h = 2 * lBuffer + tickHeight
 
     ctx.save()
 

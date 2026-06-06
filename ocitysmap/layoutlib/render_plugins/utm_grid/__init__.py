@@ -62,11 +62,11 @@ def render(renderer, ctx):
         # in larger size, as these change value more often
         txt = ''
 
-        t1 = int(km/100)
-        t2 = int(km)%100
+        t1 = int(km / 100)
+        t2 = int(km) % 100
 
-        t11 =int(t1/10)
-        t12 =int(t1)%10
+        t11 = int(t1 / 10)
+        t12 = int(t1) % 10
 
         if t11 > 0:
             txt = txt + superscript(t11)

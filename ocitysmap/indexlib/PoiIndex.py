@@ -148,7 +148,7 @@ class PoiIndexRenderer:
         if (freedom_direction != 'width' or alignment != 'right'):
             raise ValueError('Incompatible freedom direction and alignment!')
 
-        x+= w * 0.2
+        x += w * 0.2
         w = w * 0.8
 
         area = IndexRenderingArea("default_poi_style",
@@ -238,7 +238,7 @@ class PoiIndexRenderer:
         svg = rsvg.new_from_data(data.encode())
 
         # scale the marker to correct size
-        scale = 50.0 * f/ svg.props.height
+        scale = 50.0 * f / svg.props.height
         x += 35*f
 
         # draw the marker
