@@ -346,7 +346,7 @@ class MultiPageRenderer(Renderer):
                              'shade-overview')
         shade.add_shade_from_wkt(shade_wkt)
 
-        if self.rc.osmid != None:
+        if self.rc.osmid is not None:
             self.overview_canvas.add_shape_file(shade)
         self.overview_canvas.add_shape_file(grid_shape,
                                   self.rc.stylesheet.grid_line_color, 1,
@@ -435,7 +435,7 @@ class MultiPageRenderer(Renderer):
                 os.path.join(self.tmpdir, 'grid%d.shp' % i))
 
             map_canvas.add_shape_file(shade)
-            if self.rc.osmid != None:
+            if self.rc.osmid is not None:
                 map_canvas.add_shape_file(shade_contour,
                                           self.rc.stylesheet.shade_color_2,
                                           self.rc.stylesheet.shade_alpha_2)
@@ -976,13 +976,13 @@ class MultiPageRenderer(Renderer):
                 current_col = self.page_disposition[line_nb].index(
                                                              map_number)
                 break
-        if current_line == None:
+        if current_line is None:
             # page not referenced
             return
 
         # north arrow
         for line_nb in reversed(range(current_line)):
-            if self.page_disposition[line_nb][current_col] != None:
+            if self.page_disposition[line_nb][current_col] is not None:
                 north_arrow = self.page_disposition[line_nb][current_col]
                 ctx.save()
                 ctx.translate(self._usable_area_width_pt/2,
@@ -994,7 +994,7 @@ class MultiPageRenderer(Renderer):
 
         # south arrow
         for line_nb in range(current_line + 1, self.nb_pages_height):
-            if self.page_disposition[line_nb][current_col] != None:
+            if self.page_disposition[line_nb][current_col] is not None:
                 south_arrow = self.page_disposition[line_nb][current_col]
                 ctx.save()
                 ctx.translate(self._usable_area_width_pt/2,
@@ -1009,7 +1009,7 @@ class MultiPageRenderer(Renderer):
 
         # west arrow
         for col_nb in reversed(range(0, current_col)):
-            if self.page_disposition[current_line][col_nb] != None:
+            if self.page_disposition[current_line][col_nb] is not None:
                 west_arrow = self.page_disposition[current_line][col_nb]
                 ctx.save()
                 ctx.translate(
@@ -1023,7 +1023,7 @@ class MultiPageRenderer(Renderer):
 
         # east arrow
         for col_nb in range(current_col + 1, self.nb_pages_width):
-            if self.page_disposition[current_line][col_nb] != None:
+            if self.page_disposition[current_line][col_nb] s not None:
                 east_arrow = self.page_disposition[current_line][col_nb]
                 ctx.save()
                 ctx.translate(

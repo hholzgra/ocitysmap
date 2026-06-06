@@ -333,7 +333,7 @@ def main():
         if not options.bbox:
             bbox = osmid_bbox
 
-    if bbox == None:
+    if bbox is None:
         parser.error('No bounding box found, add --bbox=... option')
 
     if options.output_title:

@@ -177,7 +177,7 @@ class PoiIndexRenderer:
         x = 5*f
 
         # show logo if one is defined and found
-        if logo != None:
+        if logo is not None:
             logo_path = os.path.abspath(os.path.join(
                 os.path.dirname(__file__), '..', '..', 'templates', 'poi_markers', 'Font-Awesome-SVG-PNG', 'white', 'svg', logo + '.svg'))
 
@@ -260,7 +260,7 @@ class PoiIndexRenderer:
         ctx.restore()
 
         # add item logo if defined and found
-        if logo != None:
+        if logo is not None:
             logo_path = os.path.abspath(os.path.join(
                 os.path.dirname(__file__), '..', '..', 'templates', 'poi_markers', 'Font-Awesome-SVG-PNG', 'black', 'svg', logo + '.svg'))
 

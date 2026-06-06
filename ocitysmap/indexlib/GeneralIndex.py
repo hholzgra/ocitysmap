@@ -490,7 +490,7 @@ class GeneralIndexItem(IndexItem):
         """
 
         # Fallbacks in case we dont't have a wrapping label
-        if label_layout == None:
+        if label_layout is None:
             label_layout = column_layout
         if label_height == 0:
             label_height = fheight
