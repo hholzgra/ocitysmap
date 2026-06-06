@@ -41,7 +41,7 @@ class GpxProcessor:
         gpx_fp = codecs.open(gpx_file, 'r', 'utf-8-sig')
         self.gpx = gpxpy.parse(gpx_fp)
         gpx_fp.close()
-            
+
     def getBoundingBox(self):
         b = self.gpx.get_bounds()
         return BoundingBox(b.min_latitude, b.min_longitude, b.max_latitude, b.max_longitude)
