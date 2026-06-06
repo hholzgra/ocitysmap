@@ -55,4 +55,3 @@ class i18n_pt_br_generic(i18n):
 
     def language_desc(self):
         return 'Português do Brasil (%s)' % self.language
-

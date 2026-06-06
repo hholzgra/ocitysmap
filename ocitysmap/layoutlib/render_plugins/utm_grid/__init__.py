@@ -233,4 +233,3 @@ def render(renderer, ctx):
 
     # perform the actual work
     show_grid(lat1, lon1, lat2, lon2)
-

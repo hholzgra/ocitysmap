@@ -109,4 +109,3 @@ class i18n_ast_generic(i18n):
 
     def language_desc(self):
         return 'Asturianu (%s)' % self.language
-

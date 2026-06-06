@@ -119,4 +119,3 @@ class i18n_ca_generic(i18n):
 
     def language_desc(self):
         return 'Català (%s)' % self.language
-

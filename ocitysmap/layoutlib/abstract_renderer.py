@@ -523,4 +523,3 @@ class Renderer(ABC):
                     annotations['sources'].append(overlay.datasource)
 
         return annotations
-

@@ -23,5 +23,3 @@ def get_indexer_class_by_name(name):
 def get_indexers():
     """Returns the list of available indexers' names."""
     return _INDEXERS
-
-

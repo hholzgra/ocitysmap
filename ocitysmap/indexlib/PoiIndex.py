@@ -341,4 +341,3 @@ class PoiIndexRenderer:
                 ctx.translate(0, dy + 10)
 
         ctx.restore()
-

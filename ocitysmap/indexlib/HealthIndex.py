@@ -79,4 +79,3 @@ class HealthIndex(GeneralIndex):
                                          AND tags->'healthcare' != ''""",
                                       category_mapping = facilities,
         )
-

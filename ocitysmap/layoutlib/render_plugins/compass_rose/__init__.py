@@ -51,4 +51,3 @@ def render(renderer, ctx):
     ctx.stroke()
 
     ctx.restore()
-

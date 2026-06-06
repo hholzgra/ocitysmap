@@ -536,4 +536,3 @@ def anchor(ctx, name):
         ctx.tag_end(cairo.TAG_DEST)
     except Exception:
         pass
-

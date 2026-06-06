@@ -103,4 +103,3 @@ class i18n_ru_generic(i18n):
 
     def language_desc(self):
         return 'Россия (%s)' % self.language
-

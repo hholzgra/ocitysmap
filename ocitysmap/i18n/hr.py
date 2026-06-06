@@ -44,4 +44,3 @@ class i18n_hr_HR(i18n):
 
     def language_desc(self):
         return 'Magyarország (%s)' % self.language
-

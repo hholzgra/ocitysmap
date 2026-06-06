@@ -45,4 +45,3 @@ class i18n_al_generic(i18n):
 
     def language_desc(self):
         return 'Shqipëria (%s)' % self.language
-

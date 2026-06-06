@@ -146,5 +146,3 @@ class Stylesheet:
                 LOG.warning("%s style/overlay '%s' not found or incomplete" % (type, name.strip()))
 
         return results
-
-

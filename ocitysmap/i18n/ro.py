@@ -33,4 +33,3 @@ class i18n_ro_generic(i18n):
 
     def language_desc(self):
         return 'Română (%s)' % self.language
-

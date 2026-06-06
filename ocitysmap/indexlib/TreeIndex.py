@@ -54,4 +54,3 @@ class TreeIndex(GeneralIndex):
                                       group=False,
                                       debug=False,
         )
-

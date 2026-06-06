@@ -45,4 +45,3 @@ class i18n_ar_generic(i18n):
 
     def language_desc(self):
         return 'العربية (%s)' % self.language
-

@@ -39,4 +39,3 @@ class i18n_tr_generic(i18n):
 
     def language_desc(self):
         return 'Türkçe (%s)' % self.language
-

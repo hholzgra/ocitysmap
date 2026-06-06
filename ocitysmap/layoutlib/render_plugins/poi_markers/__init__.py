@@ -39,4 +39,3 @@ def render(renderer, ctx):
             ctx.set_source_rgba(1, 0, 0, 0.2)
             ctx.fill()
             ctx.restore()
-

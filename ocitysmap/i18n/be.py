@@ -83,4 +83,3 @@ class i18n_be_generic(i18n):
 
     def language_desc(self):
         return 'Беларусь (%s)' % self.language
-

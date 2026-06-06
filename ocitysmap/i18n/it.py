@@ -48,4 +48,3 @@ class i18n_it_generic(i18n):
 
     def language_desc(self):
         return 'Italiano (%s)' % self.language
-

@@ -253,8 +253,3 @@ class StreetIndex(GeneralIndex):
                                       ["'Village'", "name"],
                                       ("TRIM(name) != '' AND place IN (%s)" % places_in),
                                       max_category_items=100)
-
-
-
-
-
