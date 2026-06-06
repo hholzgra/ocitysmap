@@ -272,7 +272,7 @@ def main():
                 if name1 == name2:
                     options.paper_format = format_name
                     break
-            if not options.paper_format in paper_format_names:
+            if options.paper_format not in paper_format_names:
                 parser.error("Requested paper format %s not found. Compatible paper formats are:\n\t%s."
                              % ( options.paper_format,
                                  ', '.join(paper_format_names)))

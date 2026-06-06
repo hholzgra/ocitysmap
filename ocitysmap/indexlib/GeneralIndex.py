@@ -256,7 +256,7 @@ SELECT %(columns)s,
             else:
                 catname = amenity_type
 
-            if not catname in result:
+            if catname not in result:
                 result[catname] = GeneralIndexCategory(catname, is_street=False)
 
             result[catname].items.append(GeneralIndexItem(amenity_name,
