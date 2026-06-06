@@ -109,7 +109,6 @@ class SinglePageRenderer(Renderer):
             else:
                 try:
                     indexer_name = rc.indexer
-                    #indexer_class = globals()[rc.indexer]
                     indexer_class = globals()[rc.indexer+"Index"]
                     # TODO : check that it actually implements a working indexer class
                 except Exception:
@@ -541,9 +540,9 @@ class SinglePageRenderer(Renderer):
         ctx.fill()
         ctx.restore()
 
-        ##
-        ## Draw the map, scaled to fit the designated area
-        ##
+        #
+        # Draw the map, scaled to fit the designated area
+        #
         ctx.save()
 
         # prevent map background from filling the full canvas
@@ -614,9 +613,9 @@ class SinglePageRenderer(Renderer):
                 LOG.warning("Error while rendering overlay: %s\n%s" % (plugin_name, e))
         ctx.restore()
 
-        ##
-        ## Draw the title
-        ##
+        #
+        # Draw the title
+        #
         if self.rc.title:
             ctx.save()
             ctx.translate(safe_margin_dots, safe_margin_dots)
@@ -624,9 +623,9 @@ class SinglePageRenderer(Renderer):
                              title_margin_dots, 'Droid Sans Bold')
             ctx.restore()
 
-        ##
-        ## Draw the index, when applicable
-        ##
+        #
+        # Draw the index, when applicable
+        #
 
         # Update the street_index to reflect the grid's actual position
         if self.grid and self.street_index and self.index_position is not None:
@@ -665,9 +664,9 @@ class SinglePageRenderer(Renderer):
             ctx.stroke()
             ctx.restore()
 
-        ##
-        ## Draw the copyright notice
-        ##
+        #
+        # Draw the copyright notice
+        #
         ctx.save()
 
         # Move to the right position

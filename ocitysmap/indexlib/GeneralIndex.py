@@ -715,11 +715,11 @@ class GeneralIndexRenderer:
         LOG.debug("Rendering the street index within %s at %sdpi..."
                   % (rendering_area, dpi))
 
-        ##
-        ## In the following, the algorithm only manipulates values
-        ## expressed in 'pt'. Only the drawing-related functions will
-        ## translate them to cairo units
-        ##
+        #
+        # In the following, the algorithm only manipulates values
+        # expressed in 'pt'. Only the drawing-related functions will
+        # translate them to cairo units
+        #
 
         ctx.save()
         ctx.move_to(UTILS.convert_pt_to_dots(rendering_area.x, dpi),
@@ -737,9 +737,6 @@ class GeneralIndexRenderer:
                 draw_utils.create_layout_with_font(ctx, header_fd)
         label_layout, label_fascent, label_fheight, label_em = \
                 draw_utils.create_layout_with_font(ctx, label_fd)
-
-        #print "RENDER", header_layout, header_fascent, header_fheight, header_em
-        #print "RENDER", label_layout, label_fascent, label_fheight, label_em
 
         # By OCitysmap's convention, the default resolution is 72 dpi,
         # which maps to the default pangocairo resolution (96 dpi

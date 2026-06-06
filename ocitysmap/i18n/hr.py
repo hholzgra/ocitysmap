@@ -35,7 +35,7 @@ class i18n_hr_HR(i18n):
             the map index, e.g. Paris (Rue de) for French"""
         return name
 
-    ## FIXME: only first letter does not work for Croatian digraphs (dž, lj, nj)
+    # FIXME: only first letter does not work for Croatian digraphs (dž, lj, nj)
     def first_letter_equal(self, a, b):
         """returns True if the letters a and b are equal in the map index,
            e.g. É and E are equals in French map index"""

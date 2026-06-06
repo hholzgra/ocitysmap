@@ -37,15 +37,15 @@ if __name__ == '__main__':
     random.seed(42)
 
     lang = "fr_FR.UTF-8"
-    #lang = "ar_MA.UTF-8"
-    #lang = "zh_CN.utf8"
+    # lang = "ar_MA.UTF-8"
+    # lang = "zh_CN.utf8"
     i18n = i18n.install_translation(lang,
                 os.path.join(os.path.dirname(__file__),
                              "..", "..", "locale"))
 
     bbox = coords.BoundingBox(48.8162, 2.3417, 48.8063, 2.3699) # France
-    #bbox = coords.BoundingBox(34.0322, -6.8648, 34.0073, -6.8133) # Moroco
-    #bbox = bbox = coords.BoundingBox(22.5786, 114.0308, 22.5231, 114.1338) # CN
+    # bbox = coords.BoundingBox(34.0322, -6.8648, 34.0073, -6.8133) # Moroco
+    # bbox = bbox = coords.BoundingBox(22.5786, 114.0308, 22.5231, 114.1338) # CN
 
     # Build the list of index items
     db = psycopg2.connect(user='maposmatic',
@@ -109,9 +109,9 @@ if __name__ == '__main__':
     _render('width', 'right')
     surface.show_page()
 
-    ##
-    ## Now demo with RTL = True
-    ##
+    #
+    # Now demo with RTL = True
+    #
 
     # Map index to grid
     grid = Grid(bbox, rtl = True)

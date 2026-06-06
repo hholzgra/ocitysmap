@@ -59,7 +59,6 @@ class i18n_be_generic(i18n):
         elif matches.group('name') is None:
             return matches.group(0)
         else:
-            #print (matches.group('num_prefix', 'prefix', 'name'))
             return ", ".join((matches.group('name'),
                 " ". join(s.lower()
                     for s in matches.group('num_prefix', 'prefix')

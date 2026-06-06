@@ -487,17 +487,18 @@ class Renderer(ABC):
         else:
             dates['osmyear'] = today.year
 
-        ### OSM data
+
+            # OSM data
         annotations['sources'].append(_(u'Map data © %(osmyear)d OpenStreetMap contributors (see https://osm.org/copyright)') % dates)
 
-        ### our own annotation string
+        # our own annotation string
         created =  _(u'Created using MapOSMatic/OCitySMap on %(date)s.') % dates
         if self.rc.extra_text is not None:
             created = created + " " + self.rc.extra_text
 
         annotations['maposmatic'] = created
 
-        ### process styles and overlays
+        # process styles and overlays
 
         # base style
         if self.rc.stylesheet.annotation != '':

@@ -54,9 +54,9 @@ class i18n_ru_generic_test(unittest.TestCase):
 
             # Not yet implemented, no doubt how to convert name right,
             # there can be different conventions:
-            #(u'Малая Пушкарская улица', u'Пушкарская малая, улица'),
-            #(u'набережная реки Мойки', u'Мойки, реки набережная'),
-            #(u'Большой проспект П.С', u'?'),
+            # (u'Малая Пушкарская улица', u'Пушкарская малая, улица'),
+            # (u'набережная реки Мойки', u'Мойки, реки набережная'),
+            # (u'Большой проспект П.С', u'?'),
 
             # special case - no name, only prefix
             (u"10-я аллея", u"10-я аллея"),
