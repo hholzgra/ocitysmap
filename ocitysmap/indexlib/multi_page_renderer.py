@@ -61,7 +61,7 @@ if __name__ == '__main__':
               'Schools', 'Public buildings']:
         items = []
         for label, location_str in [(rnd_str(40).capitalize(),
-                                     '%s%d-%s%d' \
+                                     '%s%d-%s%d'
                                          % (rnd_str(2,
                                                     string.ascii_uppercase),
                                             random.randint(1,19),

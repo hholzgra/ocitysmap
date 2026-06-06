@@ -257,7 +257,7 @@ class OCitySMap:
         # Read stylesheet configuration
         self.STYLESHEET_REGISTRY = Stylesheet.create_all_from_config(self._parser, locale = language)
         if not self.STYLESHEET_REGISTRY:
-            raise ValueError( \
+            raise ValueError(
                     'OCitySMap configuration does not contain any stylesheet!')
         LOG.debug('Found %d Mapnik stylesheets.' % len(self.STYLESHEET_REGISTRY))
 
@@ -920,7 +920,7 @@ class OCitySMap:
             # We don't render maps into CSV.
             return
         else:
-            raise ValueError( \
+            raise ValueError(
                 'Unsupported output format: %s!' % output_format.upper())
 
         renderer.render(surface, dpi, osm_date)

@@ -567,7 +567,7 @@ class GeneralIndexRenderer:
     """
 
     def __init__(self, i18n, index_categories,
-                 street_index_rendering_styles \
+                 street_index_rendering_styles
                      = [ GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 16',
                                                    'DejaVu 12'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 14',
