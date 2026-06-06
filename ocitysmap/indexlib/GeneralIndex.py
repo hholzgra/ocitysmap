@@ -100,15 +100,15 @@ class GeneralIndex(Index):
 
         Parameters
         ----------
-	tables: list of str
-	    osm2pgsql model tables to retrive data from, one or more of
-	    "point", "line", "polygon", "roads"
-	columns: list of str
+    tables: list of str
+        osm2pgsql model tables to retrive data from, one or more of
+        "point", "line", "polygon", "roads"
+    columns: list of str
             One or more SQL expressions generating result columns
-	where: str
-	    WHERE condition to filter for valid index entries
-	group: bool, optional
-	    Whether to merge multiple items of same category and entry text
+    where: str
+        WHERE condition to filter for valid index entries
+    group: bool, optional
+        Whether to merge multiple items of same category and entry text
 
         Returns
         -------
@@ -210,17 +210,17 @@ SELECT %(columns)s,
         Parameters
         ----------
         db : psycopg2 database connection
-	    The database to retrieve the information from
-	tables: list of str
-	    osm2pgsql model tables to retrive data from, one or more of
-	    "point", "line", "polygon", "roads"
-	columns: list of str
+        The database to retrieve the information from
+    tables: list of str
+        osm2pgsql model tables to retrive data from, one or more of
+        "point", "line", "polygon", "roads"
+    columns: list of str
             Two SQL expressions returning the category name (1st) and
-	    actual index entry text (2nd)
-	where: str
-	    WHERE condition to filter for valid index entries
-	group: bool, optional
-	    Whether to merge multiple items of same category and entry text
+        actual index entry text (2nd)
+    where: str
+        WHERE condition to filter for valid index entries
+    group: bool, optional
+        Whether to merge multiple items of same category and entry text
         category_mapping: dict, optional
             Map SQL category results to more readable values
         max_category_items: int, optional

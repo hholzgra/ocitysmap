@@ -35,9 +35,9 @@ def render(renderer, ctx):
 
     pxScaleBar = dots / renderer.grid.horiz_count
 
-    barBuffer  = pt2px(5) 	# distance from scale bar to edge of image
+    barBuffer  = pt2px(5)     # distance from scale bar to edge of image
     lBuffer    = pt2px(5)      # distance from the line to the end of the background
-    tickHeight = pt2px(15)	# height of the tick marks
+    tickHeight = pt2px(15)    # height of the tick marks
 
     x = barBuffer
     if isinstance(renderer, MultiPageRenderer):
