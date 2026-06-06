@@ -41,7 +41,7 @@ def _camera_view(renderer, ctx, map_scale, surveillance, lat, lon, camera_type, 
                'NNW': 337.5,
              }
 
-             direction = mapping.get(direction, None)
+            direction = mapping.get(direction, None)
 
     if angle and angle.isdigit():
         angle = float(angle)
