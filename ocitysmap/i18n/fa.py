@@ -21,7 +21,7 @@ class i18n_fa_generic(i18n):
                      "بن‌بست شهید", "بنبست شهید", "ب. شهید", "ب.شهید", "ب شهید",
                      "پل شهید", "گذر شهید", "ک شهید", "ک. شهید", "ک.شهید"
                    ]
-    
+
     ### DETERMINANT in Persian is Kasreh. Kasreh (ِ ) almost never appear in names but we just pronounce it. There is some cases that its shape changes to " ٔ " (spaces are for displaying the character alone) or " ی" or "‌ی" (ZWNJ+ی). It's rare that these are present on OSM maps. So for now we could ignore them. But after each APPELLATION there MUST be a space, otherwise it's part of the main name (or maybe a typo).
     DETERMINANTS = [ " "
                    ]
@@ -34,7 +34,7 @@ class i18n_fa_generic(i18n):
 
     # for IndexPageGenerator.upper_unaccent_string
     A_ACCENT = re.compile(r"[اأإ]", re.IGNORECASE | re.UNICODE)
-    
+
     ### following line contains diacritics (The usage of these chars is when we want distinguish between similar words that have the same letters with different pronunciation). Their usage is rare.
     ### There is also character kashida (ـ). this is not a diacritic, but a character that stretch some letters. (This is also rare)
     O_ACCENT = re.compile(r"[ًٌٍَُِْـ]", re.IGNORECASE | re.UNICODE)

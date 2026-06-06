@@ -66,7 +66,7 @@ class TK25Renderer(Renderer):
         Renderer.__init__(self, db, rc, tmpdir, dpi)
 
         self.file_prefix = file_prefix
-        
+
         self._map_coords = self._get_map_coords(None)
 
         # Prepare the map
@@ -173,7 +173,7 @@ class TK25Renderer(Renderer):
         ctx.show_text("52°")
         self._fs(ctx, 4, dpi)
         ctx.show_text("10'")
-        
+
         self._mm_mvto(ctx, 40, 39, dpi)
         draw_utils.draw_text_left(ctx, normal_layout, normal_fascent,
                                   commons.convert_mm_to_dots(40, dpi), commons.convert_mm_to_dots(39, dpi),
@@ -181,7 +181,7 @@ class TK25Renderer(Renderer):
         draw_utils.draw_text_right(ctx, normal_layout, normal_fascent,
                                   commons.convert_mm_to_dots(40, dpi), commons.convert_mm_to_dots(41, dpi),
                                   "30'")
-        
+
         ctx.restore()
 
         cairo_surface.flush()
@@ -214,7 +214,7 @@ class TK25Renderer(Renderer):
         sheetno = yy * 100 + xx
         if sheetno not in tk25_names:
             return None
-        
+
         return sheetno
 
     @staticmethod
@@ -240,10 +240,10 @@ class TK25Renderer(Renderer):
             }
         ]
 
-        
 
-     
-        
+
+
+
 tk25_names = {
     193: "Deutsch Crottingen [Kretingalė]",
     194: "Jakubowo [Jokūbavas]",

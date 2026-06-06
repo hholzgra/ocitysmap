@@ -815,7 +815,7 @@ class MultiPageRenderer(Renderer):
 
         ctx.save()
         self._prepare_page(ctx)
-        
+
         w = self._usable_area_width_pt
         h = self._usable_area_height_pt
 

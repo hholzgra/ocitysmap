@@ -275,7 +275,7 @@ class PoiIndexRenderer:
                 ctx.scale(scale, scale)
                 svg.render_cairo(ctx)
                 ctx.restore()
-                
+
                 x += svg.props.width * scale + 10*f
             else:
                 LOG.warning("icon not found %s" % logo_path)

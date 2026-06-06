@@ -141,7 +141,7 @@ def main():
     parser.add_option('--logo', metavar='NAME', help="SVG logo image URL, defaults to 'builtin:osm-logo.svg'")
     parser.add_option('--extra-logo', metavar='NAME', help="SVG logo image URL, defaults to None")
     parser.add_option('--extra-text', metavar='NAME', help="Extra annotation text")
-    
+
     # deprecated legacy options
     parser.add_option('--poi-file', metavar='FILE', dest='import_file', action='append',
                       help=optparse.SUPPRESS_HELP)
@@ -243,7 +243,7 @@ def main():
         else:
             parser.error("Unknown indexer '%s'.\nAvailable indexers: %s"
                          % (options.indexer, ", ".join(indexers)))
-            
+
     # Output file formats
     if not options.output_formats:
         options.output_formats = ['pdf']
@@ -397,7 +397,7 @@ def main():
         rc.extra_logo = options.extra_logo
     if options.extra_text:
         rc.extra_text = options.extra_text
-                
+
     # add actual import files
     if options.import_file:
         for import_file in options.import_file:

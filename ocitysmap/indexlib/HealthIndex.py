@@ -38,7 +38,7 @@ class HealthIndex(GeneralIndex):
 
     def __init__(self, db, renderer, bbox, polygon_wkt, i18n, page_number=None):
         GeneralIndex.__init__(self, db, renderer, bbox, polygon_wkt, i18n, page_number)
-        
+
         # Build the contents of the index
         self._categories = (self._list_amenities(db))
 

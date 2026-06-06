@@ -73,7 +73,7 @@ class Renderer(ABC):
 
     MIN_PAPER_WIDTH  = 100
     MIN_PAPER_HEIGHT = 100
-    
+
     # The DEFAULT SCALE values represents the minimum acceptable mapnik scale
     # 70000 ensures that the zoom level will be 10 or higher
     # 12000 ensures that the zoom level will be 16 or higher
@@ -486,7 +486,7 @@ class Renderer(ABC):
             dates['osmdate'] = self._format_date(osm_date)
         else:
             dates['osmyear'] = today.year
-            
+
         ### OSM data
         annotations['sources'].append(_(u'Map data © %(osmyear)d OpenStreetMap contributors (see https://osm.org/copyright)') % dates)
 
@@ -523,5 +523,3 @@ class Renderer(ABC):
 
         return annotations
 
-        
-        

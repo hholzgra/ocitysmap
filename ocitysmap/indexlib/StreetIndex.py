@@ -212,7 +212,7 @@ class StreetIndex(GeneralIndex):
         sep = "','"
         amenities = self._get_selected_amenities()
         amenities_in = "'" + sep.join(amenities) + "'"
-        
+
         return self.get_index_entries(db,
                                       ["point","polygon"],
                                       ["amenity", "name"],
@@ -255,6 +255,6 @@ class StreetIndex(GeneralIndex):
                                       max_category_items=100)
 
 
-    
+
 
 

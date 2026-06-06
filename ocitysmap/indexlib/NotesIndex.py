@@ -44,18 +44,18 @@ class NotesIndex(GeneralIndex):
 
     def __init__(self, db, renderer, bounding_box, polygon_wkt, i18n, page_number=None):
         GeneralIndex.__init__(self, db, renderer, bounding_box, polygon_wkt, i18n, page_number)
-        
+
         # Build the contents of the index
         self._categories = self._list_amenities(db)
 
     def _list_amenities(self, db):
         results = []
-        
+
         bbox = self._bounding_box
         url  = ("https://api.openstreetmap.org/api/0.6/notes.json?closed=0&bbox=%f,%f,%f,%f"
                 % (bbox.get_left(), bbox.get_bottom(), bbox.get_right(), bbox.get_top()))
         LOG.info("OSM Notes URL: %s" % url)
-        
+
         req = Request(url)
 
         try:
@@ -70,7 +70,7 @@ class NotesIndex(GeneralIndex):
             return
 
         notes_json = response.read()
-        
+
         try:
             notes = json.loads(notes_json)
         except Exception as e:

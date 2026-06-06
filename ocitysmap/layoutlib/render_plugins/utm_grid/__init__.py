@@ -106,7 +106,7 @@ def render(renderer, ctx):
         ctx.line_to(x2, y2)
         ctx.stroke()
         ctx.restore()
-        
+
     def show_grid(lat1, lon1, lat2, lon2):
         # draw grid over given bounding box
 
@@ -193,7 +193,7 @@ def render(renderer, ctx):
             (lat1, lon1) = utm.to_latlon(v * factor, n_km * factor, zone1_number, zone1_letter)
             (lat2, lon2) = utm.to_latlon(v * factor, s_km * factor, zone1_number, zone1_letter)
             grid_line(lat1, lon1, lat2, lon2)
-            
+
             # draw easting value right next to upper visible end of the grid line
             (x1, y1) = renderer._latlon2xy(lat1, lon1)
             ctx.save()
@@ -209,7 +209,7 @@ def render(renderer, ctx):
             (lat1, lon1) = utm.to_latlon(w_km * factor, h * factor, zone1_number, zone1_letter)
             (lat2, lon2) = utm.to_latlon(e_km * factor, h * factor, zone1_number, zone1_letter)
             grid_line(lat1, lon1, lat2, lon2)
-            
+
             # draw northing value right below left visible end of the line
             (x1, y1) = renderer._latlon2xy(lat1, lon1)
             ctx.save()
@@ -225,7 +225,7 @@ def render(renderer, ctx):
         draw_halotext_center(ctx, ("%d%s" % (zone1_number, zone1_letter)), pt2px(12 + renderer.PRINT_SAFE_MARGIN_PT), pt2px(5 + renderer.PRINT_SAFE_MARGIN_PT))
 
         ctx.restore()
-        
+
     # determine drawing area bounding box coordinates
     bbox = renderer._map_canvas.get_actual_bounding_box()
     (lat1, lon1) = bbox.get_top_left()

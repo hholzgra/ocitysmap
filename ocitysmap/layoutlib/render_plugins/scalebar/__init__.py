@@ -75,5 +75,5 @@ def render(renderer, ctx):
     # scale factor text
     ctx.set_font_size(pt2px(8))
     draw_simpletext_center(ctx, "1:%d" % renderer._map_canvas.get_actual_scale(), x+w/2, y+h*0.75)
-    
+
     ctx.restore()
