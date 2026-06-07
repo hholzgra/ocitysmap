@@ -40,7 +40,7 @@ from gettext import gettext, ngettext
 from ocitysmap.layoutlib import commons
 from ocitysmap.layoutlib.abstract_renderer import Renderer
 from ocitysmap.indexlib.GeneralIndex import GeneralIndexRenderer
-# from ocitysmap.indexlib.StreetIndex import StreetIndex
+from ocitysmap.indexlib.StreetIndex import StreetIndex
 from ocitysmap.indexlib.HealthIndex import HealthIndex
 from ocitysmap.indexlib.NotesIndex import NotesIndex
 from ocitysmap.indexlib.TreeIndex import TreeIndex
