@@ -69,9 +69,9 @@ class i18n_ru_generic(i18n):
 
     @staticmethod
     def _rewrite_street_parts(matches):
-        if (matches.group('num_prefix') is None and
-            matches.group('prefix') is not None and
-            matches.group('name') in i18n_ru_generic.STATUS_PARTS_FULL):
+        if ( matches.group('num_prefix') is None and
+             matches.group('prefix') is not None and
+             matches.group('name') in i18n_ru_generic.STATUS_PARTS_FULL):
             return matches.group(0)
         elif matches.group('num_prefix') is None and matches.group('prefix') is None:
             return matches.group(0)
