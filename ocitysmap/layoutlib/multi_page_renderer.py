@@ -741,21 +741,21 @@ class MultiPageRenderer(Renderer):
                 box_size=10,
                 border=4,
             )
-            
+
             qr.add_data(self.rc.qrcode_text)
             qr.make(fit=True)
-            
+
             img = qr.make_image(image_factory=qrcode.image.svg.SvgPathFillImage,
                                 fill_color='lightblue')
             svgstr = BytesIO()
             img.save(svgstr)
-            
+
             svg_val = svgstr.getvalue()
-            
+
             rsvg = Rsvg.Handle()
             svg = rsvg.new_from_data(svg_val)
             svgstr.close()
-            
+
             ctx.save()
             ctx.translate(w - 2*logo_width - 2*Renderer.PRINT_SAFE_MARGIN_PT,
                           logo_height/2)
@@ -1302,4 +1302,3 @@ class MultiPageRenderer(Renderer):
             ctx.restore()
 
         ctx.restore()
-

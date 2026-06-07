@@ -169,5 +169,4 @@ def render(renderer, ctx):
         else:
             continue
 
-        _show_symbol(renderer, ctx, lat, lon, surveillance, symbol) 
-
+        _show_symbol(renderer, ctx, lat, lon, surveillance, symbol)

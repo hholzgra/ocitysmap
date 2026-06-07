@@ -69,7 +69,7 @@ class i18n_ast_generic(i18n):
                                ("|".join(APPELLATIONS),
                                 "|".join(DETERMINANTS)), re.IGNORECASE
                                | re.UNICODE)
-    
+
     # for IndexPageGenerator.upper_unaccent_string
     E_ACCENT = re.compile(r"[éèêëẽ]", re.IGNORECASE | re.UNICODE)
     I_ACCENT = re.compile(r"[íìîïĩ]", re.IGNORECASE | re.UNICODE)
