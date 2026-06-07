@@ -1,16 +1,5 @@
-import cairo
-import os
-import sys
 import math
-import qrcode
-import qrcode.image.svg
-import gi
-gi.require_version('Rsvg', '2.0')
-from gi.repository import Rsvg
 
-from io import BytesIO
-
-from ocitysmap.layoutlib.commons import convert_pt_to_dots
 from ocitysmap.layoutlib.abstract_renderer import Renderer
 
 import logging

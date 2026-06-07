@@ -26,8 +26,6 @@ import math
 
 import shapely.wkt
 
-import xml.sax
-
 import mapnik
 assert mapnik.mapnik_version() >= 300000, \
     "Mapnik module version %s is too old, see ocitysmap's INSTALL " \

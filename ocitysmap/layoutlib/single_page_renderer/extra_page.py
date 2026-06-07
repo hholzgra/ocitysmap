@@ -1,6 +1,5 @@
 from gettext import gettext
 
-import ocitysmap
 from ocitysmap.layoutlib.abstract_renderer import Renderer
 from ocitysmap.layoutlib.single_page_renderers import SinglePageRenderer
 

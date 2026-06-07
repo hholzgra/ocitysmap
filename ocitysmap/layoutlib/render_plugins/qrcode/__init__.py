@@ -1,6 +1,3 @@
-import cairo
-import os
-import sys
 import qrcode
 import qrcode.image.svg
 import gi
