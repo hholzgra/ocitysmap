@@ -37,7 +37,7 @@ def make_pot():
            '--output-dir=locale',
            '--language=Python',
            '--from-code=UTF-8',
-    ]
+           ]
     cmd += glob.glob("./**/*.py", recursive = True)
     subprocess.check_call(cmd)
     return

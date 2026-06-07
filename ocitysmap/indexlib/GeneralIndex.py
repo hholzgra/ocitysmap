@@ -838,7 +838,7 @@ class GeneralIndexRenderer:
 
         layout, fascent, fheight, em = draw_utils.create_layout_with_font(ctx,
                                                                      font_desc)
-        #print "PREPARE", layout, fascent, fheight, em
+        # print "PREPARE", layout, fascent, fheight, em
 
         if len(text_lines):
             width = max(map(lambda x: self._label_width(layout, x), text_lines))

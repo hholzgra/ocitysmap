@@ -21,10 +21,10 @@ class i18n_fr_generic(i18n):
                      u"Square", u"Sente", u"Sentier", u"Sentiers", u"Terre-Plein",
                      u"Télécabine", u"Traboule", u"Traverse", u"Tunnel",
                      u"Venelle", u"Villa", u"Virage"
-                   ]
+                    ]
     DETERMINANTS = [ u" des", u" du", u" de la", u" de l'",
                      u" de", u" d'", u" aux", u""
-                   ]
+                    ]
 
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %

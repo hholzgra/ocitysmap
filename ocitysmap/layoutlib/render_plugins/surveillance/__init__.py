@@ -65,11 +65,11 @@ def _camera_view(renderer, ctx, map_scale, surveillance, lat, lon, camera_type, 
 
         if isinstance(angle, float):
             if angle < 0:
-               angle = - angle
+                angle = - angle
             if angle <= 15:
-               angle = 1
+                angle = 1
             else:
-               angle = math.cos((angle - 15) * math.pi / 180)
+                angle = math.cos((angle - 15) * math.pi / 180)
         else:
             angle = 1
 

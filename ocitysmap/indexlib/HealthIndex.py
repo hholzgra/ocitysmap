@@ -78,4 +78,4 @@ class HealthIndex(GeneralIndex):
                                          AND tags->'healthcare' IS NOT NULL
                                          AND tags->'healthcare' != ''""",
                                       category_mapping = facilities,
-        )
+                                      )

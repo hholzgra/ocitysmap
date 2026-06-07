@@ -48,4 +48,4 @@ designed to be printed.
           ('share/images/ocitysmap', ['images/osm-logo.png',
                                       'images/osm-logo.svg'])
       ]
-)
+      )

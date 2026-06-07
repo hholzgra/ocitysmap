@@ -106,7 +106,7 @@ def main():
                       help="specify which stylesheet to use. "
                            "Defaults to the first onespecified in the configuration file. "
                            "Use '--list=stylesheets' to show avaiable choices"
-                     )
+                      )
     parser.add_option('--overlay', dest='overlays',
                       metavar='NAME',
                       help="comma separated list of overlay stylesheets to use. "
@@ -118,7 +118,7 @@ def main():
                       default=KNOWN_RENDERERS_NAMES[0].split()[0],
                       help="specify which page layout to use. "
                            "Use '--list=layouts' to show available choices"
-                     )
+                      )
     parser.add_option('-i', '--indexer', dest='indexer',
                       metavar='NAME',
                       default='Street',

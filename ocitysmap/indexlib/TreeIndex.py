@@ -53,4 +53,4 @@ class TreeIndex(GeneralIndex):
                                       join="LEFT JOIN tree_species s ON LOWER(tab1.tags->'species') = s.species AND s.lang='de_DE'",
                                       group=False,
                                       debug=False,
-        )
+                                      )

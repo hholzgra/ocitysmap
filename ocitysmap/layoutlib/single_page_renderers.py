@@ -121,7 +121,7 @@ class SinglePageRenderer(Renderer):
                                                       rc.bounding_box,
                                                       rc.polygon_wkt,
                                                       rc.i18n,
-                    )
+                                                      )
 
             if self.street_index and not self.street_index.categories:
                 LOG.warning("Designated area leads to an empty index")
@@ -703,7 +703,7 @@ class SinglePageRenderer(Renderer):
                     ( self.paper_height_pt
                       - Renderer.PRINT_SAFE_MARGIN_PT
                       - usable_area_height_pt
-                    ),
+                     ),
                     usable_area_width_pt,
                     usable_area_height_pt,
                     'width', 'left')

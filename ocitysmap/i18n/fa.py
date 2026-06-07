@@ -20,11 +20,11 @@ class i18n_fa_generic(i18n):
                      "ک شهید", "ک. شهید", "کوی شهید", "بن بست شهید",
                      "بن‌بست شهید", "بنبست شهید", "ب. شهید", "ب.شهید", "ب شهید",
                      "پل شهید", "گذر شهید", "ک شهید", "ک. شهید", "ک.شهید"
-                   ]
+                    ]
 
     # DETERMINANT in Persian is Kasreh. Kasreh (ِ ) almost never appear in names but we just pronounce it. There is some cases that its shape changes to " ٔ " (spaces are for displaying the character alone) or " ی" or "‌ی" (ZWNJ+ی). It's rare that these are present on OSM maps. So for now we could ignore them. But after each APPELLATION there MUST be a space, otherwise it's part of the main name (or maybe a typo).
     DETERMINANTS = [ " "
-                   ]
+                    ]
 
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %

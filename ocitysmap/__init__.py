@@ -290,7 +290,7 @@ class OCitySMap:
             # minimal fallback configuration
             self.PAPER_SIZES = [('DinA4',     210, 297),
                                 ('US_letter', 216, 279),
-                               ]
+                                ]
 
         self.PAPER_SIZES.append(('Best fit', None, None))
         self.PAPER_SIZES.append(('Custom', None, None))
@@ -308,7 +308,7 @@ class OCitySMap:
             # minimal fallback configuration
             self.MULTIPAGE_PAPER_SIZES = [('DinA4',     210, 297),
                                           ('US_letter', 216, 279),
-                                         ]
+                                          ]
 
     def translate(self, txt):
         if self._translator is None:
