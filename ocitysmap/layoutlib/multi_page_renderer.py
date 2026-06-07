@@ -733,35 +733,35 @@ class MultiPageRenderer(Renderer):
 
         # add QRcode if qrcode text is provided
         if self.rc.qrcode_text:
-                qr = qrcode.QRCode(
-                    version=1,
-                    error_correction=qrcode.constants.ERROR_CORRECT_L,
-                    box_size=10,
-                    border=4,
-                )
-
-                qr.add_data(self.rc.qrcode_text)
-                qr.make(fit=True)
-
-                img = qr.make_image(image_factory=qrcode.image.svg.SvgPathFillImage,
-                                    fill_color='lightblue')
-                svgstr = BytesIO()
-                img.save(svgstr)
-
-                svg_val = svgstr.getvalue()
-
-                rsvg = Rsvg.Handle()
-                svg = rsvg.new_from_data(svg_val)
-                svgstr.close()
-
-                ctx.save()
-                ctx.translate(w - 2*logo_width - 2*Renderer.PRINT_SAFE_MARGIN_PT,
-                              logo_height/2)
-                ctx.move_to(0, 0)
-                factor = logo_height / svg.props.height
-                ctx.scale(factor, factor)
-                svg.render_cairo(ctx)
-                ctx.restore()
+            qr = qrcode.QRCode(
+                version=1,
+                error_correction=qrcode.constants.ERROR_CORRECT_L,
+                box_size=10,
+                border=4,
+            )
+            
+            qr.add_data(self.rc.qrcode_text)
+            qr.make(fit=True)
+            
+            img = qr.make_image(image_factory=qrcode.image.svg.SvgPathFillImage,
+                                fill_color='lightblue')
+            svgstr = BytesIO()
+            img.save(svgstr)
+            
+            svg_val = svgstr.getvalue()
+            
+            rsvg = Rsvg.Handle()
+            svg = rsvg.new_from_data(svg_val)
+            svgstr.close()
+            
+            ctx.save()
+            ctx.translate(w - 2*logo_width - 2*Renderer.PRINT_SAFE_MARGIN_PT,
+                          logo_height/2)
+            ctx.move_to(0, 0)
+            factor = logo_height / svg.props.height
+            ctx.scale(factor, factor)
+            svg.render_cairo(ctx)
+            ctx.restore()
 
         # Prepare the text for the left of the footer
         if notice is None:
