@@ -8,11 +8,11 @@ class i18n_de_generic(i18n):
     # The title will be captured as part of the <prefix>
     # Covering airport names and "New"/"Old" as prefixes as well
     #
-    # APPELLATIONS = [ u"Alte", u"Alter", u"Doktor", u"Dr.",
-    #                 u"Flughafen", u"Flugplatz", u"Gen.,", u"General",
-    #                 u"Neue", u"Neuer", u"Platz",
-    #                 u"Prinz", u"Prinzessin", u"Prof.",
-    #                 u"Professor" ]
+    # APPELLATIONS = [ "Alte", "Alter", "Doktor", "Dr.",
+    #                 "Flughafen", "Flugplatz", "Gen.,", "General",
+    #                 "Neue", "Neuer", "Platz",
+    #                 "Prinz", "Prinzessin", "Prof.",
+    #                 "Professor" ]
 
     APPELLATIONS = [ ]
 
@@ -23,9 +23,9 @@ class i18n_de_generic(i18n):
     # Likewise, articles are captured as part of the prefix,
     # e.g. "An der Märchenwiese" => "Märchenwiese (An der)"
     #
-    # DETERMINANTS = [ u"\s?An den", u"\s?An der", u"\s?Am",
-    #                  u"\s?Auf den" , u"\s?Auf der"
-    #                  u" an", u" des", u" der", u" von", u" vor"]
+    # DETERMINANTS = [ "\s?An den", "\s?An der", "\s?Am",
+    #                  "\s?Auf den" , "\s?Auf der"
+    #                  " an", " des", " der", " von", " vor"]
 
     DETERMINANTS = [ ]
 

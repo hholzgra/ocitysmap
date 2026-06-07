@@ -3,28 +3,28 @@ import gettext
 from . import i18n, _install_language
 
 class i18n_fr_generic(i18n):
-    APPELLATIONS = [ u"Accès", u"Allée", u"Allées", u"Autoroute", u"Avenue",
-                     u"Avenues", u"Barrage",
-                     u"Boulevard", u"Carrefour", u"Chaussée", u"Chemin",
-                     u"Chemin rural",
-                     u"Cheminement", u"Cale", u"Cales", u"Cavée", u"Cité",
-                     u"Clos", u"Coin", u"Côte", u"Cour", u"Cours", u"Descente",
-                     u"Degré", u"Escalier",
-                     u"Escaliers", u"Esplanade", u"Funiculaire",
-                     u"Giratoire", u"Hameau", u"Impasse", u"Jardin",
-                     u"Jardins", u"Liaison", u"Lotissement", u"Mail",
-                     u"Montée", u"Môle",
-                     u"Parc", u"Passage", u"Passerelle", u"Passerelles",
-                     u"Place", u"Placette", u"Pont", u"Promenade",
-                     u"Petite Avenue", u"Petite Rue", u"Quai",
-                     u"Rampe", u"Rang", u"Résidence", u"Rond-Point",
-                     u"Route forestière", u"Route", u"Rue", u"Ruelle",
-                     u"Square", u"Sente", u"Sentier", u"Sentiers", u"Terre-Plein",
-                     u"Télécabine", u"Traboule", u"Traverse", u"Tunnel",
-                     u"Venelle", u"Villa", u"Virage"
+    APPELLATIONS = [ "Accès", "Allée", "Allées", "Autoroute", "Avenue",
+                     "Avenues", "Barrage",
+                     "Boulevard", "Carrefour", "Chaussée", "Chemin",
+                     "Chemin rural",
+                     "Cheminement", "Cale", "Cales", "Cavée", "Cité",
+                     "Clos", "Coin", "Côte", "Cour", "Cours", "Descente",
+                     "Degré", "Escalier",
+                     "Escaliers", "Esplanade", "Funiculaire",
+                     "Giratoire", "Hameau", "Impasse", "Jardin",
+                     "Jardins", "Liaison", "Lotissement", "Mail",
+                     "Montée", "Môle",
+                     "Parc", "Passage", "Passerelle", "Passerelles",
+                     "Place", "Placette", "Pont", "Promenade",
+                     "Petite Avenue", "Petite Rue", "Quai",
+                     "Rampe", "Rang", "Résidence", "Rond-Point",
+                     "Route forestière", "Route", "Rue", "Ruelle",
+                     "Square", "Sente", "Sentier", "Sentiers", "Terre-Plein",
+                     "Télécabine", "Traboule", "Traverse", "Tunnel",
+                     "Venelle", "Villa", "Virage"
                     ]
-    DETERMINANTS = [ u" des", u" du", u" de la", u" de l'",
-                     u" de", u" d'", u" aux", u""
+    DETERMINANTS = [ " des", " du", " de la", " de l'",
+                     " de", " d'", " aux", ""
                     ]
 
     SPACE_REDUCE = re.compile(r"\s+")

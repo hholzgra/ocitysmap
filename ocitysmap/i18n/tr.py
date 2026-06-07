@@ -3,7 +3,7 @@ import gettext
 from . import i18n, _install_language
 
 class i18n_tr_generic(i18n):
-    APPELLATIONS = [ u"Sokak", u"Sokağı" ]
+    APPELLATIONS = [ "Sokak", "Sokağı" ]
     DETERMINANTS = []
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %

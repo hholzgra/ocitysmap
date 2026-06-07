@@ -86,7 +86,7 @@ class MultiPageRenderer(Renderer):
     """
 
     name = 'multi_page'
-    description = gettext(u'A multi-page layout.')
+    description = gettext('A multi-page layout.')
     multipages = True
 
     # The DEFAULT SCALE values represents the minimum acceptable mapnik scale
@@ -769,11 +769,11 @@ class MultiPageRenderer(Renderer):
             notice = html.escape(annotations['maposmatic']) + '\n'
 
             if annotations['styles']:
-                notice+= "<u>" + html.escape(_(u'Map style(s):')) + '</u>\n'
+                notice+= "<u>" + html.escape(_('Map style(s):')) + '</u>\n'
                 notice+= html.escape('; '.join(annotations['styles'])) + '\n'
 
             if annotations['sources']:
-                notice+= "<u>"+html.escape(_(u'Data source(s):')) + '</u>\n'
+                notice+= "<u>"+html.escape(_('Data source(s):')) + '</u>\n'
                 notice+= html.escape('; '.join(list(annotations['sources']))) + '\n'
 
         # draw footer text
@@ -799,7 +799,7 @@ class MultiPageRenderer(Renderer):
         self._render_front_page_footer(ctx, w, h, osm_date)
 
         try: # set_page_label() does not exist in older pycairo versions
-            cairo_surface.set_page_label(_(u'Front page'))
+            cairo_surface.set_page_label(_('Front page'))
         except Exception:
             pass
 
@@ -880,7 +880,7 @@ class MultiPageRenderer(Renderer):
                                       side = draw_utils.LEFT_SIDE
         )
         try: # set_page_label() does not exist in older pycairo versions
-            cairo_surface.set_page_label(_(u'Contents'))
+            cairo_surface.set_page_label(_('Contents'))
         except Exception:
             pass
 
@@ -929,7 +929,7 @@ class MultiPageRenderer(Renderer):
         )
 
         try: # set_page_label() does not exist in older pycairo versions
-            cairo_surface.set_page_label(_(u'Overview'))
+            cairo_surface.set_page_label(_('Overview'))
         except AttributeError:
             pass
 
@@ -1192,7 +1192,7 @@ class MultiPageRenderer(Renderer):
                                           len(str(len(self.pages) + self._first_map_page_number)))
 
             try: # set_page_label() does not exist in older pycairo versions
-                cairo_surface.set_page_label(_(u'Map page %d') % (map_number + self._first_map_page_number))
+                cairo_surface.set_page_label(_('Map page %d') % (map_number + self._first_map_page_number))
             except AttributeError:
                 pass
             cairo_surface.show_page()

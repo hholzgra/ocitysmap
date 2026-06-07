@@ -3,19 +3,19 @@ import gettext
 from . import i18n, _install_language
 
 class i18n_pt_br_generic(i18n):
-    APPELLATIONS = [ u"Aeroporto", u"Aer.", u"Alameda", u"Al.", u"Apartamento", u"Ap.",
-                     u"Área", u"Avenida", u"Av.", u"Beco", u"Bc.", u"Bloco", u"Bl.",
-                     u"Caminho", u"Cam.", u"Campo", u"Chácara", u"Colônia",
-                     u"Condomínio", u"Conjunto", u"Cj.", u"Distrito", u"Esplanada", u"Espl.",
-                     u"Estação", u"Est.", u"Estrada", u"Estr.", u"Favela", u"Fazenda",
-                     u"Feira", u"Jardim", u"Jd.", u"Ladeira", u"Lago",
-                     u"Lagoa", u"Largo", u"Loteamento", u"Morro", u"Núcleo",
-                     u"Parque", u"Pq.", u"Passarela", u"Pátio", u"Praça", u"Pç.", u"Quadra",
-                     u"Recanto", u"Residencial", u"Resid.", u"Rua", u"R.",
-                     u"Setor", u"Sítio", u"Travessa", u"Tv.", u"Trecho", u"Trevo",
-                     u"Vale", u"Vereda", u"Via", u"V.", u"Viaduto", u"Viela",
-                     u"Vila", u"Vl." ]
-    DETERMINANTS = [ u" do", u" da", u" dos", u" das", u"" ]
+    APPELLATIONS = [ "Aeroporto", "Aer.", "Alameda", "Al.", "Apartamento", "Ap.",
+                     "Área", "Avenida", "Av.", "Beco", "Bc.", "Bloco", "Bl.",
+                     "Caminho", "Cam.", "Campo", "Chácara", "Colônia",
+                     "Condomínio", "Conjunto", "Cj.", "Distrito", "Esplanada", "Espl.",
+                     "Estação", "Est.", "Estrada", "Estr.", "Favela", "Fazenda",
+                     "Feira", "Jardim", "Jd.", "Ladeira", "Lago",
+                     "Lagoa", "Largo", "Loteamento", "Morro", "Núcleo",
+                     "Parque", "Pq.", "Passarela", "Pátio", "Praça", "Pç.", "Quadra",
+                     "Recanto", "Residencial", "Resid.", "Rua", "R.",
+                     "Setor", "Sítio", "Travessa", "Tv.", "Trecho", "Trevo",
+                     "Vale", "Vereda", "Via", "V.", "Viaduto", "Viela",
+                     "Vila", "Vl." ]
+    DETERMINANTS = [ " do", " da", " dos", " das", "" ]
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %
                                     ("|".join(APPELLATIONS),

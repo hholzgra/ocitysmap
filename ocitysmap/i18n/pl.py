@@ -4,15 +4,15 @@ from . import i18n, _install_language
 
 class i18n_pl_generic(i18n):
 
-    APPELLATIONS = [ u"Dr.", u"Doktora", u"Ks.", u"Księdza",
-                     u"Generała", u"Gen.",
-                     u"Aleja", u"Plac", u"Pl.",
-                     u"Rondo", u"rondo", u"Profesora",
-                     u"Prof.",
-                     u"" ]
+    APPELLATIONS = [ "Dr.", "Doktora", "Ks.", "Księdza",
+                     "Generała", "Gen.",
+                     "Aleja", "Plac", "Pl.",
+                     "Rondo", "rondo", "Profesora",
+                     "Prof.",
+                     "" ]
 
-    DETERMINANTS = [ u"\s?im.", u"\s?imienia", u"\s?pw.",
-                     u"" ]
+    DETERMINANTS = [ "\s?im.", "\s?imienia", "\s?pw.",
+                     "" ]
 
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %

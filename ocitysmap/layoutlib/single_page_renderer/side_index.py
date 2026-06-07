@@ -9,7 +9,7 @@ class SinglePageRendererIndexOnSide(SinglePageRenderer):
     This renderer adds a side index to the basic SinglePageRenderer
     """
     name = 'single_page_index_side'
-    description = gettext(u'Full-page layout with the index on the side.')
+    description = gettext('Full-page layout with the index on the side.')
 
     def __init__(self, db, rc, tmpdir, dpi, file_prefix):
         """

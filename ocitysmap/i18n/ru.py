@@ -8,13 +8,13 @@ class i18n_ru_generic(i18n):
     STATUS_PARTS = [
         (u"улица", [u"ул"]),
         (u"площадь", [u"пл"]),
-        (u"переулок", [u"пер", u"пер-к"]),
+        (u"переулок", [u"пер", "пер-к"]),
         (u"проезд", [u"пр-д"]),
         (u"шоссе", [u"ш"]),
-        (u"бульвар", [u"бул", u"б-р"]),
+        (u"бульвар", [u"бул", "б-р"]),
         (u"тупик", [u"туп"]),
         (u"набережная", [u"наб"]),
-        (u"проспект", [u"просп", u"пр-кт", u"пр-т"]),
+        (u"проспект", [u"просп", "пр-кт", "пр-т"]),
         (u"линия", []),
         (u"аллея", []),
         (u"метромост", []),
@@ -22,7 +22,7 @@ class i18n_ru_generic(i18n):
         (u"просек", []),
         (u"просека", []),
         (u"путепровод", []),
-        (u"тракт", [u"тр-т", u"тр"]),
+        (u"тракт", [u"тр-т", "тр"]),
         (u"тропа", []),
         (u"туннель", []),
         (u"тоннель", []),
@@ -36,10 +36,10 @@ class i18n_ru_generic(i18n):
         (u"разъезд", []),
         (u"слобода", []),
         (u"район", [u"р-н"]),
-        (u"микрорайон", [u"мкр-н", u"мк-н", u"мкр", u"мкрн"]),
-        (u"посёлок", [u"поселок", u"пос"]),
-        (u"деревня", [u"дер", u"д"]),
-        (u"квартал", [u"кв-л", u"кв"]),
+        (u"микрорайон", [u"мкр-н", "мк-н", "мкр", "мкрн"]),
+        (u"посёлок", [u"поселок", "пос"]),
+        (u"деревня", [u"дер", "д"]),
+        (u"квартал", [u"кв-л", "кв"]),
     ]
 
     # matches one or more spaces
@@ -49,7 +49,7 @@ class i18n_ru_generic(i18n):
     # set of full (not abbreviated) status parts
     STATUS_PARTS_FULL = set((x[0] for x in STATUS_PARTS))
     # matches any abbreviated status part with optional '.'
-    STATUS_ABBREV_REGEXP = re.compile(r"\b(%s)\.?(?=\W|$)" % u"|".join(
+    STATUS_ABBREV_REGEXP = re.compile(r"\b(%s)\.?(?=\W|$)" % "|".join(
         f for t, ff in STATUS_PARTS for f in ff), re.IGNORECASE | re.UNICODE)
     # matches status prefixes at start of name used to move prefixes to the end
     PREFIX_REGEXP = re.compile(

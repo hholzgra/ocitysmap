@@ -63,7 +63,7 @@ class SinglePageRenderer(Renderer):
     """
 
     name = 'generic_single_page'
-    description = gettext(u'A generic full-page layout with or without index.')
+    description = gettext('A generic full-page layout with or without index.')
 
     # TODO make configurable
     MAX_INDEX_OCCUPATION_RATIO = 1/3.
@@ -467,11 +467,11 @@ class SinglePageRenderer(Renderer):
             notice = annotations['maposmatic'] + '\n'
 
             if annotations['styles']:
-                notice += ngettext(u'Map style:',u'Map styles:', len(annotations['styles']))
+                notice += ngettext('Map style:', 'Map styles:', len(annotations['styles']))
                 notice += ' ' + '; '.join(annotations['styles']) + '\n'
 
             if annotations['sources']:
-                notice += ngettext(u'Data source:',u'Data sources:', len(annotations['sources']))
+                notice += ngettext('Data source:', 'Data sources:', len(annotations['sources']))
                 notice += ' ' + '; '.join(list(annotations['sources'])) + '\n'
 
         # do the actual output drawing

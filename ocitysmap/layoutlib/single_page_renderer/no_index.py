@@ -12,7 +12,7 @@ class SinglePageRendererNoIndex(SinglePageRenderer):
     Render single page map without index
     """
     name = 'plain'
-    description = gettext(u'Full-page layout without index.')
+    description = gettext('Full-page layout without index.')
 
     def __init__(self, db, rc, tmpdir, dpi, file_prefix):
         """

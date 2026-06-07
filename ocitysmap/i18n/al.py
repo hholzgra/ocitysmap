@@ -6,7 +6,7 @@ from . import i18n, _install_language
 LOG = logging.getLogger('ocitysmap')
 
 class i18n_al_generic(i18n):
-    APPELLATIONS = [ u"Rruga"]
+    APPELLATIONS = [ "Rruga"]
 
     DETERMINANTS = [ ]
 

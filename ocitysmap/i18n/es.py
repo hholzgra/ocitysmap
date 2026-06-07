@@ -3,13 +3,13 @@ import gettext
 from . import i18n, _install_language
 
 class i18n_es_generic(i18n):
-    APPELLATIONS = [ u"Avenida", u"Avinguda", u"Calle", u"Callejón",
-            u"Calzada", u"Camino", u"Camí", u"Carrer", u"Carretera",
-            u"Glorieta", u"Parque", u"Pasaje", u"Pasarela", u"Paseo", u"Plaza",
-            u"Plaça", u"Privada", u"Puente", u"Ronda", u"Salida", u"Travesia" ]
-    DETERMINANTS = [ u" de la", u" de los", u" de las",
-                     u" dels", u" del", u" d'", u" de l'",
-                     u" de", u"" ]
+    APPELLATIONS = [ "Avenida", "Avinguda", "Calle", "Callejón",
+            "Calzada", "Camino", "Camí", "Carrer", "Carretera",
+            "Glorieta", "Parque", "Pasaje", "Pasarela", "Paseo", "Plaza",
+            "Plaça", "Privada", "Puente", "Ronda", "Salida", "Travesia" ]
+    DETERMINANTS = [ " de la", " de los", " de las",
+                     " dels", " del", " d'", " de l'",
+                     " de", "" ]
 
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %

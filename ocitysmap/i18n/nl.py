@@ -7,17 +7,17 @@ class i18n_nl_generic(i18n):
     # Dutch streets are often named after people and include a title.
     # The title will be captured as part of the <prefix>
     #
-    APPELLATIONS = [ u"St.", u"Sint", u"Ptr.", u"Pater",
-                     u"Prof.", u"Professor", u"Past.", u"Pastoor",
-                     u"Pr.", u"Prins", u"Prinses", u"Gen.", u"Generaal",
-                     u"Mgr.", u"Monseigneur", u"Mr.", u"Meester",
-                     u"Burg.", u"Burgermeester", u"Dr.", u"Dokter",
-                     u"Ir.", u"Ingenieur", u"Ds.", u"Dominee", u"Deken",
-                     u"Drs.", u"Maj.", u"Majoor",
+    APPELLATIONS = [ "St.", "Sint", "Ptr.", "Pater",
+                     "Prof.", "Professor", "Past.", "Pastoor",
+                     "Pr.", "Prins", "Prinses", "Gen.", "Generaal",
+                     "Mgr.", "Monseigneur", "Mr.", "Meester",
+                     "Burg.", "Burgermeester", "Dr.", "Dokter",
+                     "Ir.", "Ingenieur", "Ds.", "Dominee", "Deken",
+                     "Drs.", "Maj.", "Majoor",
                      # counting words before street name,
                      # e.g. "1e Walstraat" => "Walstraat (1e)"
-                     u"\d+e",
-                     u"" ]
+                     "\d+e",
+                     "" ]
     #
     # Surnames in Dutch streets named after people tend to have the middle name
     # listed after the rest of the surname,
@@ -25,9 +25,9 @@ class i18n_nl_generic(i18n):
     # Likewise, articles are captured as part of the prefix,
     # e.g. "Den Urling" => "Urling (Den)"
     #
-    DETERMINANTS = [ u"\s?van der", u"\s?van den", u"\s?van de", u"\s?van",
-                     u"\s?Den", u"\s?D'n", u"\s?D'", u"\s?De", u"\s?'T", u"\s?Het",
-                     u"" ]
+    DETERMINANTS = [ "\s?van der", "\s?van den", "\s?van de", "\s?van",
+                     "\s?Den", "\s?D'n", "\s?D'", "\s?De", "\s?'T", "\s?Het",
+                     "" ]
 
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %

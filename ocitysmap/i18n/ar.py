@@ -3,14 +3,14 @@ import gettext
 from . import i18n, _install_language
 
 class i18n_ar_generic(i18n):
-    APPELLATIONS = [ u"شارع", u"طريق", u"زقاق", u"نهج", u"جادة",
-                     u"ممر", u"حارة",
-                     u"كوبري", u"كوبرى", u"جسر", u"مطلع", u"منزل",
-                     u"مفرق", u"ملف", u"تقاطع",
-                     u"ساحل",
-                     u"ميدان", u"ساحة", u"دوار" ]
+    APPELLATIONS = [ "شارع", "طريق", "زقاق", "نهج", "جادة",
+                     "ممر", "حارة",
+                     "كوبري", "كوبرى", "جسر", "مطلع", "منزل",
+                     "مفرق", "ملف", "تقاطع",
+                     "ساحل",
+                     "ميدان", "ساحة", "دوار" ]
 
-    DETERMINANTS = [ u" ال", u"" ]
+    DETERMINANTS = [ " ال", "" ]
 
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?(?P<name>.+)" %

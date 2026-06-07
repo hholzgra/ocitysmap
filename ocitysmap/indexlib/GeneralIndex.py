@@ -337,9 +337,9 @@ SELECT %(columns)s,
                 _r.append(e)
             return writer.writerow(_r)
 
-        copyright_notice = (u'© %(year)d MapOSMatic/ocitysmap authors. '
-                            u'Map data © %(year)d OpenStreetMap.org '
-                            u'and contributors (CC-BY-SA)' %
+        copyright_notice = ('© %(year)d MapOSMatic/ocitysmap authors. '
+                            'Map data © %(year)d OpenStreetMap.org '
+                            'and contributors (CC-BY-SA)' %
                             {'year': datetime.date.today().year})
         if title is not None:
             csv_writerow(['# (UTF-8)', title, copyright_notice])
@@ -993,7 +993,7 @@ class MultiPageIndexRenderer:
                                       transparent_background = False)
         self.ctx.restore()
         try:
-            self.surface.set_page_label(_(u'Index page %d') % (self.index_page_num + 1))
+            self.surface.set_page_label(_('Index page %d') % (self.index_page_num + 1))
         except Exception:
             pass
 

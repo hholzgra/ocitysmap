@@ -7,22 +7,22 @@ class i18n_be_generic(i18n):
     STATUS_PARTS = [
         (u"вуліца", [u"вул"]),
         (u"плошча", [u"пл"]),
-        (u"завулак", [u"зав", u"зав-к"]),
+        (u"завулак", [u"зав", "зав-к"]),
         (u"праезд", [u"пр-д"]),
         (u"шаша", [u"ш"]),
-        (u"бульвар", [u"бул", u"б-р"]),
+        (u"бульвар", [u"бул", "б-р"]),
         (u"тупік", [u"туп"]),
         (u"набярэжная", [u"наб"]),
-        (u"праспект", [u"праспект", u"пр-кт", u"пр-т"]),
+        (u"праспект", [u"праспект", "пр-кт", "пр-т"]),
         (u"алея", []),
         (u"мост", []),
         (u"парк", []),
-        (u"тракт", [u"тр-т", u"тр"]),
+        (u"тракт", [u"тр-т", "тр"]),
         (u"раён", [u"р-н"]),
-        (u"мікрараён", [u"мкр-н", u"мк-н", u"мкр", u"мкрн"]),
+        (u"мікрараён", [u"мкр-н", "мк-н", "мкр", "мкрн"]),
         (u"пасёлак", [u"пас"]),
-        (u"вёска", [ u"в"]),
-        (u"квартал", [u"кв-л", u"кв"]),
+        (u"вёска", [ "в"]),
+        (u"квартал", [u"кв-л", "кв"]),
     ]
 
     # matches one or more spaces
@@ -32,7 +32,7 @@ class i18n_be_generic(i18n):
     # set of full (not abbreviated) status parts
     STATUS_PARTS_FULL = set((x[0] for x in STATUS_PARTS))
     # matches any abbreviated status part with optional '.'
-    STATUS_ABBREV_REGEXP = re.compile(r"\b(%s)\.?(?=\W|$)" % u"|".join(
+    STATUS_ABBREV_REGEXP = re.compile(r"\b(%s)\.?(?=\W|$)" % "|".join(
         f for t, ff in STATUS_PARTS for f in ff), re.IGNORECASE | re.UNICODE)
     # matches status prefixes at start of name used to move prefixes to the end
     PREFIX_REGEXP = re.compile(
