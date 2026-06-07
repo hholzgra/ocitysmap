@@ -26,8 +26,9 @@
 
 import cairo
 import gi
-gi.require_version('Pango', '1.0')
-gi.require_version('PangoCairo', '1.0')
+if True: # hack to prevent consecutive E402 warings
+    gi.require_version('Pango', '1.0')
+    gi.require_version('PangoCairo', '1.0')
 from gi.repository import Pango, PangoCairo
 
 import layoutlib.commons as commons

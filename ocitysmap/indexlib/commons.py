@@ -24,10 +24,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import gi
-gi.require_version('Pango', '1.0')
-from gi.repository import Pango
 import sys
+
+import gi
+if True: # hack to prevent consecutive E402 warings
+    gi.require_version('Pango', '1.0')
+from gi.repository import Pango
 
 from abc import ABC
 from gettext import gettext

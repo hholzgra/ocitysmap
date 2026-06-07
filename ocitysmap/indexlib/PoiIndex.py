@@ -25,9 +25,12 @@
 
 import os
 import cairo
+
 import gi
-gi.require_version('Rsvg', '2.0')
+if True: # hack to prevent consecutive E402 warings
+    gi.require_version('Rsvg', '2.0')
 from gi.repository import Rsvg
+
 import codecs
 import json
 from colour import Color

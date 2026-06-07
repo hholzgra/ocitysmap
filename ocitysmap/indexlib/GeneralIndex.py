@@ -27,10 +27,13 @@ from sys import maxsize
 from gettext import gettext
 
 import cairo
+
 import gi
-gi.require_version('Pango', '1.0')
-gi.require_version('PangoCairo', '1.0')
+if True: # hack to prevent consecutive E402 warings
+    gi.require_version('Pango', '1.0')
+    gi.require_version('PangoCairo', '1.0')
 from gi.repository import Pango, PangoCairo
+
 import draw_utils
 
 from .commons import Index, IndexCategory, IndexItem, IndexDoesNotFitError, IndexEmptyError
