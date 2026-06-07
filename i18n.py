@@ -44,7 +44,7 @@ def make_pot():
 
 def make_po(languages):
     print("Merge locale/ocitysmap.pot into locale/*/LC_MESSAGES/ocitysmap.po")
-    for l in languages:
+    for language in languages:
         print(" * %s" % l)
         subprocess.check_call(['msgmerge', '-U',
                                'locale/%s/LC_MESSAGES/ocitysmap.po' % l,
@@ -53,7 +53,7 @@ def make_po(languages):
 
 def compile_mo(languages):
     print("Compile locale/*/LC_MESSAGES/ocitysmap.mo files")
-    for l in languages:
+    for language in languages:
         print(" * %s" % l)
         subprocess.check_call(['msgfmt', '-o',
                                'locale/%s/LC_MESSAGES/ocitysmap.mo' % l,
@@ -68,8 +68,8 @@ def create_language(country_code):
     return
 
 def get_languages():
-    l = os.listdir('locale')
-    return filter(lambda s: s != 'ocitysmap.pot', l)
+    language = os.listdir('locale')
+    return filter(lambda s: s != 'ocitysmap.pot', language)
 
 def main():
     usage = '%prog [options]\n WARNING: This program should be called from ocitysmap/ directory!'

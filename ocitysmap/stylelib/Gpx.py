@@ -87,8 +87,8 @@ class GpxStylesheet(Stylesheet):
                 for segment in track.segments:
                     if len(segment.points) > 0:
                         nonempty_tracks = nonempty_tracks + 1
-                        l = LineString([(x.longitude, x.latitude) for x in segment.points])
-                        self.linestrings.append(l)
+                        language = LineString([(x.longitude, x.latitude) for x in segment.points])
+                        self.linestrings.append(language)
             if nonempty_tracks > 0:
                 layer_text += tmplayer.substitute(
                     gpxfile = gpx_file,
@@ -100,8 +100,8 @@ class GpxStylesheet(Stylesheet):
             for route in gpx.routes:
                 if len(route.points) > 0:
                     nonempty_routes = nonempty_routes + 1
-                    l = LineString([(x.longitude, x.latitude) for x in route.points])
-                    self.linestrings.append(l)
+                    language = LineString([(x.longitude, x.latitude) for x in route.points])
+                    self.linestrings.append(language)
             if nonempty_routes > 0:
                 layer_text += tmplayer.substitute(
                     gpxfile = gpx_file,

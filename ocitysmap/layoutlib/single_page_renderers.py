@@ -525,7 +525,7 @@ class SinglePageRenderer(Renderer):
         copyright_margin_dots \
             = commons.convert_pt_to_dots(self._copyright_margin_pt, dpi)
 
-        map_coords_dots = list(map(lambda l: commons.convert_pt_to_dots(l, dpi),
+        map_coords_dots = list(map(lambda language: commons.convert_pt_to_dots(l, dpi),
                               self._map_coords))
 
         # create the cairo context to draw into
