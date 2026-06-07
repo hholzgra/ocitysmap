@@ -63,21 +63,21 @@ from ocitysmap.stylelib.Umap import UmapStylesheet
 LOG = logging.getLogger('ocitysmap')
 
 
-def load_resourcefn (fn):
+def load_resourcefn(fn):
     res = None
     with open(fn, 'rb') as f:
         res = f.read()
     return res
 
 def text_extents(ctx, font_face, font_size, text):
-    ctx.select_font_face (font_face)
-    ctx.set_font_size (font_size)
-    return ctx.text_extents (text)
+    ctx.select_font_face(font_face)
+    ctx.set_font_size(font_size)
+    return ctx.text_extents(text)
 
 def font_extents(ctx, font_face, font_size):
-    ctx.select_font_face (font_face)
-    ctx.set_font_size (font_size)
-    return ctx.font_extents ()
+    ctx.select_font_face(font_face)
+    ctx.set_font_size(font_size)
+    return ctx.font_extents()
 
 class MultiPageRenderer(Renderer):
     """
@@ -866,7 +866,7 @@ class MultiPageRenderer(Renderer):
             data_date  = osm_date,
         )
 
-        rob = robinson.html (html, css, w/2, load_resourcefn, text_extents, font_extents, ctx)
+        rob = robinson.html(html, css, w/2, load_resourcefn, text_extents, font_extents, ctx)
         rob.render(ctx)
 
         ctx.restore()
