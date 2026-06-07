@@ -178,14 +178,14 @@ class MultiPageRenderer(Renderer):
                 nb_pages_width = 1
             else:
                 nb_pages_width = \
-                    (float(total_width_pt - self._usable_area_width_pt) / \
+                    (float(total_width_pt - self._usable_area_width_pt) /
                          (self._usable_area_width_pt - overlap_margin_pt)) + 1
 
             if total_height_pt < self._usable_area_height_pt:
                 nb_pages_height = 1
             else:
                 nb_pages_height = \
-                    (float(total_height_pt - self._usable_area_height_pt) / \
+                    (float(total_height_pt - self._usable_area_height_pt) /
                          (self._usable_area_height_pt - overlap_margin_pt)) + 1
 
             # Round up the number of pages needed so that we have integer
@@ -337,8 +337,7 @@ class MultiPageRenderer(Renderer):
                                          )
 
         # Create the gray shape around the overview map
-        exterior = shapely.wkt.loads(self.overview_canvas.get_actual_bounding_box()\
-                                                                .as_wkt())
+        exterior = shapely.wkt.loads(self.overview_canvas.get_actual_bounding_box().as_wkt())
         interior = shapely.wkt.loads(self.rc.polygon_wkt)
         shade_wkt = exterior.difference(interior).wkt
         shade = maplib.shapes.PolyShapeFile(self.rc.bounding_box,
@@ -844,7 +843,7 @@ class MultiPageRenderer(Renderer):
         overlay_names = ""
         if self.rc.overlays:
             for overlay in self.rc.overlays:
-                overlay_names+= overlay.name + "<br/>"
+                overlay_names += overlay.name + "<br/>"
 
         import_names = ""
         if self.rc.import_files:
@@ -998,7 +997,7 @@ class MultiPageRenderer(Renderer):
                 south_arrow = self.page_disposition[line_nb][current_col]
                 ctx.save()
                 ctx.translate(self._usable_area_width_pt/2,
-                     self._usable_area_height_pt \
+                     self._usable_area_height_pt
                       - commons.convert_pt_to_dots(self.grayed_margin_pt)/2)
                 ctx.rotate(math.pi)
                 self._draw_arrow(ctx, cairo_surface,
@@ -1027,7 +1026,7 @@ class MultiPageRenderer(Renderer):
                 east_arrow = self.page_disposition[current_line][col_nb]
                 ctx.save()
                 ctx.translate(
-                    self._usable_area_width_pt \
+                    self._usable_area_width_pt
                      - commons.convert_pt_to_dots(self.grayed_margin_pt)/2,
                     self._usable_area_height_pt/2)
                 ctx.rotate(math.pi/2)
@@ -1161,9 +1160,9 @@ class MultiPageRenderer(Renderer):
             ctx.translate(commons.convert_pt_to_dots(self.grayed_margin_pt),
                       commons.convert_pt_to_dots(self.grayed_margin_pt))
             self._draw_labels(ctx, grid,
-                  commons.convert_pt_to_dots(self._usable_area_width_pt) \
+                  commons.convert_pt_to_dots(self._usable_area_width_pt)
                         - 2 * commons.convert_pt_to_dots(self.grayed_margin_pt),
-                  commons.convert_pt_to_dots(self._usable_area_height_pt) \
+                  commons.convert_pt_to_dots(self._usable_area_height_pt)
                         - 2 * commons.convert_pt_to_dots(self.grayed_margin_pt),
                   commons.convert_pt_to_dots(self._grid_legend_margin_pt))
             ctx.restore()
