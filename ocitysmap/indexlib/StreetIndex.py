@@ -231,8 +231,6 @@ class StreetIndex(GeneralIndex):
         having no specific grid square location
         """
 
-        cursor = db.cursor()
-
         result = []
         current_category = StreetIndexCategory(_(u"Villages"),
                                                is_street=False)

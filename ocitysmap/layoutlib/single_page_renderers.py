@@ -110,7 +110,6 @@ class SinglePageRenderer(Renderer):
                 self.index_position = None
             else:
                 try:
-                    indexer_name = rc.indexer
                     indexer_class = globals()[rc.indexer+"Index"]
                     # TODO : check that it actually implements a working indexer class
                 except Exception:

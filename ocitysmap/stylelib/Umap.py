@@ -276,7 +276,7 @@ class UmapStylesheet(Stylesheet):
                                         iconFile.close()
 
                                         iconPath = os.path.realpath(iconFile.name)
-                                    except Exception as Argument:
+                                    except Exception:
                                         LOG.exception("Could not get icon from URL %s" % iconUrl)
                                         iconPath = maki_icon_dir + '/circle-15.svg'
 
