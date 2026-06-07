@@ -81,7 +81,7 @@ class GpxStylesheet(Stylesheet):
         with open(layer_template_file, 'r') as layer_template:
             tmplayer = Template(layer_template.read())
 
-        if  len(gpx.tracks):
+        if len(gpx.tracks):
             nonempty_tracks = 0
             for track in gpx.tracks:
                 for segment in track.segments:
@@ -95,7 +95,7 @@ class GpxStylesheet(Stylesheet):
                     layername = "tracks"
                 )
 
-        if  len(gpx.routes):
+        if len(gpx.routes):
             nonempty_routes = 0
             for route in gpx.routes:
                 if len(route.points) > 0:
@@ -108,7 +108,7 @@ class GpxStylesheet(Stylesheet):
                     layername = "routes"
                 )
 
-        if  len(gpx.waypoints):
+        if len(gpx.waypoints):
             layer_text += tmplayer.substitute(
                 gpxfile = gpx_file,
                 layername = "waypoints"
