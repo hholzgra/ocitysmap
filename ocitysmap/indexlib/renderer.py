@@ -70,6 +70,7 @@ if __name__ == '__main__':
     import random
     import string
 
+    import ocitysmap
     from GeneralIndex import GeneralIndexCategory, GeneralIndexTerm, GeneralIndexRenderer
 
     logging.basicConfig(level=logging.DEBUG)
