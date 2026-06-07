@@ -217,7 +217,7 @@ class SinglePageRenderer(Renderer):
             path = overlay.path.strip()
             if path.startswith('internal:'):
                 # overlay plugin implemented using Python code
-                plugin_name = path.lstrip('internal:')
+                plugin_name = path.removeprefix('internal:')
                 self._overlay_effects[plugin_name] = self.get_plugin(plugin_name)
             else:
                 # Mapnix style overlay

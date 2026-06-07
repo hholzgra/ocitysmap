@@ -362,7 +362,7 @@ class MultiPageRenderer(Renderer):
         for overlay in self._overlays:
             path = overlay.path.strip()
             if path.startswith('internal:'):
-                plugin_name = path.lstrip('internal:')
+                plugin_name = path.removeprefix('internal:')
                 LOG.warning("plugin: %s - %s" % (path, plugin_name))
                 if plugin_name == 'qrcode':
                     if not self.rc.qrcode_text:
@@ -422,7 +422,7 @@ class MultiPageRenderer(Renderer):
             for overlay in self._overlays:
                 path = overlay.path.strip()
                 if path.startswith('internal:'):
-                    plugin_name = path.lstrip('internal:')
+                    plugin_name = path.removeprefix('internal:')
                     overlay_effects[plugin_name] = self.get_plugin(plugin_name)
                 else:
                     overlay_canvases.append(MapCanvas(overlay,
@@ -643,7 +643,7 @@ class MultiPageRenderer(Renderer):
         for overlay in self._overlays:
             path = overlay.path.strip()
             if path.startswith('internal:'):
-                plugin_name = path.lstrip('internal:')
+                plugin_name = path.removeprefix('internal:')
                 self._frontpage_overlay_effects[plugin_name] = self.get_plugin(plugin_name)
             else:
                 ov_canvas = MapCanvas(overlay,
