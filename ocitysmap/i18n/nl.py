@@ -16,7 +16,7 @@ class i18n_nl_generic(i18n):
                      "Drs.", "Maj.", "Majoor",
                      # counting words before street name,
                      # e.g. "1e Walstraat" => "Walstraat (1e)"
-                     "\d+e",
+                     r"\d+e",
                      "" ]
     #
     # Surnames in Dutch streets named after people tend to have the middle name
@@ -25,8 +25,16 @@ class i18n_nl_generic(i18n):
     # Likewise, articles are captured as part of the prefix,
     # e.g. "Den Urling" => "Urling (Den)"
     #
-    DETERMINANTS = [ "\s?van der", "\s?van den", "\s?van de", "\s?van",
-                     "\s?Den", "\s?D'n", "\s?D'", "\s?De", "\s?'T", "\s?Het",
+    DETERMINANTS = [ r"\s?van der",
+                     r"\s?van den",
+                     r"\s?van de",
+                     r"\s?van",
+                     r"\s?Den",
+                     r"\s?D'n",
+                     r"\s?D'",
+                     r"\s?De",
+                     r"\s?'T",
+                     r"\s?Het",
                      "" ]
 
     SPACE_REDUCE = re.compile(r"\s+")

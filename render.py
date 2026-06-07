@@ -260,7 +260,7 @@ def main():
     paper_width = None
     paper_height = None
     if options.paper_format and options.paper_format != 'default':
-        matches = re.search('^(\d+)[x\*](\d+)$', options.paper_format)
+        matches = re.search(r'^(\d+)[x\*](\d+)$', options.paper_format)
         if bool(matches):
             paper_width  = int(matches.group(1))
             paper_height = int(matches.group(2))

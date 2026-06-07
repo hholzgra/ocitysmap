@@ -11,7 +11,9 @@ class i18n_pl_generic(i18n):
                      "Prof.",
                      "" ]
 
-    DETERMINANTS = [ "\s?im.", "\s?imienia", "\s?pw.",
+    DETERMINANTS = [ r"\s?im.",
+                     r"\s?imienia",
+                     r"\s?pw.",
                      "" ]
 
     SPACE_REDUCE = re.compile(r"\s+")

@@ -275,7 +275,7 @@ class OCitySMap:
         except configparser.NoOptionError:
             LOG.warning("could not find 'font_path' in 'rendering' settings")
 
-        r_paper = re.compile('^\s*(\d+)\s*x\s*(\d+)\s*$')
+        r_paper = re.compile(r'^\s*(\d+)\s*x\s*(\d+)\s*$')
 
         if self._parser.has_section('paper_sizes'):
             self.PAPER_SIZES = []
