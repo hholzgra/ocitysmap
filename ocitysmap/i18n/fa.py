@@ -28,9 +28,9 @@ class i18n_fa_generic(i18n):
 
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %
-                                    ("|".join(APPELLATIONS),
-                                     "|".join(DETERMINANTS)), re.IGNORECASE
-                                                                 | re.UNICODE)
+                               ("|".join(APPELLATIONS),
+                                "|".join(DETERMINANTS)), re.IGNORECASE
+                               | re.UNICODE)
 
     # for IndexPageGenerator.upper_unaccent_string
     A_ACCENT = re.compile(r"[اأإ]", re.IGNORECASE | re.UNICODE)

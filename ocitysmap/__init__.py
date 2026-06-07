@@ -243,7 +243,7 @@ class OCitySMap:
 
         config_files = set(map(os.path.expanduser, config_files))
         LOG.debug('Reading OCitySMap configuration from %s...' %
-                 ', '.join(config_files))
+                  ', '.join(config_files))
 
         self._parser = configparser.ConfigParser()
         self._parser.optionxform = str # make option names case sensitive
@@ -351,8 +351,8 @@ class OCitySMap:
             datasource['port'] = 5432
 
         LOG.debug('Connecting to database %s on %s:%s as %s...' %
-                 (datasource['dbname'], datasource['host'], datasource['port'],
-                  datasource['user']))
+                  (datasource['dbname'], datasource['host'], datasource['port'],
+                   datasource['user']))
 
         db = psycopg2.connect(user=datasource['user'],
                               password=datasource['password'],
@@ -726,7 +726,7 @@ class OCitySMap:
         """
 
         assert config.osmid or config.bounding_box, \
-                'At least an OSM ID or a bounding box must be provided!'
+            'At least an OSM ID or a bounding box must be provided!'
 
         output_formats = list(map(lambda x: x.lower(), output_formats))
         config.i18n = i18n.install_translation(config.language,
@@ -770,15 +770,13 @@ class OCitySMap:
         if config.bounding_box.get_top() ==  config.bounding_box.get_bottom():
             config.bounding_box = config.bounding_box.create_expanded(ARC_SECOND, ARC_SECOND)
         assert config.bounding_box.get_left() !=  config.bounding_box.get_right(), \
-                "Bounding box has zero width"
+            "Bounding box has zero width"
         assert config.bounding_box.get_top()  !=  config.bounding_box.get_bottom(), \
-                "Bounding box has zero height"
+            "Bounding box has zero height"
 
         # Make sure paper has non-zero widht / height
-        assert config.paper_width_mm > 0, \
-                "Paper needs non-zero width"
-        assert config.paper_height_mm > 0, \
-                "Paper needs non-zero height"
+        assert config.paper_width_mm > 0, "Paper needs non-zero width"
+        assert config.paper_height_mm > 0, "Paper needs non-zero height"
 
         osm_date = self.get_osm_database_last_update()
 

@@ -53,7 +53,7 @@ class Grid:
         self._height_m, self._width_m = bounding_box.spheric_sizes()
 
         LOG.info('Laying out grid on %.1fx%.1fm area...' %
-               (self._width_m, self._height_m))
+                 (self._width_m, self._height_m))
 
         # compute the terrain grid size corresponding to the targeted paper size
         size = float(self.GRID_APPROX_PAPER_SIZE_MM) * scale / 1000
@@ -123,11 +123,11 @@ class Grid:
         self.horizontal_labels = list(map(self._gen_horizontal_square_label,
                                       range(int(math.ceil(self.horiz_count)))))
         self.vertical_labels = list(map(self._gen_vertical_square_label,
-                                   range(int(math.ceil(self.vert_count)))))
+                                        range(int(math.ceil(self.vert_count)))))
 
         LOG.info('Using %dx%dm grid (%.2fx%.2f squares).' %
-               (self.grid_size_m, self.grid_size_m,
-                self.horiz_count, self.vert_count))
+                 (self.grid_size_m, self.grid_size_m,
+                  self.horiz_count, self.vert_count))
 
     def generate_shape_file(self, filename):
         """Generates the grid shapefile with all the horizontal and

@@ -63,13 +63,13 @@ if __name__ == '__main__':
         items = []
         for label, location_str in [(rnd_str(40).capitalize(),
                                      '%s%d-%s%d'
-                                         % (rnd_str(2,
-                                                    string.ascii_uppercase),
-                                            random.randint(1,19),
-                                            rnd_str(2,
-                                                    string.ascii_uppercase),
-                                            random.randint(1,19),
-                                            ))]*random.randint(1, 20):
+                                     % (rnd_str(2,
+                                                string.ascii_uppercase),
+                                        random.randint(1,19),
+                                        rnd_str(2,
+                                                string.ascii_uppercase),
+                                        random.randint(1,19),
+                                        ))]*random.randint(1, 20):
             item              = commons.GeneralIndexItem(label, None, None)
             item.location_str = location_str
             item.page_number  = random.randint(1, 100)

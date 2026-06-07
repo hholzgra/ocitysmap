@@ -62,7 +62,7 @@ def main():
     # Known renderer names
     KNOWN_RENDERERS_NAMES = \
         list(map(lambda r: "%s (%s)" % (r.name, r.description),
-            ocitysmap.layoutlib.renderers.get_renderers()))
+                 ocitysmap.layoutlib.renderers.get_renderers()))
 
     # Known paper orientations
     KNOWN_PAPER_ORIENTATIONS = ['portrait', 'landscape']
@@ -133,7 +133,7 @@ def main():
                       default='default')
     parser.add_option('--orientation', metavar='ORIENTATION',
                       help='set the output paper orientation. Either '
-                            '"portrait" or "landscape". Defaults to portrait.',
+                      '"portrait" or "landscape". Defaults to portrait.',
                       default='portrait')
     parser.add_option('--import-file', metavar='FILE', action='append',
                       help='import file, any of GPX, Umap, GeoJson or POI file, can be used multiple times')
@@ -207,8 +207,8 @@ def main():
             stylesheet = mapper.get_stylesheet_by_name(options.stylesheet)
         except LookupError as ex:
             parser.error("%s. Available stylesheets: %s."
-                 % (ex, ', '.join(map(lambda s: s.name,
-                      mapper.STYLESHEET_REGISTRY))))
+                         % (ex, ', '.join(map(lambda s: s.name,
+                                              mapper.STYLESHEET_REGISTRY))))
 
     # Parse overlay stylesheet (defaults to none)
     overlays = []
@@ -218,8 +218,8 @@ def main():
                 overlays.append(mapper.get_overlay_by_name(overlay_name))
             except LookupError as ex:
                 parser.error("%s. Available overlay stylesheets: %s."
-                     % (ex, ', '.join(map(lambda s: s.name,
-                          mapper.OVERLAY_REGISTRY))))
+                             % (ex, ', '.join(map(lambda s: s.name,
+                                                  mapper.OVERLAY_REGISTRY))))
 
     # Parse rendering layout
     if options.layout is None:
@@ -229,9 +229,9 @@ def main():
             cls_renderer = ocitysmap.layoutlib.renderers.get_renderer_class_by_name(options.layout)
         except LookupError as ex:
             parser.error("%s\nAvailable layouts: %s."
-                 % (ex, ', '.join(map(lambda lo: "%s (%s)"
-                          % (lo.name, lo.description),
-                          ocitysmap.layoutlib.renderers.get_renderers()))))
+                         % (ex, ', '.join(map(lambda lo: "%s (%s)"
+                                              % (lo.name, lo.description),
+                                              ocitysmap.layoutlib.renderers.get_renderers()))))
 
     # Parse Indexer
     if options.indexer is None:

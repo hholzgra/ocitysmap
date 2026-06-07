@@ -101,13 +101,11 @@ if __name__ == '__main__':
         items = []
         for label, location_str in [(rnd_str(10).capitalize(),
                                      '%s%d-%s%d'
-                                         % (rnd_str(2,
-                                                    string.ascii_uppercase),
-                                            random.randint(1,19),
-                                            rnd_str(2,
-                                                    string.ascii_uppercase),
-                                            random.randint(1,19),
-                                            ))]*4:
+                                     % (rnd_str(2, string.ascii_uppercase),
+                                        random.randint(1,19),
+                                        rnd_str(2, string.ascii_uppercase),
+                                        random.randint(1,19),
+                                        ))] * 4:
             item              = commons.IndexItem(label, None, None)
             item.location_str = location_str
             items.append(item)

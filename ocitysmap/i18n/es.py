@@ -3,18 +3,18 @@ from . import i18n, _install_language
 
 class i18n_es_generic(i18n):
     APPELLATIONS = [ "Avenida", "Avinguda", "Calle", "Callejón",
-            "Calzada", "Camino", "Camí", "Carrer", "Carretera",
-            "Glorieta", "Parque", "Pasaje", "Pasarela", "Paseo", "Plaza",
-            "Plaça", "Privada", "Puente", "Ronda", "Salida", "Travesia" ]
+                     "Calzada", "Camino", "Camí", "Carrer", "Carretera",
+                     "Glorieta", "Parque", "Pasaje", "Pasarela", "Paseo", "Plaza",
+                     "Plaça", "Privada", "Puente", "Ronda", "Salida", "Travesia" ]
     DETERMINANTS = [ " de la", " de los", " de las",
                      " dels", " del", " d'", " de l'",
                      " de", "" ]
 
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %
-                                    ("|".join(APPELLATIONS),
-                                     "|".join(DETERMINANTS)), re.IGNORECASE
-                                                                 | re.UNICODE)
+                               ("|".join(APPELLATIONS),
+                                "|".join(DETERMINANTS)), re.IGNORECASE
+                               | re.UNICODE)
 
     # for IndexPageGenerator.upper_unaccent_string
     E_ACCENT = re.compile(r"[éèêëẽ]", re.IGNORECASE | re.UNICODE)

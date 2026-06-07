@@ -60,19 +60,19 @@ class i18n_be_generic(i18n):
             return matches.group(0)
         else:
             return ", ".join((matches.group('name'),
-                " ". join(s.lower()
-                    for s in matches.group('num_prefix', 'prefix')
-                    if s is not None)
-                ))
+                              " ". join(s.lower()
+                                        for s in matches.group('num_prefix', 'prefix')
+                                        if s is not None)
+                              ))
 
     def user_readable_street(self, name):
         name = name.strip()
         name = self.SPACE_REDUCE.sub(" ", name)
         # Normalize abbreviations
         name = self.STATUS_ABBREV_REGEXP.sub(lambda m:
-                self.STATUS_PARTS_ABBREV_MAPPING.get(
-                    m.group(0).replace('.', ''), m.group(0)),
-            name)
+                                             self.STATUS_PARTS_ABBREV_MAPPING.get(
+                                                 m.group(0).replace('.', ''), m.group(0)),
+                                             name)
         # Move prefixed status parts to the end for sorting
         name = self.PREFIX_REGEXP.sub(self._rewrite_street_parts, name)
         # TODO: move "малая", "большая" after name but before status

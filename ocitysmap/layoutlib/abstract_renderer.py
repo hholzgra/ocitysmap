@@ -99,9 +99,9 @@ class Renderer(ABC):
         self.grid         = None # The implementation is in charge of it
 
         self.paper_width_pt = \
-                commons.convert_mm_to_pt(self.rc.paper_width_mm)
+            commons.convert_mm_to_pt(self.rc.paper_width_mm)
         self.paper_height_pt = \
-                commons.convert_mm_to_pt(self.rc.paper_height_mm)
+            commons.convert_mm_to_pt(self.rc.paper_height_mm)
         self._title_margin_pt = 0
         self.dpi = dpi
 
@@ -223,13 +223,13 @@ class Renderer(ABC):
             # At the top clear the right corner of the horizontal label
             if (i < map_grid.horiz_count-1):
                 draw_utils.draw_halotext_center(ctx, label,
-                                             x, grid_legend_margin_dots/2.0)
+                                                x, grid_legend_margin_dots/2.0)
 
             # At the bottom clear the left corner of the horizontal label
             if (i > 0):
                 draw_utils.draw_halotext_center(ctx, label,
-                                             x, map_area_height_dots -
-                                             grid_legend_margin_dots/2.0)
+                                                x, map_area_height_dots -
+                                                grid_legend_margin_dots/2.0)
 
         for i, label in enumerate(map_grid.vertical_labels):
             y = i * step_vert
@@ -244,13 +244,13 @@ class Renderer(ABC):
             # On the left clear the upper corner of the vertical label
             if (i > 0):
                 draw_utils.draw_halotext_center(ctx, label,
-                                         grid_legend_margin_dots/2.0, y)
+                                                grid_legend_margin_dots / 2.0, y)
 
             # On the right clear the bottom corner of the vertical label
             if (i < map_grid.vert_count - 1):
                 draw_utils.draw_halotext_center(ctx, label,
-                                         map_area_width_dots -
-                                         grid_legend_margin_dots/2.0, y)
+                                                map_area_width_dots -
+                                                grid_legend_margin_dots / 2.0, y)
 
         ctx.restore()
 
@@ -387,15 +387,15 @@ class Renderer(ABC):
             12:     200_000,
             11:     400_000,
             10:     750_000,
-             9:   1_500_000,
-             8:   3_000_000,
-             7:   6_500_000,
-             6:  12_500_000,
-             5:  25_000_000,
-             4:  50_000_000,
-             3: 100_000_000,
-             2: 200_000_000,
-             1: 500_000_000,
+            9:    1_500_000,
+            8:    3_000_000,
+            7:    6_500_000,
+            6:   12_500_000,
+            5:   25_000_000,
+            4:   50_000_000,
+            3:  100_000_000,
+            2:  200_000_000,
+            1:  500_000_000,
         }
 
         for zoom_factor, scale_denom_base in lookup_table.items():

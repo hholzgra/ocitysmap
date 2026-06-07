@@ -100,7 +100,7 @@ class LineShapeFile(_ShapeFile):
         self._layer = self._ds.CreateLayer(self._layer_name,
                                            geom_type=ogr.wkbLineString)
         LOG.debug('Created layer %s in LineShapeFile %s.' %
-                (layer_name, out_filename))
+                  (layer_name, out_filename))
 
     def add_bounding_rectangle(self):
         self.add_horiz_line(self._bbox.get_top_left()[0])
@@ -164,7 +164,7 @@ class PolyShapeFile(_ShapeFile):
         self._layer = self._ds.CreateLayer(self._layer_name,
                                            geom_type=ogr.wkbPolygon)
         LOG.debug('Created layer %s in PolyShapeFile %s.' %
-                (layer_name, out_filename))
+                  (layer_name, out_filename))
 
     def add_shade_from_wkt(self, wkt):
         """Add the polygon feature to the shape file."""

@@ -289,8 +289,7 @@ class BoundingBox:
 
         # OSM maps are drawn between -85 deg and + 85, the whole amplitude
         # is 256*2^(zoom)
-        pix_y = (yplan(self._lat1) - yplan(self._lat2)) \
-                * (2 ** (zoom + 7)) / yplan(85)
+        pix_y = (yplan(self._lat1) - yplan(self._lat2)) * (2 ** (zoom + 7)) / yplan(85)
 
         return (int(math.ceil(pix_y)), int(math.ceil(pix_x)))
 

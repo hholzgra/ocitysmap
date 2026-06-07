@@ -297,11 +297,11 @@ class SinglePageRenderer(Renderer):
         if self.rc.indexer == 'Poi':
             # a special index is createad when a POI file is attached
             index_renderer = PoiIndexRenderer(self.rc.i18n,
-                                                 self.street_index.categories)
+                                              self.street_index.categories)
         else:
             # TODO: use actual renderer type here?
             index_renderer = GeneralIndexRenderer(self.rc.i18n,
-                                                 self.street_index.categories)
+                                                  self.street_index.categories)
 
         # We use a fake vector device to determine the actual
         # rendering characteristics
@@ -528,7 +528,7 @@ class SinglePageRenderer(Renderer):
             = commons.convert_pt_to_dots(self._copyright_margin_pt, dpi)
 
         map_coords_dots = list(map(lambda language: commons.convert_pt_to_dots(language, dpi),
-                              self._map_coords))
+                                   self._map_coords))
 
         # create the cairo context to draw into
         ctx = cairo.Context(cairo_surface)
@@ -931,8 +931,8 @@ if __name__ == '__main__':
 
     plain = renderer_cls(config, '/tmp', None)
     surface = cairo.PDFSurface('/tmp/plain.pdf',
-                   commons.convert_mm_to_pt(config.paper_width_mm),
-                   commons.convert_mm_to_pt(config.paper_height_mm))
+                               commons.convert_mm_to_pt(config.paper_width_mm),
+                               commons.convert_mm_to_pt(config.paper_height_mm))
 
     plain.render(surface, commons.PT_PER_INCH)
     surface.finish()

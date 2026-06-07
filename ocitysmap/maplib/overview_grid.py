@@ -47,7 +47,7 @@ class OverviewGrid:
         self._height_m, self._width_m = bounding_box.spheric_sizes()
 
         LOG.info('Laying out of overview grid on %.1fx%.1fm area...' %
-               (self._width_m, self._height_m))
+                 (self._width_m, self._height_m))
 
     def generate_shape_file(self, filename):
         """Generates the grid shapefile with all the horizontal and
@@ -62,7 +62,7 @@ class OverviewGrid:
         # Use a slightly larger bounding box for the shape file to accomodate
         # for the small imprecisions of re-projecting.
         g = shapes.BoxShapeFile(self._bbox.create_expanded(0.001, 0.001),
-                                 filename, 'grid')
+                                filename, 'grid')
         for box in self._pages_bbox:
             g.add_box(box)
 

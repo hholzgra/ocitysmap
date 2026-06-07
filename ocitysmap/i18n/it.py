@@ -4,15 +4,15 @@ from . import i18n, _install_language
 class i18n_it_generic(i18n):
     APPELLATIONS = [ "Via", "Viale", "Piazza", "Scali", "Strada", "Largo",
                      "Corso", "Viale", "Calle", "Sottoportico",
-             "Sottoportego", "Vicolo", "Piazzetta" ]
+                     "Sottoportego", "Vicolo", "Piazzetta" ]
     DETERMINANTS = [ " delle", " dell'", " dei", " degli",
                      " della", " del", " di", "" ]
 
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %
-                                    ("|".join(APPELLATIONS),
-                                     "|".join(DETERMINANTS)), re.IGNORECASE
-                                                                 | re.UNICODE)
+                               ("|".join(APPELLATIONS),
+                                "|".join(DETERMINANTS)), re.IGNORECASE
+                               | re.UNICODE)
 
     # for IndexPageGenerator.upper_unaccent_string
     E_ACCENT = re.compile(r"[éèêëẽ]", re.IGNORECASE | re.UNICODE)

@@ -40,8 +40,8 @@ if __name__ == '__main__':
     # lang = "ar_MA.UTF-8"
     # lang = "zh_CN.utf8"
     i18n = i18n.install_translation(lang,
-                os.path.join(os.path.dirname(__file__),
-                             "..", "..", "locale"))
+                                    os.path.join(os.path.dirname(__file__),
+                                                 "..", "..", "locale"))
 
     bbox = coords.BoundingBox(48.8162, 2.3417, 48.8063, 2.3699) # France
     # bbox = coords.BoundingBox(34.0322, -6.8648, 34.0073, -6.8133) # Moroco

@@ -158,7 +158,7 @@ class StreetIndex(GeneralIndex):
                                                linestring[11:-1].split(','))
             except (ValueError, TypeError):
                 LOG.exception("Error parsing %s for %s" % (repr(linestring),
-                                                         repr(street_name)))
+                                                           repr(street_name)))
                 continue
             endpoint1 = ocitysmap.coords.Point(s_endpoint1[1], s_endpoint1[0])
             endpoint2 = ocitysmap.coords.Point(s_endpoint2[1], s_endpoint2[0])

@@ -6,9 +6,9 @@ class i18n_tr_generic(i18n):
     DETERMINANTS = []
     SPACE_REDUCE = re.compile(r"\s+")
     PREFIX_REGEXP = re.compile(r"^(?P<prefix>(%s)(%s)?)\s?\b(?P<name>.+)" %
-                                    ("|".join(APPELLATIONS),
-                                     "|".join(DETERMINANTS)), re.IGNORECASE
-                                                                 | re.UNICODE)
+                               ("|".join(APPELLATIONS),
+                                "|".join(DETERMINANTS)), re.IGNORECASE
+                               | re.UNICODE)
 
     def __init__(self, language, locale_path):
         self.language = str(language)

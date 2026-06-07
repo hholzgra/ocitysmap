@@ -184,8 +184,8 @@ class TK25Renderer(Renderer):
                                   commons.convert_mm_to_dots(40, dpi), commons.convert_mm_to_dots(39, dpi),
                                   "18°")
         draw_utils.draw_text_right(ctx, normal_layout, normal_fascent,
-                                  commons.convert_mm_to_dots(40, dpi), commons.convert_mm_to_dots(41, dpi),
-                                  "30'")
+                                   commons.convert_mm_to_dots(40, dpi), commons.convert_mm_to_dots(41, dpi),
+                                   "30'")
 
         ctx.restore()
 

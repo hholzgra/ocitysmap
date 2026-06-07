@@ -327,7 +327,7 @@ SELECT %(columns)s,
             fd = open(output_filename, 'w', encoding='utf-8')
         except Exception as ex:
             LOG.warning('error while opening destination file %s: %s'
-                      % (output_filename, ex))
+                        % (output_filename, ex))
             return
 
         LOG.debug("Creating CSV file %s..." % output_filename)
@@ -507,9 +507,9 @@ class GeneralIndexItem(IndexItem):
         if not rtl:
             # _, _,
             _, line_start = draw_utils.draw_text_left(ctx, label_layout,
-                                            fascent,
-                                            baseline_x, baseline_y,
-                                            self.label)
+                                                      fascent,
+                                                      baseline_x, baseline_y,
+                                                      self.label)
             line_end, _ = draw_utils.draw_text_right(ctx, column_layout,
                                                      fascent,
                                                      baseline_x, baseline_y,
@@ -572,27 +572,27 @@ class GeneralIndexRenderer:
     def __init__(self, i18n, index_categories,
                  street_index_rendering_styles
                      = [ GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 16',
-                                                   'DejaVu 12'),
+                                                    'DejaVu 12'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 14',
-                                                   'DejaVu 10'),
+                                                    'DejaVu 10'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 12',
-                                                   'DejaVu 8'),
+                                                    'DejaVu 8'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 10',
-                                                   'DejaVu 7'),
+                                                    'DejaVu 7'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 8',
-                                                   'DejaVu 6'),
+                                                    'DejaVu 6'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 6',
-                                                   'DejaVu 5'),
+                                                    'DejaVu 5'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 5',
-                                                   'DejaVu 4'),
+                                                    'DejaVu 4'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 4',
-                                                   'DejaVu 3'),
+                                                    'DejaVu 3'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 3',
-                                                   'DejaVu 2'),
+                                                    'DejaVu 2'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 2',
-                                                   'DejaVu 2'),
+                                                    'DejaVu 2'),
                          GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 1',
-                                                   'DejaVu 1'), ] ):
+                                                    'DejaVu 1'), ] ):
         self._i18n             = i18n
         self._index_categories = index_categories
         self._rendering_styles = street_index_rendering_styles
@@ -663,7 +663,7 @@ class GeneralIndexRenderer:
             except IndexDoesNotFitError:
                 # Index did not fit => try smaller...
                 LOG.debug("Index %s too large: should try a smaller one."
-                        % rs)
+                          % rs)
                 continue
 
         # Index really did not fit with any of the rendering styles ?
@@ -737,9 +737,9 @@ class GeneralIndexRenderer:
             rendering_area.rendering_style.label_font_spec)
 
         header_layout, header_fascent, header_fheight, header_em = \
-                draw_utils.create_layout_with_font(ctx, header_fd)
+            draw_utils.create_layout_with_font(ctx, header_fd)
         label_layout, label_fascent, label_fheight, label_em = \
-                draw_utils.create_layout_with_font(ctx, label_fd)
+            draw_utils.create_layout_with_font(ctx, label_fd)
 
         # By OCitysmap's convention, the default resolution is 72 dpi,
         # which maps to the default pangocairo resolution (96 dpi
@@ -840,7 +840,7 @@ class GeneralIndexRenderer:
         """
 
         layout, fascent, fheight, em = draw_utils.create_layout_with_font(ctx,
-                                                                     font_desc)
+                                                                          font_desc)
         # print "PREPARE", layout, fascent, fheight, em
 
         if len(text_lines):
@@ -878,17 +878,17 @@ class GeneralIndexRenderer:
 
         # Account for maximum square width (at worst " " + "Z99-Z99")
         label_block = self._compute_lines_occupation(ctx, pc, label_fd, 1+7,
-                reduce(lambda x,y: x+y.get_all_item_labels(),
-                       self._index_categories, []))
+                                                     reduce(lambda x,y: x+y.get_all_item_labels(),
+                                                            self._index_categories, []))
 
         # Reserve a small margin around the category headers
         headers_block = self._compute_lines_occupation(ctx, pc, header_fd, 2,
-                [x.name for x in self._index_categories])
+                                                       [x.name for x in self._index_categories])
 
         column_width = max(label_block['column_width'],
                            headers_block['column_width'])
-        column_height = label_block['column_height'] + \
-                        headers_block['column_height']
+        column_height = label_block['column_height'] \
+            + headers_block['column_height']
 
         # We make sure there will be enough space for a header and a
         # label at the bottom of each column plus an additional
@@ -926,7 +926,7 @@ class GeneralIndexRenderer:
         """
 
         tall_width, tall_height, vertical_extra = \
-                self._compute_column_occupation(ctx, pc, rendering_style)
+            self._compute_column_occupation(ctx, pc, rendering_style)
 
         if zone_width_dots < tall_width:
             raise IndexDoesNotFitError
@@ -1139,17 +1139,17 @@ class MultiPageIndexRenderer:
                         delta_x  = orig_delta_x
 
                 item.draw(self._i18n.isrtl(), self.ctx, pc, column_layout,
-                            UTILS.convert_pt_to_dots(label_fascent, dpi),
-                            UTILS.convert_pt_to_dots(label_fheight, dpi),
-                            UTILS.convert_pt_to_dots(self.rendering_area_x
-                                                     + offset_x, dpi),
-                            UTILS.convert_pt_to_dots(self.rendering_area_y
-                                                     + offset_y
-                                                     + label_fascent, dpi),
-                            label_layout,
-                            UTILS.convert_pt_to_dots(label_height, dpi),
-                            UTILS.convert_pt_to_dots(max_location_drawing_width,
-                                                     dpi))
+                          UTILS.convert_pt_to_dots(label_fascent, dpi),
+                          UTILS.convert_pt_to_dots(label_fheight, dpi),
+                          UTILS.convert_pt_to_dots(self.rendering_area_x
+                                                   + offset_x, dpi),
+                          UTILS.convert_pt_to_dots(self.rendering_area_y
+                                                   + offset_y
+                                                   + label_fascent, dpi),
+                          label_layout,
+                          UTILS.convert_pt_to_dots(label_height, dpi),
+                          UTILS.convert_pt_to_dots(max_location_drawing_width,
+                                                   dpi))
 
                 offset_y += label_height
 

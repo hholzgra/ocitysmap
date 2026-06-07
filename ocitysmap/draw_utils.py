@@ -113,8 +113,7 @@ def draw_text(ctx, layout, fascent,
 
     return (width, height)
 
-def draw_text_left(ctx, layout, fascent,
-                    baseline_x, baseline_y, text):
+def draw_text_left(ctx, layout, fascent, baseline_x, baseline_y, text):
     """ Draw left alinged text
 
     Draws the given text left aligned into the provided Cairo
@@ -140,7 +139,8 @@ def draw_text_left(ctx, layout, fascent,
         Horizontal start and end position of drawn text
     """
     text_width,text_height = draw_text(ctx, layout, fascent,
-                    baseline_x, baseline_y, text, Pango.Alignment.LEFT)
+                                       baseline_x, baseline_y,
+                                       text, Pango.Alignment.LEFT)
 
     return (baseline_x, baseline_x + text_width)
 
@@ -171,8 +171,8 @@ def draw_text_center(ctx, layout, fascent,
         Horizontal start and end position of drawn text
     """
     text_width,text_height = draw_text(ctx, layout, fascent,
-                                      baseline_x, baseline_y, text,
-                                      Pango.Alignment.CENTER)
+                                       baseline_x, baseline_y, text,
+                                       Pango.Alignment.CENTER)
     layout_width = layout.get_width() / Pango.SCALE
     return (baseline_x + (layout_width - text_width) / 2.0,
             baseline_x + (layout_width + text_width) / 2.0)
@@ -205,8 +205,8 @@ def draw_text_right(ctx, layout, fascent,
         Horizontal start and end position of drawn text
     """
     text_width,text_height = draw_text(ctx, layout, fascent,
-                                     baseline_x, baseline_y,
-                                     text, Pango.Alignment.RIGHT)
+                                       baseline_x, baseline_y,
+                                       text, Pango.Alignment.RIGHT)
     layout_width = layout.get_width() / Pango.SCALE
     return (baseline_x + layout_width - text_width,
             baseline_x + layout_width)
@@ -438,9 +438,9 @@ def render_page_number(ctx, page_number,
     x_offset = 0
     if side == RIGHT_SIDE:
         x_offset += commons.convert_pt_to_dots(usable_area_width_pt)\
-                  - commons.convert_pt_to_dots(margin_pt)
+            - commons.convert_pt_to_dots(margin_pt)
     y_offset = commons.convert_pt_to_dots(usable_area_height_pt)\
-             - commons.convert_pt_to_dots(margin_pt)
+        - commons.convert_pt_to_dots(margin_pt)
 
     ctx.translate(x_offset, y_offset)
 

@@ -85,7 +85,7 @@ class MapCanvas:
             envelope = mapnik.Box2d(off_x, off_y, off_x+width, off_y+height)
             self._geo_bbox = self._inverse_envelope(envelope)
             LOG.debug('Corrected bounding box from %s to %s, ratio: %.2f.' %
-                    (bounding_box, self._geo_bbox, graphical_ratio))
+                      (bounding_box, self._geo_bbox, graphical_ratio))
         else:
             envelope = orig_envelope
             self._geo_bbox = bounding_box
@@ -145,7 +145,7 @@ class MapCanvas:
                              'color': col,
                              'line_width': line_width})
         LOG.debug('Added shape file %s to map canvas as layer %s.' %
-                (shape_file.get_filepath(), shape_file.get_layer_name()))
+                  (shape_file.get_filepath(), shape_file.get_layer_name()))
 
     def render(self):
         """Render the map in memory with all the added shapes. The Mapnik Map
@@ -229,13 +229,13 @@ if __name__ == '__main__':
 
     canvas.add_shape_file(
         shapes.LineShapeFile(new_bbox, '/tmp/mygrid.shp', 'grid')
-            .add_vert_line(2.04)
-            .add_horiz_line(48.7),
+        .add_vert_line(2.04)
+        .add_horiz_line(48.7),
         'red', 0.3, 10.0)
 
     canvas.add_shape_file(
         shapes.PolyShapeFile(new_bbox, '/tmp/mypoly.shp', 'shade')
-            .add_shade_from_wkt('POLYGON((2.04537559754772 48.702794853359,2.0456929723376 48.7033682610593,2.0457757970068 48.7037022715908,2.04577876144723 48.7043963708738,2.04589724923321 48.7043963708738,2.04589428479277 48.704519562418,2.04746445007788 48.7044706533954,2.04723043894637 48.7024665875529,2.04674876229103 48.7024238422904,2.04615641319268 48.702500973452,2.04537559754772 48.702794853359))'),
+        .add_shade_from_wkt('POLYGON((2.04537559754772 48.702794853359,2.0456929723376 48.7033682610593,2.0457757970068 48.7037022715908,2.04577876144723 48.7043963708738,2.04589724923321 48.7043963708738,2.04589428479277 48.704519562418,2.04746445007788 48.7044706533954,2.04723043894637 48.7024665875529,2.04674876229103 48.7024238422904,2.04615641319268 48.702500973452,2.04537559754772 48.702794853359))'),
         'blue', 0.3)
 
     canvas.render()
