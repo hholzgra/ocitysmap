@@ -110,6 +110,7 @@ class TK25Renderer(Renderer):
     def _mm_mvto(ctx,x,y,dpi):
         ctx.move_to(commons.convert_mm_to_dots(x, dpi),
                     commons.convert_mm_to_dots(y, dpi))
+
     @staticmethod
     def _fs(ctx, pt, dpi):
         ctx.set_font_size(pt*dpi/72)

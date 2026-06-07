@@ -52,6 +52,7 @@ if __name__ == '__main__':
     class i18nMock:
         def __init__(self, rtl):
             self.rtl = rtl
+
         def isrtl(self):
             return self.rtl
 
