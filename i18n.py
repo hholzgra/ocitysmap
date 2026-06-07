@@ -47,7 +47,7 @@ def make_po(languages):
     for language in languages:
         print(" * %s" % language)
         subprocess.check_call(['msgmerge', '-U',
-                               'locale/%s/LC_MESSAGES/ocitysmap.po' % l,
+                               'locale/%s/LC_MESSAGES/ocitysmap.po' % language,
                                'locale/ocitysmap.pot'])
     return
 
