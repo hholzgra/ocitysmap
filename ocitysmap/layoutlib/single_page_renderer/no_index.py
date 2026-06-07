@@ -1,10 +1,11 @@
 from gettext import gettext
 
 import logging
-LOG = logging.getLogger('ocitysmap')
 
 from ocitysmap.layoutlib.abstract_renderer import Renderer
 from ocitysmap.layoutlib.single_page_renderers import SinglePageRenderer
+
+LOG = logging.getLogger('ocitysmap')
 
 class SinglePageRendererNoIndex(SinglePageRenderer):
     """

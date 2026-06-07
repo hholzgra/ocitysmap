@@ -25,14 +25,16 @@ from itertools import groupby
 import locale
 import logging
 import mapnik
-assert mapnik.mapnik_version() >= 300000, \
-    "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
-    "for more details." % mapnik.mapnik_version_string()
+if True: # hack to prevent consecutive E402 warnings
+    assert mapnik.mapnik_version() >= 300000, \
+        "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
+        "for more details." % mapnik.mapnik_version_string()
 import math
 import os
 import gi
-gi.require_version('Rsvg', '2.0')
-gi.require_version('Pango', '1.0')
+if True: # hack to prevent consecutive E402 warnings
+    gi.require_version('Rsvg', '2.0')
+    gi.require_version('Pango', '1.0')
 from gi.repository import Rsvg, Pango
 import shapely.wkt
 from string import Template
