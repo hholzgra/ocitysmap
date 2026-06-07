@@ -300,7 +300,7 @@ SELECT %(columns)s,
             grouped_items = []
             sort_key = lambda item:(item.label, item.location_str)
             items = natsorted(category.items, key=sort_key)
-            for label, same_items in groupby(items, key=sort_key):
+            for _label, same_items in groupby(items, key=sort_key):
                 grouped_items.append(next(same_items))
             category.items = grouped_items
 

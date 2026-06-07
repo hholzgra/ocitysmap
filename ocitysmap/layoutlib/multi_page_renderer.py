@@ -493,7 +493,7 @@ class MultiPageRenderer(Renderer):
         # properly.
         all_categories_streets = []
         all_categories_others  = []
-        for page_number, idx in enumerate(indexes):
+        for _page_number, idx in enumerate(indexes):
             for cat in idx.categories:
                 # Split in two lists depending on the category type
                 # (street or other)
@@ -849,7 +849,7 @@ class MultiPageRenderer(Renderer):
 
         import_names = ""
         if self.rc.import_files:
-            for (file_type, import_file) in self.rc.import_files:
+            for (_file_type, import_file) in self.rc.import_files:
                 import_names += os.path.basename(import_file) + "<br/>"
 
         html = html_template.substitute(
