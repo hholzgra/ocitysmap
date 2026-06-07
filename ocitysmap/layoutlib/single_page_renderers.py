@@ -573,7 +573,8 @@ class SinglePageRenderer(Renderer):
             self.rc.status_update(_("%(format)s: rendering '%(style)s' overlay")
                                   % { 'format': self.rc.output_format,
                                       'style': overlay_canvas.get_style_name(),
-                                     })
+                                     }
+                                  )
             mapnik.render(rendered_overlay, ctx, scale_factor, 0, 0)
             ctx.restore()
 
@@ -604,7 +605,8 @@ class SinglePageRenderer(Renderer):
             self.rc.status_update(_("%(format)s: rendering '%(style)s' overlay")
                                   % { 'format': self.rc.output_format,
                                       'style':  plugin_name,
-                                     })
+                                     }
+                                  )
             try:
                 effect.render(self, ctx)
             except Exception as e:
