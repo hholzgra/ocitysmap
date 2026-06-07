@@ -454,7 +454,8 @@ class MultiPageRenderer(Renderer):
                                       % { 'page':  i + 1,
                                           'total': len(bboxes),
                                           'style': overlay_canvas._style_name,
-                                         })
+                                         }
+                                      )
                 overlay_canvas.render()
 
             self.pages.append((map_canvas, map_grid, overlay_canvases, overlay_effects))
@@ -465,7 +466,8 @@ class MultiPageRenderer(Renderer):
             self.rc.status_update(_("Preparing map page %(page)d of %(total)d: collecting index data")
                                   % { 'page':  i + 1,
                                       'total': len(bboxes),
-                                     })
+                                     }
+                                  )
             try:
                 indexer_class = globals()[self.rc.indexer+"Index"]
                 # TODO: check that it actually implements a working indexer class
@@ -881,7 +883,7 @@ class MultiPageRenderer(Renderer):
                                       self.grayed_margin_pt,
                                       transparent_background = False,
                                       side = draw_utils.LEFT_SIDE
-        )
+                                      )
         try: # set_page_label() does not exist in older pycairo versions
             cairo_surface.set_page_label(_('Contents'))
         except Exception:
@@ -1127,7 +1129,8 @@ class MultiPageRenderer(Renderer):
             self.rc.status_update(_("Rendering map page %(page)d of %(total)d")
                                   % { 'page':  map_number + 1,
                                       'total': len(self.pages),
-                                     })
+                                     }
+                                  )
 
             ctx.save()
             self._prepare_page(ctx)
@@ -1145,7 +1148,8 @@ class MultiPageRenderer(Renderer):
             self.rc.status_update(_("Rendering map page %(page)d of %(total)d: base map")
                                   % { 'page':  map_number + 1,
                                       'total': len(self.pages),
-                                     })
+                                     }
+                                  )
 
             mapnik.render(rendered_map, ctx)
 
@@ -1154,7 +1158,8 @@ class MultiPageRenderer(Renderer):
                                       { 'page':  map_number + 1,
                                         'total': len(self.pages),
                                         'style': overlay_canvas._style_name,
-                                       })
+                                       }
+                                      )
 
                 rendered_overlay = overlay_canvas.get_rendered_map()
                 mapnik.render(rendered_overlay, ctx)
@@ -1283,9 +1288,9 @@ class MultiPageRenderer(Renderer):
 
             if not w or not h:
                 w = area_width_dots*(p_bottom_right.x - p_bottom_left.x
-                                                         )/coord_delta_x
+                                     ) / coord_delta_x
                 h = area_height_dots*(p_top_right.y - p_bottom_right.y
-                                                         )/coord_delta_y
+                                      ) / coord_delta_y
 
             draw_utils.draw_text_adjusted(ctx, str(idx + self._first_map_page_number),
                                           x, y, w, h,
