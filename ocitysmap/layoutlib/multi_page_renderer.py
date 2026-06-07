@@ -929,7 +929,7 @@ class MultiPageRenderer(Renderer):
                                       self.grayed_margin_pt,
                                       transparent_background = True,
                                       side = draw_utils.RIGHT_SIDE
-        )
+                                      )
 
         try: # set_page_label() does not exist in older pycairo versions
             cairo_surface.set_page_label(_('Overview'))

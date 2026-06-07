@@ -70,7 +70,7 @@ if __name__ == '__main__':
     import random
     import string
 
-    from commons import IndexItem, IndexCategory
+    from GeneralIndex import GeneralIndexCategory, GeneralIndexTerm, GeneralIndexRenderer
 
     logging.basicConfig(level=logging.DEBUG)
 
@@ -106,10 +106,10 @@ if __name__ == '__main__':
                                         rnd_str(2, string.ascii_uppercase),
                                         random.randint(1,19),
                                         ))] * 4:
-            item              = IndexItem(label, None, None)
+            item              = GeneralIndexItem(label, None, None)
             item.location_str = location_str
             items.append(item)
-        streets.append(IndexCategory(i, items))
+        streets.append(GeneralIndexCategory(i, items))
 
     index = GeneralIndexRenderer(i18nMock(False), streets)
 

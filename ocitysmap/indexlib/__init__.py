@@ -31,6 +31,7 @@ if __name__ == '__main__':
 
     from ocitysmap import i18n, coords
     from ocitysmap.maplib.grid import Grid
+    from layouts.commons import convert_mm_to_pt
     from StreetIndex import StreetIndex, StreetIndexRenderer
 
     logging.basicConfig(level=logging.DEBUG)

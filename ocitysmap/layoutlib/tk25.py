@@ -16,19 +16,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
-from string import Template
 import cairo
 
 import gi
 if True: # hack to prevent consecutive E402 warings
-    gi.require_version('Rsvg', '2.0')
     gi.require_version('Pango', '1.0')
     gi.require_version('PangoCairo', '1.0')
-from gi.repository import Rsvg, Pango, PangoCairo
+from gi.repository import Pango, PangoCairo
 
-import datetime
-import locale
 import logging
 import mapnik
 if True: # hack to prevent consecutive E402 warings
@@ -36,21 +31,12 @@ if True: # hack to prevent consecutive E402 warings
         "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
         "for more details." % mapnik.mapnik_version_string()
 import math
-from copy import copy
 from gettext import gettext
 
 from ocitysmap.layoutlib import commons
-import ocitysmap
 from ocitysmap.layoutlib.abstract_renderer import Renderer
-from ocitysmap.indexlib.GeneralIndex import GeneralIndexRenderer
-from ocitysmap.indexlib.StreetIndex import StreetIndex
-from ocitysmap.indexlib.PoiIndex import PoiIndexRenderer, PoiIndex
-from indexlib.commons import IndexDoesNotFitError, IndexEmptyError
 import ocitysmap.layoutlib.commons as UTILS
 import draw_utils
-from ocitysmap.maplib.map_canvas import MapCanvas
-
-import time
 
 LOG = logging.getLogger('ocitysmap')
 
