@@ -20,7 +20,7 @@ def render(renderer, ctx):
     oom   = 10 ** floor(log10(meter))
 
     # get the desired width of the scalebar in dots
-    map_coords_dots = list(map(lambda language: pt2px(l), renderer._map_coords))
+    map_coords_dots = list(map(lambda language: pt2px(language), renderer._map_coords))
 
     dots = map_coords_dots[2]
 
