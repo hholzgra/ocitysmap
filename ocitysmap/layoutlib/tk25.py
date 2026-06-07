@@ -127,7 +127,6 @@ class TK25Renderer(Renderer):
 
     def render(self, cairo_surface, dpi, osm_date):
         ctx = cairo.Context(cairo_surface)
-        pc = PangoCairo.create_context(ctx)
 
         normal_fd = Pango.FontDescription("DejaVu 7")
         normal_layout, normal_fascent, normal_fheight, normal_em = \

@@ -130,16 +130,14 @@ class Renderer(ABC):
             LOG.warning("Cannot read SVG from '%s'." % path)
             return None, None
 
-        scale_factor = height / svg.props.height
-
         ctx.push_group()
         ctx.save()
         ctx.move_to(0, 0)
-        factor = height / svg.props.height
-        ctx.scale(factor, factor)
+        scale_factor = height / svg.props.height
+        ctx.scale(scale_factor, scale_factor)
         svg.render_cairo(ctx)
         ctx.restore()
-        return ctx.pop_group(), svg.props.width * factor
+        return ctx.pop_group(), svg.props.width * scale_factor
 
     @staticmethod
     def _get_logo(ctx, logo_url, height):
@@ -453,7 +451,6 @@ class Renderer(ABC):
         ctx.scale(scale, scale)
         svg.render_cairo(ctx)
 
-        pc = PangoCairo.create_context(ctx)
         layout = PangoCairo.create_layout(ctx)
         fd = Pango.FontDescription('Droid Sans')
         fd.set_size(Pango.SCALE)

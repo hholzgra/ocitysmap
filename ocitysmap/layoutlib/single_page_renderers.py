@@ -407,7 +407,6 @@ class SinglePageRenderer(Renderer):
             ctx.restore()
 
         # Prepare the title
-        pc = PangoCairo.create_context(ctx)
         layout = PangoCairo.create_layout(ctx)
         layout.set_width(int((w_dots - 0.1*w_dots - logo_width - logo_width2) * Pango.SCALE))
         if not self.rc.i18n.isrtl():
@@ -477,7 +476,6 @@ class SinglePageRenderer(Renderer):
 
         # do the actual output drawing
         ctx.save()
-        pc = PangoCairo.create_context(ctx)
         fd = Pango.FontDescription('DejaVu')
         fd.set_size(Pango.SCALE)
         layout = PangoCairo.create_layout(ctx)

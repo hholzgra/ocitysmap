@@ -361,7 +361,6 @@ def draw_text_adjusted(ctx, text, x, y, width, height, max_char_number=None,
            write into (cairo units).
        max_char_number (number): If set a maximum character number.
     """
-    pc = PangoCairo.create_context(ctx)
     layout = PangoCairo.create_layout(ctx)
     layout.set_width(int(width_adjust * width * Pango.SCALE))
     layout.set_alignment(align)
