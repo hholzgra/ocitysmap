@@ -259,8 +259,8 @@ class MultiPageRenderer(Renderer):
                     else:
                         self._overlays.append(gpx_style)
                         try:
-                            for l in gpx_style.linestrings:
-                                track_linestrings.append(l)
+                            for language in gpx_style.linestrings:
+                                track_linestrings.append(language)
                         except Exception as e:
                             LOG.warning("GPX linestring extraction error: %s" % e)
                             pass
@@ -300,8 +300,8 @@ class MultiPageRenderer(Renderer):
                 inner_bb_shp = shapely.wkt.loads(inner_bb.as_wkt())
                 show_page = False
                 if len(track_linestrings) > 0:
-                    for l in track_linestrings:
-                        if l.intersects(inner_bb_shp):
+                    for language in track_linestrings:
+                        if language.intersects(inner_bb_shp):
                             show_page = True
                             break
                 elif not area_polygon.disjoint(inner_bb_shp):
