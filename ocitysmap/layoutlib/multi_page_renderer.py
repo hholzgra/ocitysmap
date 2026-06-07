@@ -1023,7 +1023,7 @@ class MultiPageRenderer(Renderer):
 
         # east arrow
         for col_nb in range(current_col + 1, self.nb_pages_width):
-            if self.page_disposition[current_line][col_nb] s not None:
+            if self.page_disposition[current_line][col_nb] is not None:
                 east_arrow = self.page_disposition[current_line][col_nb]
                 ctx.save()
                 ctx.translate(
