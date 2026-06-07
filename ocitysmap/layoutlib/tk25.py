@@ -199,14 +199,6 @@ class TK25Renderer(Renderer):
         return (594, 594) # DinA1 quadratisch
 
     @staticmethod
-    def _sheet2latlng(sheetno):
-        yy = sheetno // 100
-        xx = sheetno % 100
-
-        lat = (56*60 - yy*6) / 60
-        lon = (xx*10 - (5*60 + 40)) / 60
-
-    @staticmethod
     def _latlng2sheet(lat, lon):
         xx = int((lon * 60 - (5*60 + 40)) / 10)
         yy = int((56*60 - lat*60) / 6)
