@@ -1,5 +1,4 @@
 import re
-import gettext
 from . import i18n, _install_language
 
 class i18n_es_generic(i18n):

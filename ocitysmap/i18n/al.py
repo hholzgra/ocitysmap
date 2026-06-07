@@ -1,5 +1,4 @@
 import re
-import gettext
 import logging
 from . import i18n, _install_language
 
