@@ -46,7 +46,7 @@ def _camera_view(renderer, ctx, map_scale, surveillance, lat, lon, camera_type, 
     if angle and angle.isdigit():
         angle = float(angle)
     else:
-        angle=60
+        angle = 60
 
     ctx.save()
 

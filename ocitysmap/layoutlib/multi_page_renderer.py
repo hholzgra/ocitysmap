@@ -769,12 +769,12 @@ class MultiPageRenderer(Renderer):
             notice = html.escape(annotations['maposmatic']) + '\n'
 
             if annotations['styles']:
-                notice+= "<u>" + html.escape(_('Map style(s):')) + '</u>\n'
-                notice+= html.escape('; '.join(annotations['styles'])) + '\n'
+                notice += "<u>" + html.escape(_('Map style(s):')) + '</u>\n'
+                notice += html.escape('; '.join(annotations['styles'])) + '\n'
 
             if annotations['sources']:
-                notice+= "<u>"+html.escape(_('Data source(s):')) + '</u>\n'
-                notice+= html.escape('; '.join(list(annotations['sources']))) + '\n'
+                notice += "<u>"+html.escape(_('Data source(s):')) + '</u>\n'
+                notice += html.escape('; '.join(list(annotations['sources']))) + '\n'
 
         # draw footer text
         draw_utils.draw_text_adjusted(ctx, notice,
@@ -833,13 +833,13 @@ class MultiPageRenderer(Renderer):
             css = f.read()
 
         bbox_txt = self.rc.bounding_box.as_text()
-        bbox_txt+= "<br/>("
+        bbox_txt += "<br/>("
         (bbox_h, bbox_w) = self.rc.bounding_box.spheric_sizes()
         if bbox_w >= 1000 and bbox_h >= 1000:
             bbox_txt += "ca. %d x %d km²" % (bbox_w/1000, bbox_h/1000)
         else:
             bbox_txt += "ca. %d x %d m²" % (bbox_w, bbox_h)
-        bbox_txt+= ")"
+        bbox_txt += ")"
 
         overlay_names = ""
         if self.rc.overlays:
@@ -849,7 +849,7 @@ class MultiPageRenderer(Renderer):
         import_names = ""
         if self.rc.import_files:
             for (file_type, import_file) in self.rc.import_files:
-                import_names+= os.path.basename(import_file) + "<br/>"
+                import_names += os.path.basename(import_file) + "<br/>"
 
         html = html_template.substitute(
             bbox       = bbox_txt,
@@ -1229,7 +1229,7 @@ class MultiPageRenderer(Renderer):
                                    index_position=None, hsplit=1, vsplit=1):
         valid_sizes = []
         if scale is None:
-            scale = scale=MultiPageRenderer.DEFAULT_MULTIPAGE_SCALE
+            scale = MultiPageRenderer.DEFAULT_MULTIPAGE_SCALE
         LOG.warning("getting multipage paper size options")
         is_default = True
         for sz in renderer_context.get_all_paper_sizes('multipage'):
