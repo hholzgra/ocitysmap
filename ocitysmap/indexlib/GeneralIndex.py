@@ -769,18 +769,18 @@ class GeneralIndexRenderer:
                     (column_width - margin) * Pango.SCALE, dpi)))
 
         if not self._i18n.isrtl():
-            offset_x = margin/2.
+            offset_x = margin / 2.0
             delta_x  = column_width
         else:
-            offset_x = rendering_area.w - column_width + margin/2.
+            offset_x = rendering_area.w - column_width + margin / 2.0
             delta_x  = - column_width
 
         actual_n_cols = 1
-        offset_y = margin/2.
+        offset_y = margin / 2.0
         for category in self._index_categories:
             if ( offset_y + header_fheight + label_fheight
-                 + margin/2. > rendering_area.h ):
-                offset_y       = margin/2.
+                 + margin / 2.0 > rendering_area.h ):
+                offset_y       = margin / 2.0
                 offset_x      += delta_x
                 actual_n_cols += 1
 
@@ -796,9 +796,9 @@ class GeneralIndexRenderer:
             offset_y += height * 72.0 / dpi
 
             for street in category.items:
-                if ( offset_y + label_fheight + margin/2.
+                if ( offset_y + label_fheight + margin / 2.0
                      > rendering_area.h ):
-                    offset_y       = margin/2.
+                    offset_y       = margin / 2.0
                     offset_x      += delta_x
                     actual_n_cols += 1
 
@@ -1090,29 +1090,29 @@ class MultiPageIndexRenderer:
                     (column_width - margin) * Pango.SCALE, dpi)))
 
         if not self._i18n.isrtl():
-            orig_offset_x = offset_x = margin/2.
+            orig_offset_x = offset_x = margin / 2.0
             orig_delta_x  = delta_x  = column_width
         else:
             orig_offset_x = offset_x = \
-                self.rendering_area_w - column_width + margin/2.
+                self.rendering_area_w - column_width + margin / 2.0
             orig_delta_x  = delta_x  = - column_width
 
         actual_n_cols = 0
-        offset_y = margin/2.
+        offset_y = margin / 2.0
 
         self._new_page()
 
         for category in self.index_categories:
-            if ( offset_y + header_fheight + label_fheight
-                 + margin/2. > max_drawing_height ):
-                offset_y       = margin/2.
+            if (offset_y + header_fheight + label_fheight
+                + margin/2. > max_drawing_height):
+                offset_y       = margin / 2.0
                 offset_x      += delta_x
                 actual_n_cols += 1
 
                 if actual_n_cols == columns_count:
                     self._new_page()
                     actual_n_cols = 0
-                    offset_y = margin / 2.
+                    offset_y = margin / 2.0
                     offset_x = orig_offset_x
                     delta_x  = orig_delta_x
 
@@ -1129,16 +1129,16 @@ class MultiPageIndexRenderer:
 
             for item in category.items:
                 label_height = item.label_drawing_height(label_layout)
-                if ( offset_y + label_height + margin/2.
-                     > max_drawing_height ):
-                    offset_y       = margin/2.
+                if (offset_y + label_height + margin/2.
+                    > max_drawing_height):
+                    offset_y       = margin / 2.0
                     offset_x      += delta_x
                     actual_n_cols += 1
 
                     if actual_n_cols == columns_count:
                         self._new_page()
                         actual_n_cols = 0
-                        offset_y = margin / 2.
+                        offset_y = margin / 2.0
                         offset_x = orig_offset_x
                         delta_x  = orig_delta_x
 
