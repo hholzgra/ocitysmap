@@ -26,7 +26,7 @@
 
 import cairo
 import gi
-if True: # hack to prevent consecutive E402 warings
+if True:  # hack to prevent consecutive E402 warings
     gi.require_version('Pango', '1.0')
     gi.require_version('PangoCairo', '1.0')
 from gi.repository import Pango, PangoCairo
@@ -100,7 +100,7 @@ def draw_text(ctx, layout, fascent,
     list of float
         Actual width and height of the rendered text
     """
-    layout.set_auto_dir(False) # TODO: Make sure ALIGN_RIGHT is independent on RTL...
+    layout.set_auto_dir(False)  # TODO: Make sure ALIGN_RIGHT is independent on RTL...
     layout.set_alignment(pango_alignment)
     layout.set_text(text, -1)
     width, height = [x/Pango.SCALE for x in layout.get_size()]
@@ -138,9 +138,9 @@ def draw_text_left(ctx, layout, fascent, baseline_x, baseline_y, text):
     list of float
         Horizontal start and end position of drawn text
     """
-    text_width,text_height = draw_text(ctx, layout, fascent,
-                                       baseline_x, baseline_y,
-                                       text, Pango.Alignment.LEFT)
+    text_width, text_height = draw_text(ctx, layout, fascent,
+                                        baseline_x, baseline_y,
+                                        text, Pango.Alignment.LEFT)
 
     return (baseline_x, baseline_x + text_width)
 
@@ -170,9 +170,9 @@ def draw_text_center(ctx, layout, fascent,
     list of float
         Horizontal start and end position of drawn text
     """
-    text_width,text_height = draw_text(ctx, layout, fascent,
-                                       baseline_x, baseline_y, text,
-                                       Pango.Alignment.CENTER)
+    text_width, text_height = draw_text(ctx, layout, fascent,
+                                        baseline_x, baseline_y, text,
+                                        Pango.Alignment.CENTER)
     layout_width = layout.get_width() / Pango.SCALE
     return (baseline_x + (layout_width - text_width) / 2.0,
             baseline_x + (layout_width + text_width) / 2.0)
@@ -204,9 +204,9 @@ def draw_text_right(ctx, layout, fascent,
     list of float
         Horizontal start and end position of drawn text
     """
-    text_width,text_height = draw_text(ctx, layout, fascent,
-                                       baseline_x, baseline_y,
-                                       text, Pango.Alignment.RIGHT)
+    text_width, text_height = draw_text(ctx, layout, fascent,
+                                        baseline_x, baseline_y,
+                                        text, Pango.Alignment.RIGHT)
     layout_width = layout.get_width() / Pango.SCALE
     return (baseline_x + layout_width - text_width,
             baseline_x + layout_width)
@@ -303,7 +303,7 @@ def draw_dotted_line(ctx, line_width, baseline_x, baseline_y, length):
 
     ctx.save()
     ctx.set_line_width(line_width)
-    ctx.set_dash([line_width, line_width*2]) # gaps twice as wide as the actual dots
+    ctx.set_dash([line_width, line_width*2])  # gaps twice as wide as the actual dots
     ctx.move_to(baseline_x, baseline_y)
     ctx.rel_line_to(length, 0)
     ctx.stroke()
@@ -484,7 +484,7 @@ def begin_internal_link(ctx, target):
     -------
     void
     """
-    try: # tag_begin() only available starting with PyCairo 1.18.0
+    try:  # tag_begin() only available starting with PyCairo 1.18.0
         ctx.tag_begin(cairo.TAG_LINK, "dest='%s'" % target)
     except Exception:
         pass
@@ -505,7 +505,7 @@ def end_link(ctx):
     -------
     void
     """
-    try: # tag_end() only available starting with PyCairo 1.18.0
+    try:  # tag_end() only available starting with PyCairo 1.18.0
         ctx.tag_end(cairo.TAG_LINK)
     except Exception:
         pass
@@ -531,7 +531,7 @@ def anchor(ctx, name):
     -------
     void
     """
-    try: # tag_begin() only available starting with PyCairo 1.18.0
+    try:  # tag_begin() only available starting with PyCairo 1.18.0
         ctx.tag_begin(cairo.TAG_DEST, "name='%s'" % name)
         ctx.tag_end(cairo.TAG_DEST)
     except Exception:

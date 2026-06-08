@@ -27,7 +27,7 @@ import math
 import shapely.wkt
 
 import mapnik
-if True: # hack to prevent consecutive E402 warings
+if True:  # hack to prevent consecutive E402 warings
     assert mapnik.mapnik_version() >= 300000, \
         "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
         "for more details." % mapnik.mapnik_version_string()
@@ -37,7 +37,7 @@ import logging
 LOG = logging.getLogger('ocitysmap')
 
 
-EARTH_RADIUS = 6370986 # meters
+EARTH_RADIUS = 6370986  # meters
 
 def dd2dms(value):
     abs_value = abs(value)
@@ -55,9 +55,9 @@ try:
 except Exception:
     # old Proj libraray versions (e.g. v7 on Debian 11)
     _proj_wgs84  = mapnik.Projection("+init=epsg:4326")
-    _proj_google = mapnik.Projection( "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 "
-                                      "+lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m   "
-                                      "+nadgrids=@null +no_defs +over")
+    _proj_google = mapnik.Projection("+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 "
+                                     "+lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m   "
+                                     "+nadgrids=@null +no_defs +over")
 
 
 def get_proj_transformation():
@@ -69,7 +69,7 @@ class Point:
 
     @staticmethod
     def parse_wkt(wkt):
-        long_,lat = wkt[6:-1].split()
+        long_, lat = wkt[6:-1].split()
         return Point(lat, long_)
 
     def get_latlong(self):
@@ -343,5 +343,5 @@ if __name__ == "__main__":
     pt = Point.parse_wkt(wkt)
     print(wkt, pt, pt.as_wkt())
 
-    bbox = BoundingBox(52,8,53,9)
+    bbox = BoundingBox(52, 8, 53, 9)
     print(bbox.to_mercator())

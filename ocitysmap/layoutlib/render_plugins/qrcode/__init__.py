@@ -1,7 +1,7 @@
 import qrcode
 import qrcode.image.svg
 import gi
-if True: # hack to prevent consecutive E402 warnings
+if True:  # hack to prevent consecutive E402 warnings
     gi.require_version('Rsvg', '2.0')
 from gi.repository import Rsvg
 

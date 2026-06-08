@@ -80,7 +80,7 @@ def get_default_properties(json, umap_defaults, create_copy=True):
 
     values = {}
     for path in ['$.properties.*', '$.properties._storage.*', '$._storage.*', '$.properties._storage_options.*', '$._storage_options.*', '$.properties._umap_options.*', '$._umap_options.*']:
-        for key,value in flattened(json, path).items():
+        for key, value in flattened(json, path).items():
             if key in ['name', 'opacity', 'fillOpacity', 'weight', 'dashArray', 'iconClass', 'iconUrl']:
                 if value is True:
                     value = 'yes'
@@ -190,26 +190,26 @@ class UmapStylesheet(Stylesheet):
                 '../../templates/umap/osmic'))
 
         umap_defaults = {
-            'color'      :'#0000ff',
-            'opacity'    :      0.5,
-            'fillColor'  :'#0000ff',
-            'fillOpacity':      0.2,
-            'weight'     :        3,
-            'dashArray'  :       '',
-            'fill'       :    'yes',
-            'stroke'     :    'yes',
-            'name'       :       '',
-            'iconClass'  : 'Square',
-            'iconUrl'    : maki_icon_dir + '/circle-15.svg',
-            'iconFill'   : "white",
+            'color':       '#0000ff',
+            'opacity':     0.5,
+            'fillColor':   '#0000ff',
+            'fillOpacity': 0.2,
+            'weight':      3,
+            'dashArray':   '',
+            'fill':        'yes',
+            'stroke':      'yes',
+            'name':        '',
+            'iconClass':   'Square',
+            'iconUrl':     maki_icon_dir + '/circle-15.svg',
+            'iconFill':    'white',
         }
 
         marker_offsets = {
             'Default': -18,
-            'Square' : -18,
-            'Drop'   : -18,
-            'Circle' :   0,
-            'Ball'   : -16,
+            'Square':  -18,
+            'Drop':    -18,
+            'Circle':    0,
+            'Ball':    -16,
         }
 
         http = urllib3.PoolManager()
@@ -220,7 +220,7 @@ class UmapStylesheet(Stylesheet):
 
         # extract license & credit annotation information
         licence = first(umap, "$.properties.licence.name", "")
-        credit  = first(umap, "$.properties.shortCredit" , "")
+        credit  = first(umap, "$.properties.shortCredit",  "")
         if licence or credit:
             self.annotation = "Umap overlay © %s %s" % (licence, credit)
 
@@ -311,16 +311,16 @@ class UmapStylesheet(Stylesheet):
                     new_props['weight'] = float(new_props['weight']) / 4
 
                     new_features.append({
-                        'type'       : 'Feature',
-                        'properties' : new_props,
-                        'geometry'   : feature['geometry']
+                        'type':       'Feature',
+                        'properties': new_props,
+                        'geometry':   feature['geometry']
                     })
                 except Exception as Argument:
                     LOG.warning("Exception: %s" % Argument)
 
         new_umap = {
-            'type'     : 'FeatureCollection',
-            'features' : new_features
+            'type':     'FeatureCollection',
+            'features': new_features
         }
 
         LOG.debug("rewritten JSON:\n %s" % json.dumps(new_umap, indent=2))

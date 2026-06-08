@@ -72,7 +72,7 @@ class HealthIndex(GeneralIndex):
             }
 
         return self.get_index_entries(db,
-                                      ["point","polygon"],
+                                      ["point", "polygon"],
                                       ["tags->'healthcare'", "coalesce(name, '***???***')"],
                                       """    amenity = 'health_post'
                                          AND tags->'healthcare' IS NOT NULL

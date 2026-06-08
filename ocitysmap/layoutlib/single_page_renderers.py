@@ -24,17 +24,21 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import cairo
+
 import gi
-if True: # hack to prevent consecutive E402 warnings
+if True:  # hack to prevent consecutive E402 warnings
     gi.require_version('Pango', '1.0')
     gi.require_version('PangoCairo', '1.0')
 from gi.repository import Pango, PangoCairo
+
 import logging
+
 import mapnik
-if True: # hack to prevent consecutive E402 warnings
+if True:  # hack to prevent consecutive E402 warnings
     assert mapnik.mapnik_version() >= 300000, \
         "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
         "for more details." % mapnik.mapnik_version_string()
+
 import math
 from copy import copy
 from gettext import gettext, ngettext
@@ -228,7 +232,7 @@ class SinglePageRenderer(Renderer):
 
         # Prepare the grid
         self.grid = self._create_grid(self._map_canvas, dpi)
-        if index_position: # only show grid if an actual index refers to it
+        if index_position:  # only show grid if an actual index refers to it
             self._apply_grid(self.grid, self._map_canvas)
 
         # Commit the internal rendering stack of the map
@@ -378,7 +382,7 @@ class SinglePageRenderer(Renderer):
 
         # Title background bar
         ctx.save()
-        ctx.set_source_rgb(0.8, 0.9, 0.96) # TODO: make title bar color configurable?
+        ctx.set_source_rgb(0.8, 0.9, 0.96)  # TODO: make title bar color configurable?
         ctx.rectangle(0, 0, w_dots, h_dots)
         ctx.fill()
         ctx.restore()
@@ -403,7 +407,7 @@ class SinglePageRenderer(Renderer):
             ctx.translate(0.4*h_dots, 0.1*h_dots)
             ctx.set_source(grp)
             ctx.paint_with_alpha(0.5)
-            logo_width2 += 0.4*h_dots # TODO: why hardcoding the distance between logo and text?
+            logo_width2 += 0.4*h_dots  # TODO: why hardcoding the distance between logo and text?
             ctx.restore()
 
         # Prepare the title

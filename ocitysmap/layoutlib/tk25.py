@@ -19,14 +19,14 @@
 import cairo
 
 import gi
-if True: # hack to prevent consecutive E402 warings
+if True:  # hack to prevent consecutive E402 warings
     gi.require_version('Pango', '1.0')
     gi.require_version('PangoCairo', '1.0')
 from gi.repository import Pango, PangoCairo
 
 import logging
 import mapnik
-if True: # hack to prevent consecutive E402 warings
+if True:  # hack to prevent consecutive E402 warings
     assert mapnik.mapnik_version() >= 300000, \
         "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
         "for more details." % mapnik.mapnik_version_string()
@@ -90,14 +90,14 @@ class TK25Renderer(Renderer):
         return
 
     @staticmethod
-    def _mm_rect(ctx,x,y,w,h,dpi):
+    def _mm_rect(ctx, x, y, w, h, dpi):
         ctx.rectangle(commons.convert_mm_to_dots(x, dpi),
                       commons.convert_mm_to_dots(y, dpi),
                       commons.convert_mm_to_dots(w, dpi),
                       commons.convert_mm_to_dots(h, dpi))
 
     @staticmethod
-    def _mm_mvto(ctx,x,y,dpi):
+    def _mm_mvto(ctx, x, y, dpi):
         ctx.move_to(commons.convert_mm_to_dots(x, dpi),
                     commons.convert_mm_to_dots(y, dpi))
 
@@ -135,7 +135,7 @@ class TK25Renderer(Renderer):
 
         # Frame around the actual map area
         ctx.save()
-        ctx.set_source_rgb(0,0,0)
+        ctx.set_source_rgb(0, 0, 0)
         ctx.set_line_width(1)
         self._mm_rect(ctx, 40, 40, 40 +  480, 40 + 450, dpi)
         ctx.stroke()
@@ -143,7 +143,7 @@ class TK25Renderer(Renderer):
 
         # Wider outer frame
         ctx.save()
-        ctx.set_source_rgb(0,0,0)
+        ctx.set_source_rgb(0, 0, 0)
         ctx.set_line_width(5)
         self._mm_rect(ctx, 30, 30, 60 +  480, 60 + 450, dpi)
         ctx.stroke()
@@ -155,7 +155,7 @@ class TK25Renderer(Renderer):
 
         # coordinates
         ctx.save()
-        ctx.set_source_rgb(0,0,0)
+        ctx.set_source_rgb(0, 0, 0)
         ctx.select_font_face("Droid Sans", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
 
         self._mm_mvto(ctx, 33, 42, dpi)
@@ -181,7 +181,7 @@ class TK25Renderer(Renderer):
     def _generic_get_minimal_paper_size(bounding_box,
                                         scale=Renderer.DEFAULT_SCALE,
                                         index_position = None):
-        return (594, 594) # DinA1 quadratisch
+        return (594, 594)  # DinA1 quadratisch
 
     @staticmethod
     def _latlng2sheet(lat, lon):

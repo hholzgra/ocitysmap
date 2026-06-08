@@ -131,7 +131,7 @@ def render(renderer, ctx):
 
         # exclude the polar zones for now
         # TODO: add support for polar zones
-        polar_zones = ['A','B','Y','Z']
+        polar_zones = ['A', 'B', 'Y', 'Z']
         if zone1_letter in polar_zones or zone2_letter in polar_zones:
             LOG.warning('No support for UTM polar zones yet')
             return

@@ -25,14 +25,14 @@ from itertools import groupby
 import locale
 import logging
 import mapnik
-if True: # hack to prevent consecutive E402 warnings
+if True:  # hack to prevent consecutive E402 warnings
     assert mapnik.mapnik_version() >= 300000, \
         "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
         "for more details." % mapnik.mapnik_version_string()
 import math
 import os
 import gi
-if True: # hack to prevent consecutive E402 warnings
+if True:  # hack to prevent consecutive E402 warnings
     gi.require_version('Rsvg', '2.0')
     gi.require_version('Pango', '1.0')
 from gi.repository import Rsvg, Pango
@@ -526,11 +526,11 @@ class MultiPageRenderer(Renderer):
         # Sort by categories. Now we may have several consecutive
         # categories with the same name (i.e category for letter 'A'
         # from page 1, category for letter 'A' from page 3).
-        categories.sort(key=lambda s:s.name)
+        categories.sort(key=lambda s: s.name)
 
         categories_merged = []
-        for category_name,grouped_categories in groupby(categories,
-                                                        key=lambda s:s.name):
+        for category_name, grouped_categories in groupby(categories,
+                                                         key=lambda s: s.name):
 
             # Group the different IndexItem from categories having the
             # same name. The groupby() function guarantees us that
@@ -666,7 +666,7 @@ class MultiPageRenderer(Renderer):
         # Draw a grey block which will contain the map title
         blue_w = w
         blue_h = 0.3 * h
-        ctx.set_source_rgb(.80,.80,.80)
+        ctx.set_source_rgb(0.80, 0.80, 0.80)
         ctx.rectangle(0, 0, blue_w, blue_h)
         ctx.fill()
         draw_utils.draw_text_adjusted(ctx, html.escape(self.rc.title),
@@ -719,7 +719,7 @@ class MultiPageRenderer(Renderer):
         # footer
         footer_w = w
         footer_h = 0.2 * h - 2 * Renderer.PRINT_SAFE_MARGIN_PT
-        ctx.set_source_rgb(.80,.80,.80)
+        ctx.set_source_rgb(0.80, 0.80, 0.80)
         ctx.rectangle(0, 0, footer_w, footer_h)
         ctx.fill()
 
@@ -795,7 +795,7 @@ class MultiPageRenderer(Renderer):
 
         # Translate into the working area, taking another
         # PRINT_SAFE_MARGIN_PT inside the grey area.
-        ctx.translate(Renderer.PRINT_SAFE_MARGIN_PT,Renderer.PRINT_SAFE_MARGIN_PT)
+        ctx.translate(Renderer.PRINT_SAFE_MARGIN_PT, Renderer.PRINT_SAFE_MARGIN_PT)
         w = self._usable_area_width_pt - 2 * Renderer.PRINT_SAFE_MARGIN_PT
         h = self._usable_area_height_pt - 2 * Renderer.PRINT_SAFE_MARGIN_PT
 
@@ -803,7 +803,7 @@ class MultiPageRenderer(Renderer):
         self._render_front_page_header(ctx, w, h)
         self._render_front_page_footer(ctx, w, h, osm_date)
 
-        try: # set_page_label() does not exist in older pycairo versions
+        try:  # set_page_label() does not exist in older pycairo versions
             cairo_surface.set_page_label(_('Front page'))
         except Exception:
             pass
@@ -884,7 +884,7 @@ class MultiPageRenderer(Renderer):
                                       transparent_background = False,
                                       side = draw_utils.LEFT_SIDE
                                       )
-        try: # set_page_label() does not exist in older pycairo versions
+        try:  # set_page_label() does not exist in older pycairo versions
             cairo_surface.set_page_label(_('Contents'))
         except Exception:
             pass
@@ -933,7 +933,7 @@ class MultiPageRenderer(Renderer):
                                       side = draw_utils.RIGHT_SIDE
                                       )
 
-        try: # set_page_label() does not exist in older pycairo versions
+        try:  # set_page_label() does not exist in older pycairo versions
             cairo_surface.set_page_label(_('Overview'))
         except AttributeError:
             pass
@@ -1199,7 +1199,7 @@ class MultiPageRenderer(Renderer):
             self._render_neighbour_arrows(ctx, cairo_surface, map_number,
                                           len(str(len(self.pages) + self._first_map_page_number)))
 
-            try: # set_page_label() does not exist in older pycairo versions
+            try:  # set_page_label() does not exist in older pycairo versions
                 cairo_surface.set_page_label(_('Map page %d') % (map_number + self._first_map_page_number))
             except AttributeError:
                 pass
@@ -1215,7 +1215,7 @@ class MultiPageRenderer(Renderer):
                                         Renderer.PRINT_SAFE_MARGIN_PT,
                                         self._usable_area_width_pt,
                                         self._usable_area_height_pt),
-                                       map_number + 2) # TODO: actually calc. the page offset here
+                                       map_number + 2)  # TODO: actually calc. the page offset here
 
         mpsir.render()
 
@@ -1298,10 +1298,10 @@ class MultiPageRenderer(Renderer):
                                           text_color=(0, 0, 0, 0.6))
 
             ctx.save()
-            ctx.translate(x-w/2, y-h/2)
-            ctx.set_source_rgba(0,0,0,0.1)
+            ctx.translate(x - w/2, y - h/2)
+            ctx.set_source_rgba(0, 0, 0, 0.1)
             draw_utils.begin_internal_link(ctx, "mypage%d" % (idx + self._first_map_page_number))
-            ctx.rectangle(0,0,w,h)
+            ctx.rectangle(0, 0, w, h)
             ctx.stroke()
             draw_utils.end_link(ctx)
             ctx.restore()

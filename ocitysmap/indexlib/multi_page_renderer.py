@@ -65,10 +65,10 @@ if __name__ == '__main__':
                                      '%s%d-%s%d'
                                      % (rnd_str(2,
                                                 string.ascii_uppercase),
-                                        random.randint(1,19),
+                                        random.randint(1, 19),
                                         rnd_str(2,
                                                 string.ascii_uppercase),
-                                        random.randint(1,19),
+                                        random.randint(1, 19),
                                         ))]*random.randint(1, 20):
             item              = commons.GeneralIndexItem(label, None, None)
             item.location_str = location_str

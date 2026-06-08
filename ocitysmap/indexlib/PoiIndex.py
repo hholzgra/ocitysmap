@@ -27,7 +27,7 @@ import os
 import cairo
 
 import gi
-if True: # hack to prevent consecutive E402 warings
+if True:  # hack to prevent consecutive E402 warings
     gi.require_version('Rsvg', '2.0')
 from gi.repository import Rsvg
 
@@ -40,7 +40,7 @@ from gettext import gettext
 import ocitysmap
 import ocitysmap.layoutlib.commons as UTILS
 
-from .commons import Index, IndexCategory, IndexItem # TODO:  IndexDoesNotFitError
+from .commons import Index, IndexCategory, IndexItem  # TODO:  IndexDoesNotFitError
 from .renderer import IndexRenderingArea
 
 import logging
@@ -225,7 +225,7 @@ class PoiIndexRenderer:
         # find the marker icon
         marker_path = os.path.abspath(os.path.join(
             os.path.dirname(__file__), '..', '..', 'images', 'marker.svg'))
-        fp = open(marker_path,'r')
+        fp = open(marker_path, 'r')
         data = fp.read()
         fp.close()
 

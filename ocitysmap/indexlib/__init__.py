@@ -44,9 +44,9 @@ if __name__ == '__main__':
                                     os.path.join(os.path.dirname(__file__),
                                                  "..", "..", "locale"))
 
-    bbox = coords.BoundingBox(48.8162, 2.3417, 48.8063, 2.3699) # France
-    # bbox = coords.BoundingBox(34.0322, -6.8648, 34.0073, -6.8133) # Moroco
-    # bbox = bbox = coords.BoundingBox(22.5786, 114.0308, 22.5231, 114.1338) # CN
+    bbox = coords.BoundingBox(48.8162, 2.3417, 48.8063, 2.3699)  # France
+    # bbox = coords.BoundingBox(34.0322, -6.8648, 34.0073, -6.8133)  # Moroco
+    # bbox = bbox = coords.BoundingBox(22.5786, 114.0308, 22.5231, 114.1338)  # CN
 
     # Build the list of index items
     db = psycopg2.connect(user='maposmatic',
@@ -77,23 +77,23 @@ if __name__ == '__main__':
     index = StreetIndexRenderer(i18nMock(False), street_index.categories)
 
     def _render(freedom_dimension, alignment):
-        x,y,w,h = 50, 50, width-100, height-100
+        x, y, w, h = 50, 50, width-100, height-100
 
         # Draw constraining rectangle
         ctx = cairo.Context(surface)
 
         ctx.save()
-        ctx.set_source_rgb(.2,0,0)
-        ctx.rectangle(x,y,w,h)
+        ctx.set_source_rgb(0.2, 0, 0)
+        ctx.rectangle(x, y, w, h)
         ctx.stroke()
 
         # Precompute index area
-        rendering_area = index.precompute_occupation_area(surface, x,y,w,h,
+        rendering_area = index.precompute_occupation_area(surface, x, y, w, h,
                                                           freedom_dimension,
                                                           alignment)
 
         # Draw a green background for the precomputed area
-        ctx.set_source_rgba(0,1,0,.5)
+        ctx.set_source_rgba(0, 1, 0, 0.5)
         ctx.rectangle(rendering_area.x, rendering_area.y,
                       rendering_area.w, rendering_area.h)
         ctx.fill()

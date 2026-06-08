@@ -96,16 +96,18 @@ if __name__ == '__main__':
             return self.rtl
 
     streets = []
-    for i in ['A', 'B', # 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-              'N', 'O', # 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    for i in ['A', 'B',
+
+              'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+              'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
               'Schools', 'Public buildings']:
         items = []
         for label, location_str in [(rnd_str(10).capitalize(),
                                      '%s%d-%s%d'
                                      % (rnd_str(2, string.ascii_uppercase),
-                                        random.randint(1,19),
+                                        random.randint(1, 19),
                                         rnd_str(2, string.ascii_uppercase),
-                                        random.randint(1,19),
+                                        random.randint(1, 19),
                                         ))] * 4:
             item              = GeneralIndexItem(label, None, None)
             item.location_str = location_str
@@ -115,23 +117,23 @@ if __name__ == '__main__':
     index = GeneralIndexRenderer(i18nMock(False), streets)
 
     def _render(freedom_dimension, alignment):
-        x,y,w,h = 50, 50, width-100, height-100
+        x, y, w, h = 50, 50, width-100, height-100
 
         # Draw constraining rectangle
         ctx = cairo.Context(surface)
 
         ctx.save()
-        ctx.set_source_rgb(.2,0,0)
-        ctx.rectangle(x,y,w,h)
+        ctx.set_source_rgb(0.2, 0, 0)
+        ctx.rectangle(x, y, w, h)
         ctx.stroke()
 
         # Precompute index area
-        rendering_area = index.precompute_occupation_area(surface, x,y,w,h,
+        rendering_area = index.precompute_occupation_area(surface, x, y, w, h,
                                                           freedom_dimension,
                                                           alignment)
 
         # Draw a green background for the precomputed area
-        ctx.set_source_rgba(0,1,0,.5)
+        ctx.set_source_rgba(0, 1, 0, 0.5)
         ctx.rectangle(rendering_area.x, rendering_area.y,
                       rendering_area.w, rendering_area.h)
         ctx.fill()

@@ -127,7 +127,7 @@ class StreetIndex(GeneralIndex):
 
         try:
             sorted_sl = sorted(
-                [(self._i18n.user_readable_street(name), linestring) for name,linestring in sl],
+                [(self._i18n.user_readable_street(name), linestring) for name, linestring in sl],
                 key = natsort_keygen(alg=ns.LOCALE | ns.IGNORECASE, key=lambda street: street[0]))
         except Exception:
             sorted_sl = sl
@@ -214,7 +214,7 @@ class StreetIndex(GeneralIndex):
         amenities_in = "'" + sep.join(amenities) + "'"
 
         return self.get_index_entries(db,
-                                      ["point","polygon"],
+                                      ["point", "polygon"],
                                       ["amenity", "name"],
                                       ("TRIM(name) != '' AND amenity in (%s)" % amenities_in),
                                       category_mapping = amenities)

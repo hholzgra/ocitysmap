@@ -12,7 +12,7 @@ def render(renderer, ctx):
     m = renderer._map_canvas.get_rendered_map()
 
     # get the desired width of the scalebar in m
-    try: # TODO find better way to deal with multi page maps
+    try:  # TODO find better way to deal with multi page maps
         meter = renderer.grid.grid_size_m
     except AttributeError:
         return
@@ -53,7 +53,7 @@ def render(renderer, ctx):
     ctx.save()
 
     # scalebar box with border and semi-transparent background
-    ctx.rectangle(x,y,w,h)
+    ctx.rectangle(x, y, w, h)
     ctx.set_source_rgba(0, 0, 0, 0.5)
     ctx.set_line_width(pt2px(1))
     ctx.stroke_preserve()

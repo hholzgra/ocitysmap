@@ -22,7 +22,7 @@ class i18n_hr_HR(i18n):
     def __init__(self, language, locale_path):
         """Install the _() function for the chosen locale other
            object initialisation"""
-        self.language = str(language) # FIXME: why do we have unicode here?
+        self.language = str(language)  # FIXME: why do we have unicode here?
         _install_language(language, locale_path)
 
     def language_code(self):

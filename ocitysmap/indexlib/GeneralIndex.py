@@ -29,7 +29,7 @@ from gettext import gettext
 import cairo
 
 import gi
-if True: # hack to prevent consecutive E402 warings
+if True:  # hack to prevent consecutive E402 warings
     gi.require_version('Pango', '1.0')
     gi.require_version('PangoCairo', '1.0')
 from gi.repository import Pango, PangoCairo
@@ -194,15 +194,15 @@ SELECT %(columns)s,
         """
         try:
             if debug:
-                LOG.warning(query % {'way':'way'})
-            cursor.execute(query % {'way':'way'})
+                LOG.warning(query % {'way': 'way'})
+            cursor.execute(query % {'way': 'way'})
         except psycopg2.InternalError:
             # This exception generaly occurs when inappropriate ways have
             # to be cleaned. Using a buffer of 0 generaly helps to clean
             # them. This operation is not applied by default for
             # performance reasons.
             cursor.connection.rollback()
-            cursor.execute(query % {'way':'st_buffer(way, 0)'})
+            cursor.execute(query % {'way': 'st_buffer(way, 0)'})
 
     def get_index_entries(self, db, tables, columns, where, group=False, category_mapping=None, max_category_items=maxsize, join=None, debug=False):
         """
@@ -301,7 +301,7 @@ SELECT %(columns)s,
                 categories.append(category)
                 continue
             grouped_items = []
-            sort_key = lambda item:(item.label, item.location_str)
+            sort_key = lambda item: (item.label, item.location_str)
             items = natsorted(category.items, key=sort_key)
             for _label, same_items in groupby(items, key=sort_key):
                 grouped_items.append(next(same_items))
@@ -645,7 +645,7 @@ class GeneralIndexRenderer:
             raise IndexEmptyError
 
         LOG.debug("Determining index area within %dx%d+%d+%d aligned %s/%s..."
-                  % (w,h,x,y, alignment, freedom_direction))
+                  % (w, h, x, y, alignment, freedom_direction))
 
         # Create a PangoCairo context for drawing to Cairo
         ctx = cairo.Context(surface)
@@ -882,7 +882,7 @@ class GeneralIndexRenderer:
 
         # Account for maximum square width (at worst " " + "Z99-Z99")
         label_block = self._compute_lines_occupation(ctx, pc, label_fd, 1+7,
-                                                     reduce(lambda x,y: x+y.get_all_item_labels(),
+                                                     reduce(lambda x, y: x+y.get_all_item_labels(),
                                                             self._index_categories, []))
 
         # Reserve a small margin around the category headers
@@ -1103,8 +1103,8 @@ class MultiPageIndexRenderer:
         self._new_page()
 
         for category in self.index_categories:
-            if (offset_y + header_fheight + label_fheight
-                + margin/2. > max_drawing_height):
+            if ( offset_y + header_fheight + label_fheight
+                 + margin/2. > max_drawing_height):
                 offset_y       = margin / 2.0
                 offset_x      += delta_x
                 actual_n_cols += 1

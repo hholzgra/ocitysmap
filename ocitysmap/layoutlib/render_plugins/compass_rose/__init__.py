@@ -45,7 +45,7 @@ def render(renderer, ctx):
 
     ctx.save()
 
-    ctx.translate(h/10, h/10) # leave a bit of space to the map border
+    ctx.translate(h/10, h/10)  # leave a bit of space to the map border
     ctx.set_source(rose_grp)
     ctx.paint_with_alpha(0.75)
     ctx.stroke()

@@ -267,8 +267,8 @@ def main():
         else:
             paper_format_names = mapper.get_all_paper_size_names()
             for format_name in paper_format_names:
-                name1 = format_name.lower().replace(" ","")
-                name2 = options.paper_format.lower().replace(" ","")
+                name1 = format_name.lower().replace(" ", "")
+                name2 = options.paper_format.lower().replace(" ", "")
                 if name1 == name2:
                     options.paper_format = format_name
                     break
@@ -382,7 +382,7 @@ def main():
     # Prepare the rendering config
     rc              = ocitysmap.RenderingConfiguration()
     rc.title        = title
-    rc.osmid        = options.osmid or None # Force to None if absent
+    rc.osmid        = options.osmid or None  # Force to None if absent
     rc.bounding_box = bbox
     rc.indexer      = indexer
     rc.language     = options.language

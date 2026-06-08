@@ -3,7 +3,7 @@ from . import i18n, _install_language
 
 class i18n_ast_generic(i18n):
 
-    APPELLATIONS = [ # Asturian
+    APPELLATIONS = [  # Asturian
                      "Accesu", "Autopista", "Autovia", "Avenida",
                      "Baxada", "Barrancu", "Barriu", "Barriada",
                      "Biblioteca", "Cai", "Caleya",
@@ -52,11 +52,11 @@ class i18n_ast_generic(i18n):
                      "Vecindario", "Vereda", "Viaducto", "Viviendas",
                    ]
 
-    DETERMINANTS = [ # Asturian
+    DETERMINANTS = [  # Asturian
                      " de", " de la", " del", " de les", " d'",
                      " de los", " de l'",
 
-                     # Spanish (different from Asturian)
+                      # Spanish (different from Asturian)
                      " de las",
                      ""]
 

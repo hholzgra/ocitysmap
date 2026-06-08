@@ -3,7 +3,7 @@ from . import i18n, _install_language
 
 class i18n_ca_generic(i18n):
 
-    APPELLATIONS = [ # Catalan
+    APPELLATIONS = [  # Catalan
                      "Autopista", "Autovia", "Avinguda",
                      "Baixada", "Barranc", "Barri", "Barriada",
                      "Biblioteca", "Carrer", "Carreró", "Carretera",

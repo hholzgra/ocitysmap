@@ -27,7 +27,7 @@ import os
 import sys
 
 import gi
-if True: # hack to prevent consecutive E402 warings
+if True:  # hack to prevent consecutive E402 warings
     gi.require_version('Pango', '1.0')
 from gi.repository import Pango
 
@@ -114,7 +114,7 @@ class IndexItem(ABC):
     contains the item label (street name, POI name or description) and the
     humanized squares description.
     """
-    __slots__    = ['label', 'endpoint1', 'endpoint2', 'location_str','page_number']
+    __slots__    = ['label', 'endpoint1', 'endpoint2', 'location_str', 'page_number']
     # label        = None # str
     # endpoint1    = None # coords.Point
     # endpoint2    = None # coords.Point

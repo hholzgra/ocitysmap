@@ -49,14 +49,14 @@ class Stylesheet:
     DEFAULT_ZOOM_LEVEL = 16
 
     def __init__(self):
-        self.name        = None # str
-        self.path        = None # str
-        self.description = '' # str
-        self.annotation  = '' # str
-        self.datasource  = '' # str
-        self.url         = '' # str
-        self.group       = '' # str
-        self.aliases     = [] # array of str
+        self.name        = None  # str
+        self.path        = None  # str
+        self.description = ''    # str
+        self.annotation  = ''    # str
+        self.datasource  = ''    # str
+        self.url         = ''    # str
+        self.group       = ''    # str
+        self.aliases     = []    # array of str
         self.preview     = None
 
         self.exclude_layers = []

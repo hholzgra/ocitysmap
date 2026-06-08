@@ -50,7 +50,7 @@ def _camera_view(renderer, ctx, map_scale, surveillance, lat, lon, camera_type, 
 
     ctx.save()
 
-    x,y = renderer._latlon2xy(lat, lon, renderer.dpi)
+    x, y = renderer._latlon2xy(lat, lon, renderer.dpi)
 
     if isinstance(direction, float) and surveillance != 'indoor':
         if height and height.isdigit():
@@ -107,13 +107,13 @@ def _show_symbol(renderer, ctx, lat, lon, surveillance, symbol):
 
     symbol_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'images', surveillance, (symbol+'.svg')))
 
-    fp = open(symbol_path,'rb')
+    fp = open(symbol_path, 'rb')
     data = fp.read()
     fp.close()
 
     rsvg = Rsvg.Handle()
     svg  = rsvg.new_from_data(data)
-    x,y = renderer._latlon2xy(lat, lon, renderer.dpi)
+    x, y = renderer._latlon2xy(lat, lon, renderer.dpi)
 
     svg_scale = renderer.dpi / (4 * svg.props.height)
     sx = x - svg.props.width  * svg_scale/2

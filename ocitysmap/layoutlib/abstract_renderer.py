@@ -23,16 +23,17 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# import cairo
 import gi
-if True: # hack to prevent consecutive E402 warnings
+if True:  # hack to prevent consecutive E402 warnings
     gi.require_version('Rsvg', '2.0')
     gi.require_version('Pango', '1.0')
     gi.require_version('PangoCairo', '1.0')
 from gi.repository import Rsvg, Pango, PangoCairo
+
 import logging
+
 import mapnik
-if True: # hack to prevent consecutive E402 warnings
+if True:  # hack to prevent consecutive E402 warnings
     assert mapnik.mapnik_version() >= 300000, \
         "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
         "for more details." % mapnik.mapnik_version_string()
@@ -96,7 +97,7 @@ class Renderer(ABC):
         self.db           = db
         self.rc           = rc
         self.tmpdir       = tmpdir
-        self.grid         = None # The implementation is in charge of it
+        self.grid         = None  # The implementation is in charge of it
 
         self.paper_width_pt = \
             commons.convert_mm_to_pt(self.rc.paper_width_mm)
@@ -418,14 +419,14 @@ class Renderer(ABC):
         x = lon - bbox.get_top_left()[1]
         x *= (dpi / 72.0) * self._map_coords[2] / vert_angle_span
 
-        return x,y
+        return x, y
 
     def _marker(self, color, txt, lat, lon, ctx, dpi):
 
         marker_path = os.path.abspath(os.path.join(
             os.path.dirname(__file__), '..', '..', 'images', 'marker.svg'))
 
-        fp = open(marker_path,'r')
+        fp = open(marker_path, 'r')
         data = fp.read()
         fp.close()
 
@@ -438,7 +439,7 @@ class Renderer(ABC):
         rsvg = Rsvg.Handle()
         svg = rsvg.new_from_data(data.encode())
 
-        x,y = self._latlon2xy(lat, lon, dpi)
+        x, y = self._latlon2xy(lat, lon, dpi)
 
         scale = (50.0  / svg.props.height) * (dpi / 72.0)
 
@@ -476,8 +477,8 @@ class Renderer(ABC):
 
         today = datetime.date.today()
 
-        dates = { 'year' : today.year,
-                  'date' : self._format_date(today)
+        dates = { 'year': today.year,
+                  'date': self._format_date(today)
                   }
 
         if osm_date and osm_date.date() != today:

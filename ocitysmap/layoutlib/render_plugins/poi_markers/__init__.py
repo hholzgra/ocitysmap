@@ -18,7 +18,7 @@ def render(renderer, ctx):
 
         # place "you are here" circle if coordinates are given
         if renderer.street_index.lat is not False:
-            x,y = renderer._latlon2xy(renderer.street_index.lat, renderer.street_index.lon, renderer.dpi)
+            x, y = renderer._latlon2xy(renderer.street_index.lat, renderer.street_index.lon, renderer.dpi)
             ctx.save()
             ctx.translate(x, y)
             ctx.set_source_rgba(1, 0, 0, 0.8)

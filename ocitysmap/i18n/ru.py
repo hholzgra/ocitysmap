@@ -53,7 +53,7 @@ class i18n_ru_generic(i18n):
     # matches status prefixes at start of name used to move prefixes to the end
     PREFIX_REGEXP = re.compile(
         r"^(?P<num_prefix>\d+-?(ы?й|я))?\s*(?P<prefix>(%s)\.?)?\s*(?P<name>.+)?" %
-        ("|".join(f for f,t in STATUS_PARTS)), re.IGNORECASE | re.UNICODE)
+        ("|".join(f for f, t in STATUS_PARTS)), re.IGNORECASE | re.UNICODE)
 
     def __init__(self, language, locale_path):
         self.language = str(language)

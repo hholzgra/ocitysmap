@@ -25,7 +25,7 @@
 import logging
 
 import mapnik
-if True: # hack to prevent consecutive E402 warings
+if True:  # hack to prevent consecutive E402 warings
     assert mapnik.mapnik_version() >= 300000, \
         "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
         "for more details." % mapnik.mapnik_version_string()
@@ -181,7 +181,7 @@ class MapCanvas:
         shape_file.flush()
 
         shpid = os.path.basename(shape_file.get_filepath())
-        s,r = mapnik.Style(), mapnik.Rule()
+        s, r = mapnik.Style(), mapnik.Rule()
 
         poly_sym = mapnik.PolygonSymbolizer()
         poly_sym.fill = color
