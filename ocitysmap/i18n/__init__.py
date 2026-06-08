@@ -85,23 +85,28 @@ class i18n_generic(i18n):
     def language_desc(self):
         return self.language_code()
 
-from .ar    import i18n_ar_generic
-from .al    import i18n_al_generic
-from .ast   import i18n_ast_generic
-from .be    import i18n_be_generic
-from .ca    import i18n_ca_generic
-from .de    import i18n_de_generic
-from .es    import i18n_es_generic
-from .fa    import i18n_fa_generic
-from .fr    import i18n_fr_generic
-from .hr    import i18n_hr_HR
-from .it    import i18n_it_generic
-from .nl    import i18n_nl_generic
-from .pl    import i18n_pl_generic
-from .pt_br import i18n_pt_br_generic
-from .ro    import i18n_ro_generic
-from .ru    import i18n_ru_generic
-from .tr    import i18n_tr_generic
+# TODO: find more clean way to deal with import cross-dependencies
+# for now this construct keeps flake8 and isort happy
+# isort: off
+if True:
+    from .ar    import i18n_ar_generic
+    from .al    import i18n_al_generic
+    from .ast   import i18n_ast_generic
+    from .be    import i18n_be_generic
+    from .ca    import i18n_ca_generic
+    from .de    import i18n_de_generic
+    from .es    import i18n_es_generic
+    from .fa    import i18n_fa_generic
+    from .fr    import i18n_fr_generic
+    from .hr    import i18n_hr_HR
+    from .it    import i18n_it_generic
+    from .nl    import i18n_nl_generic
+    from .pl    import i18n_pl_generic
+    from .pt_br import i18n_pt_br_generic
+    from .ro    import i18n_ro_generic
+    from .ru    import i18n_ru_generic
+    from .tr    import i18n_tr_generic
+# isort: on
 
 # When not listed in the following map, default language class will be
 # i18n_generic
