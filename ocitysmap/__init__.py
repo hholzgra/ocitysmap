@@ -302,7 +302,7 @@ class OCitySMap:
                 try:
                     (w,h) = r_paper.match(value).groups()
                     self.MULTIPAGE_PAPER_SIZES.append((key, int(w), int(h)))
-                except Exception as e:
+                except Exception:
                     LOG.warning("Ignoring invalid paper size '%s' for multi page format '%s'" % (key, value))
         else:
             # minimal fallback configuration

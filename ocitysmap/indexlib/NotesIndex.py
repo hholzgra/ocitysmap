@@ -90,7 +90,7 @@ class NotesIndex(GeneralIndex):
             try:
                 index_text = "Note %d - %s" % (n, note['properties']['comments'][0]['text'].replace('\n', ' '))
                 index_category.items.append(GeneralIndexItem(index_text[0:50], point, point, self._page_number))
-            except IndexError as e:
+            except IndexError:
                 pass
 
             # renderer._marker('red', str(n), lat, lon, ctx, renderer.dpi)
