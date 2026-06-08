@@ -91,7 +91,7 @@ def main():
                       default="")
     parser.add_option('--osmid', dest='osmid', metavar='OSMID',
                       help='OSM ID representing the polygon of the city '
-                      'to render.', type="int"),
+                      'to render.', type="int")
     parser.add_option('-b', '--bounding-box', dest='bbox',  nargs=2,
                       metavar='LAT1,LON1 LAT2,LON2',
                       help='bounding box (EPSG: 4326).')
