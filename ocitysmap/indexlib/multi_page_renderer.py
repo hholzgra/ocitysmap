@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
     def rnd_str(max_len, letters = string.letters + ' ' * 4):
         return ''.join(random.choice(letters)
-                       for i in xrange(random.randint(1, max_len)))
+                       for i in range(random.randint(1, max_len)))
 
     class i18nMock:
         def __init__(self, rtl):
