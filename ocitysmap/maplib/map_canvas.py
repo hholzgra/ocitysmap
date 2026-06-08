@@ -217,6 +217,8 @@ class MapCanvas:
         return ocitysmap.coords.BoundingBox(c0.y, c0.x, c1.y, c1.x)
 
 if __name__ == '__main__':
+    import shapes
+
     logging.basicConfig(level=logging.DEBUG)
 
     class StylesheetMock:
