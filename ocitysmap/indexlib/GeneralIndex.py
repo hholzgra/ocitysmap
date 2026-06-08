@@ -570,29 +570,33 @@ class GeneralIndexRenderer:
     """
 
     def __init__(self, i18n, index_categories,
-                 street_index_rendering_styles
-                     = [ GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 16',
-                                                    'DejaVu 12'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 14',
-                                                    'DejaVu 10'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 12',
-                                                    'DejaVu 8'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 10',
-                                                    'DejaVu 7'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 8',
-                                                    'DejaVu 6'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 6',
-                                                    'DejaVu 5'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 5',
-                                                    'DejaVu 4'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 4',
-                                                    'DejaVu 3'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 3',
-                                                    'DejaVu 2'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 2',
-                                                    'DejaVu 2'),
-                         GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 1',
-                                                    'DejaVu 1'), ] ):
+                 street_index_rendering_styles = None):
+
+        if street_index_rendering_styles is None:
+            street_index_rendering_styles = [
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 16',
+                                           'DejaVu 12'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 14',
+                                           'DejaVu 10'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 12',
+                                           'DejaVu 8'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 10',
+                                           'DejaVu 7'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 8',
+                                           'DejaVu 6'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 6',
+                                           'DejaVu 5'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 5',
+                                           'DejaVu 4'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 4',
+                                           'DejaVu 3'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 3',
+                                           'DejaVu 2'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 2',
+                                           'DejaVu 2'),
+                GeneralIndexRenderingStyle('DejaVu Sans Condensed Bold 1',
+                                           'DejaVu 1'), ]
+
         self._i18n             = i18n
         self._index_categories = index_categories
         self._rendering_styles = street_index_rendering_styles
