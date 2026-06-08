@@ -149,11 +149,13 @@ class IndexItem(ABC):
            Nothing, but the location_str field will have been altered
         """
         if self.endpoint1 is not None:
-            ep1_label = grid.get_location_str( * self.endpoint1.get_latlong())
+            coords = self.endpoint1.get_latlong()
+            ep1_label = grid.get_location_str(coords[0], coords[1])
         else:
             ep1_label = None
         if self.endpoint2 is not None:
-            ep2_label = grid.get_location_str( * self.endpoint2.get_latlong())
+            coords = self.endpoint2.get_latlong()
+            ep2_label = grid.get_location_str(coords[0], coords[1])
         else:
             ep2_label = None
 
