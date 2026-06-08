@@ -71,7 +71,7 @@ if __name__ == '__main__':
     import string
 
     import ocitysmap
-    from GeneralIndex import GeneralIndexCategory, GeneralIndexTerm, GeneralIndexRenderer
+    from GeneralIndex import GeneralIndexCategory, GeneralIndexItem, GeneralIndexRenderer
 
     logging.basicConfig(level=logging.DEBUG)
 
