@@ -279,17 +279,17 @@ class BoundingBox:
             Required pixel height and width
 
         """
+        def _yplan(lat):
+            # http://en.wikipedia.org/wiki/Mercator_projection
+            return math.log(math.tan(math.pi/4.0 + math.radians(lat)/2.0))
+
         delta_long = abs(self._long1 - self._long2)
         # 2^zoom tiles (1 tile = 256 pix) for the whole earth
         pix_x = delta_long * (2 ** (zoom + 8)) / 360
 
-        # http://en.wikipedia.org/wiki/Mercator_projection
-        yplan = lambda lat: math.log(math.tan(math.pi/4.0 +
-                                              math.radians(lat)/2.0))
-
         # OSM maps are drawn between -85 deg and + 85, the whole amplitude
         # is 256*2^(zoom)
-        pix_y = (yplan(self._lat1) - yplan(self._lat2)) * (2 ** (zoom + 7)) / yplan(85)
+        pix_y = (_yplan(self._lat1) - _yplan(self._lat2)) * (2 ** (zoom + 7)) / _yplan(85)
 
         return (int(math.ceil(pix_y)), int(math.ceil(pix_x)))
 

@@ -295,15 +295,17 @@ SELECT %(columns)s,
             void
                 Nothing, but self._categories has been modified as side effect
         """
+        def _sort_key(item):
+            return (item.label, item.location_str)
+
         categories = []
         for category in self._categories:
             if category.is_street:
                 categories.append(category)
                 continue
             grouped_items = []
-            sort_key = lambda item: (item.label, item.location_str)
-            items = natsorted(category.items, key=sort_key)
-            for _label, same_items in groupby(items, key=sort_key):
+            items = natsorted(category.items, key=_sort_key)
+            for _label, same_items in groupby(items, key=_sort_key):
                 grouped_items.append(next(same_items))
             category.items = grouped_items
 
