@@ -38,6 +38,8 @@ if __name__ == '__main__':
 
     import commons
 
+    from ocitysmap.indexlib.multi_page_renderer import MultiPageIndexRenderer
+
     width = UTILS.convert_mm_to_pt(210)
     height = UTILS.convert_mm_to_pt(297)
 
@@ -86,9 +88,9 @@ if __name__ == '__main__':
     mpsir.render()
     surface.show_page()
 
-    mpsir2 = MultiPagendexRenderer(i18nMock(True), ctxtmp, surface,
-                                   streets, rendering_area,
-                                   mpsir.page_number + 1)
+    mpsir2 = MultiPageIndexRenderer(i18nMock(True), ctxtmp, surface,
+                                    streets, rendering_area,
+                                    mpsir.page_number + 1)
     mpsir2.render()
 
     surface.finish()
