@@ -95,7 +95,7 @@ class IndexCategory(ABC):
         self.is_street = is_street
 
     def __str__(self):
-        return '<%s (%s)>' % (self.name, map(str, self.items))
+        return '<%s (%s)>' % (self.name, list(map(str, self.items)))
 
     def __repr__(self):
         return 'IndexCategory(%s, %s)' % (repr(self.name),

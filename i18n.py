@@ -69,7 +69,7 @@ def create_language(country_code):
 
 def get_languages():
     language = os.listdir('locale')
-    return filter(lambda s: s != 'ocitysmap.pot', language)
+    return list(filter(lambda s: s != 'ocitysmap.pot', language))
 
 def main():
     usage = '%prog [options]\n WARNING: This program should be called from ocitysmap/ directory!'
