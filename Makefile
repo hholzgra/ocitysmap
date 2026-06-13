@@ -5,26 +5,31 @@ STAMPDIR = tests/.stamps
 
 .PHONY: clean
 .SILENT: clean
-clean::
-	# clean Python precompile cache directores
-	find . -name __pycache__ | xargs rm -rf
 
 .PHONY: lint
 lint:
 	flake8 | sort -k2 -k1
 
-.PHONY: test
-test: $(ALL_STAMPS)
-	@[ -n "$(ALL_STAMPS)" ] || { echo "No .deps.mk — run 'make depend' first"; exit 1; }
-
+# clean up python compile cache files
 clean::
-	# clean "make test" stamp files
-	find . -name .stamps | xargs rm -rf
+	# clean Python precompile cache directores
+	find . -name __pycache__ | xargs rm -rf
 
+# generate dependencies for tests to run
 .PHONY: depend
-depend:
+depend: .deps.mk
+
+.deps.mk:
 	$(PYTHON) scripts/make_test_deps.py > .deps.mk
 
 clean::
 	# clean "make depend" results
 	rm -f .deps.mk
+
+#  rununit tests
+.PHONY: test
+test: .deps.mk $(ALL_STAMPS)
+
+clean::
+	# clean "make test" stamp files
+	find . -name .stamps | xargs rm -rf
