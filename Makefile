@@ -7,7 +7,7 @@ STAMPDIR = tests/.stamps
 .SILENT: clean
 clean::
 	# clean Python precompile cache directores
-	find . -name __pycache__ | xargs rm -rf 
+	find . -name __pycache__ | xargs rm -rf
 
 .PHONY: lint
 lint:
@@ -19,7 +19,7 @@ test: $(ALL_STAMPS)
 
 clean::
 	# clean "make test" stamp files
-	find . -name .stamps | xargs rm -rf 
+	find . -name .stamps | xargs rm -rf
 
 .PHONY: depend
 depend:
