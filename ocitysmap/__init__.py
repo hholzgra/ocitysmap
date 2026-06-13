@@ -252,7 +252,7 @@ class OCitySMap:
             raise IOError('None of the configuration files could be read!')
 
         self._locale_path = os.path.join(os.path.dirname(__file__), '..', 'locale')
-        self.__dbs = {}
+        self.__db = None
 
         # Read stylesheet configuration
         self.STYLESHEET_REGISTRY = Stylesheet.create_all_from_config(self._parser, locale = language)
@@ -318,32 +318,18 @@ class OCitySMap:
         return result
 
     @property
-    def _db(self, name='default'):
-        """ Connect to configured database
-
-        Actual config entry name is `[datasource]` for the default db,
-        and `[datasource_...name...]` for everything else
-
-        Parameters
-        ----------
-        name : str, optional
-             Name of datasource to use.
+    def _db(self):
+        """ Connect to configured database (lazy, cached)
 
         Returns
         -------
         psycopg2.connection
-            Database connection for the given name.
+            Database connection.
         """
+        if self.__db is not None:
+            return self.__db
 
-        # check db cache for already opened connection for this name
-        if name in self.__dbs:
-            return self.__dbs[name]
-
-        # Database connection
-        if name == 'default':
-            datasource = dict(self._parser.items('datasource'))
-        else:
-            datasource = dict(self._parser.items('datasource_' + name))
+        datasource = dict(self._parser.items('datasource'))
 
         # The port is not a mandatory configuration option, so make
         # sure we define a default value.
@@ -371,10 +357,7 @@ class OCitySMap:
             timeout = OCitySMap.DEFAULT_REQUEST_TIMEOUT_MIN
         self._set_request_timeout(db, timeout)
 
-        # cache result
-        self.__dbs[name] = db
-
-        # return result
+        self.__db = db
         return db
 
     def _set_request_timeout(self, db, timeout_minutes=15):
@@ -516,6 +499,7 @@ class OCitySMap:
             cursor.execute(query)
         except psycopg2.ProgrammingError:
             self._db.rollback()
+            cursor.close()
             return None
         # Extract datetime object. It is located as the first element
         # of a tuple, itself the first element of an array.
