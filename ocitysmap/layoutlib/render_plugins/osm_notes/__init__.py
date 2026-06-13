@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-FileCopyrightText: The ocitysmap contributors
+
 from ocitysmap.layoutlib.abstract_renderer import Renderer
 from ocitysmap.coords import Point
 

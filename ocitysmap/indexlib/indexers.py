@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-FileCopyrightText: The ocitysmap contributors
+
 from ocitysmap.indexlib.StreetIndex import StreetIndex
 from ocitysmap.indexlib.HealthIndex import HealthIndex
 from ocitysmap.indexlib.NotesIndex import NotesIndex

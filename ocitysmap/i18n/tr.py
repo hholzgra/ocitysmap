@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-FileCopyrightText: The ocitysmap contributors
+
 import re
 from . import i18n, _install_language
 

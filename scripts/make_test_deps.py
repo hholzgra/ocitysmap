@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-FileCopyrightText: The ocitysmap contributors
+
 """Generate Makefile dependency rules for test stamp files.
 
 Run from the project root:

@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-FileCopyrightText: The ocitysmap contributors
+
 import unittest
 from ocitysmap.i18n import i18n_fa_generic
 

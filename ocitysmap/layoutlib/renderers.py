@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-FileCopyrightText: The ocitysmap contributors
+
 from ocitysmap.layoutlib.single_page_renderer.no_index import SinglePageRendererNoIndex
 from ocitysmap.layoutlib.single_page_renderer.side_index import SinglePageRendererIndexOnSide
 from ocitysmap.layoutlib.single_page_renderer.bottom_index import SinglePageRendererIndexBottom

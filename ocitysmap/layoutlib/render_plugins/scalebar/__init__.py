@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-FileCopyrightText: The ocitysmap contributors
+
 import logging
 from ocitysmap.draw_utils import draw_simpletext_center
 from ocitysmap.layoutlib.multi_page_renderer import MultiPageRenderer
