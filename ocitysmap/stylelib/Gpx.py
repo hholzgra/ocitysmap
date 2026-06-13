@@ -38,9 +38,8 @@ LOG = logging.getLogger('ocitysmap')
 
 class GpxProcessor:
     def __init__(self, gpx_file):
-        gpx_fp = codecs.open(gpx_file, 'r', 'utf-8-sig')
-        self.gpx = gpxpy.parse(gpx_fp)
-        gpx_fp.close()
+        with codecs.open(gpx_file, 'r', 'utf-8-sig') as gpx_fp:
+            self.gpx = gpxpy.parse(gpx_fp)
 
     def getBoundingBox(self):
         b = self.gpx.get_bounds()
@@ -58,9 +57,8 @@ class GpxStylesheet(Stylesheet):
 
         self.linestrings = []
 
-        gpx_fp = codecs.open(gpx_file, 'r', 'utf-8-sig')
-        gpx = gpxpy.parse(gpx_fp)
-        gpx_fp.close()
+        with codecs.open(gpx_file, 'r', 'utf-8-sig') as gpx_fp:
+            gpx = gpxpy.parse(gpx_fp)
 
         if gpx.copyright_year or gpx.copyright_author or gpx.copyright_license:
             self.annotation = "GPX track © %s %s %s" % (gpx.copyright_year, gpx.copyright_author, gpx.copyright_license)
@@ -73,58 +71,58 @@ class GpxStylesheet(Stylesheet):
         style_template_file = os.path.join(template_dir, 'style-template.xml')
         layer_template_file = os.path.join(template_dir, 'layer-template.xml')
 
-        GPX_filename = tempfile.mktemp(suffix='.xml', dir=tmpdir)
-        tmpfile = open(GPX_filename, 'w')
+        with tempfile.NamedTemporaryFile(suffix = '.xml',
+                                         dir = tmpdir,
+                                         mode = 'w',
+                                         delete = False) as tmpfile:
+            self.path = tmpfile.name
 
-        layer_text = ""
+            layer_text = ""
 
-        with open(layer_template_file, 'r') as layer_template:
-            tmplayer = Template(layer_template.read())
+            with open(layer_template_file, 'r') as layer_template:
+                tmplayer = Template(layer_template.read())
 
-        if len(gpx.tracks):
-            nonempty_tracks = 0
-            for track in gpx.tracks:
-                for segment in track.segments:
-                    if len(segment.points) > 0:
-                        nonempty_tracks = nonempty_tracks + 1
-                        language = LineString([(x.longitude, x.latitude) for x in segment.points])
-                        self.linestrings.append(language)
-            if nonempty_tracks > 0:
+            if len(gpx.tracks):
+                nonempty_tracks = 0
+                for track in gpx.tracks:
+                    for segment in track.segments:
+                        if len(segment.points) > 0:
+                            nonempty_tracks = nonempty_tracks + 1
+                            linestring = LineString([(x.longitude, x.latitude) for x in segment.points])
+                            self.linestrings.append(linestring)
+                if nonempty_tracks > 0:
+                    layer_text += tmplayer.substitute(
+                        gpxfile = gpx_file,
+                        layername = "tracks"
+                    )
+
+            if len(gpx.routes):
+                nonempty_routes = 0
+                for route in gpx.routes:
+                    if len(route.points) > 0:
+                        nonempty_routes = nonempty_routes + 1
+                        linestring = LineString([(x.longitude, x.latitude) for x in route.points])
+                        self.linestrings.append(linestring)
+                if nonempty_routes > 0:
+                    layer_text += tmplayer.substitute(
+                        gpxfile = gpx_file,
+                        layername = "routes"
+                    )
+
+            if len(gpx.waypoints):
                 layer_text += tmplayer.substitute(
                     gpxfile = gpx_file,
-                    layername = "tracks"
+                    layername = "waypoints"
                 )
 
-        if len(gpx.routes):
-            nonempty_routes = 0
-            for route in gpx.routes:
-                if len(route.points) > 0:
-                    nonempty_routes = nonempty_routes + 1
-                    language = LineString([(x.longitude, x.latitude) for x in route.points])
-                    self.linestrings.append(language)
-            if nonempty_routes > 0:
-                layer_text += tmplayer.substitute(
-                    gpxfile = gpx_file,
-                    layername = "routes"
-                )
-
-        if len(gpx.waypoints):
-            layer_text += tmplayer.substitute(
-                gpxfile = gpx_file,
-                layername = "waypoints"
-            )
-
-        with open(style_template_file, 'r') as style_template:
-            tmpstyle = Template(style_template.read())
-            tmpfile.write(
-                tmpstyle.substitute(
-                    gpxfile = gpx_file,
-                    svgdir = template_dir,
-                    color  = track_color,
-                    layers = layer_text
-                ))
-
-        tmpfile.close()
+            with open(style_template_file, 'r') as style_template:
+                tmpstyle = Template(style_template.read())
+                tmpfile.write(
+                    tmpstyle.substitute(
+                        gpxfile = gpx_file,
+                        svgdir = template_dir,
+                        color  = track_color,
+                        layers = layer_text
+                    ))
 
         self.name = "GPX overlay"
-        self.path = GPX_filename
