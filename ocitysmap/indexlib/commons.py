@@ -167,7 +167,8 @@ class IndexItem(ABC):
         if ep1_label == ep2_label:
             if ep1_label is None:
                 self.location_str = "???"
-            self.location_str = ep1_label
+            else:
+                self.location_str = ep1_label
         elif grid.rtl:
             self.location_str = "%s-%s" % (max(ep1_label, ep2_label),
                                            min(ep1_label, ep2_label))
