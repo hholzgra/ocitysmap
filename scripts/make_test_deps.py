@@ -111,7 +111,7 @@ def main():
         print(f'{stamp}: {" ".join(all_deps)}')
         print(f'\t@output=$$($(PYTHON) -m unittest {mod} 2>&1) && echo "OK: {mod}" || {{ echo "$$output"; exit 1; }}')
         print(f'\t@mkdir -p {stampdir}')
-        print(f'\t@touch $@')
+        print('\t@touch $@')
         print()
 
 
