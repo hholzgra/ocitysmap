@@ -534,6 +534,14 @@ class SinglePageRenderer(Renderer):
         # create the cairo context to draw into
         ctx = cairo.Context(cairo_surface)
 
+        # Pin unhinted font metrics so raw-cairo text drawn onto a raster
+        # (PNG) ImageSurface is laid out with the same metrics as the vector
+        # surface used for the layout precompute. No-op for vector output,
+        # which is already unhinted.
+        fo = ctx.get_font_options()
+        fo.set_hint_metrics(cairo.HINT_METRICS_OFF)
+        ctx.set_font_options(fo)
+
         # Set a white background (so that generated bitmaps are not transparent)
         ctx.save()
         ctx.set_source_rgb(1, 1, 1)

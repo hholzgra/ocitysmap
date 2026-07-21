@@ -114,6 +114,13 @@ class TK25Renderer(Renderer):
     def render(self, cairo_surface, dpi, osm_date):
         ctx = cairo.Context(cairo_surface)
 
+        # Pin unhinted font metrics so raw-cairo text drawn onto a raster
+        # (PNG) ImageSurface matches the metrics of the vector surface used
+        # for the layout precompute. No-op for vector output.
+        fo = ctx.get_font_options()
+        fo.set_hint_metrics(cairo.HINT_METRICS_OFF)
+        ctx.set_font_options(fo)
+
         normal_fd = Pango.FontDescription("DejaVu 7")
         normal_layout, normal_fascent, normal_fheight, normal_em = \
             draw_utils.create_layout_with_font(ctx, normal_fd)

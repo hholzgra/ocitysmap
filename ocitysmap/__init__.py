@@ -866,15 +866,23 @@ class OCitySMap:
             # as the dpi value may have changed we need to re-create the renderer
             renderer = renderer_cls(self._db, config, tmpdir, dpi, file_prefix)
 
-            # As strange as it may seem, we HAVE to use a vector
-            # device here and not a raster device such as
-            # ImageSurface. Because, for some reason, with
-            # ImageSurface, the font metrics would NOT match those
-            # pre-computed by renderer_cls.__init__() and used to
-            # layout the whole page
+            # PNG is rendered straight onto a raster ImageSurface.
+            #
+            # This used to go through a vector PDFSurface(None) instead, the
+            # reasoning being that a raster surface produced different font
+            # metrics than the vector surface used to pre-compute the page
+            # layout in renderer_cls.__init__(). The page text goes through
+            # PangoCairo, whose logical metrics are resolution-independent and
+            # come out identical on a raster ImageSurface and a vector
+            # PDFSurface, so that concern does not actually apply here.
+            #
+            # Rendering directly to an ImageSurface also avoids a crash on
+            # Debian 13 (Mapnik 4.0 / Cairo 1.18) where finishing a large
+            # PDFSurface that Mapnik had rendered onto segfaulted after the
+            # PNG had already been written.
             LOG.debug("Rendering PNG into %dpx x %dpx area at %ddpi ..."
                       % (w_px, h_px, dpi))
-            surface = cairo.PDFSurface(None, w_px, h_px)
+            surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, w_px, h_px)
 
         elif output_format == 'svg':
             surface = cairo.SVGSurface(tmp_output_filename,
@@ -928,6 +936,7 @@ class OCitySMap:
         config.status_update(_("%s: writing output file") % output_format.upper())
 
         if output_format == 'png':
+            surface.flush()
             surface.write_to_png(tmp_output_filename)
 
         try:

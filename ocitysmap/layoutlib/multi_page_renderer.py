@@ -1119,6 +1119,13 @@ class MultiPageRenderer(Renderer):
     def render(self, cairo_surface, dpi, osm_date):
         ctx = cairo.Context(cairo_surface)
 
+        # Pin unhinted font metrics so raw-cairo text drawn onto a raster
+        # (PNG) ImageSurface matches the metrics of the vector surface used
+        # for the layout precompute. No-op for vector output.
+        fo = ctx.get_font_options()
+        fo.set_hint_metrics(cairo.HINT_METRICS_OFF)
+        ctx.set_font_options(fo)
+
         self._render_front_page(ctx, cairo_surface, dpi, osm_date)
         self._render_contents_page(ctx, cairo_surface, dpi, osm_date)
         self._render_overview_page(ctx, cairo_surface, dpi)
