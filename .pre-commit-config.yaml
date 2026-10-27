@@ -3,4 +3,5 @@ repos:
     rev: 7.3.0  # Use the latest version
     hooks:
       - id: flake8
-        name: flake8 
+        name: flake8
+        files: \.py$

@@ -33,10 +33,6 @@ from gi.repository import Rsvg, Pango, PangoCairo
 import logging
 
 import mapnik
-if True:  # hack to prevent consecutive E402 warnings
-    assert mapnik.mapnik_version() >= 300000, \
-        "Mapnik module version %s is too old, see ocitysmap's INSTALL " \
-        "for more details." % mapnik.mapnik_version_string()
 import math
 import os
 import shapely.wkt
